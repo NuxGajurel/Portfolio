@@ -166,15 +166,15 @@ export default function Home() {
       <div>
         <h1 className="text-2xl sm:text-2xl mb-8 mt-9 ml-1">Photos</h1>
      
-        <div className="flex justify-baseline space-x-3 ml-3">
+        <div className="flex justify-baseline space-x-3 lg:ml-3">
      <div>
-       <img src={photosOne.url} alt="ehh" className="lg:h-65 lg:w-50"/>
+       <img src={photosOne.url} alt="ehh" className="lg:h-65 lg:w-50  h-44 w-70"/>
      </div>
      <div>
-      <img src={photosTwo.url} alt="" className="lg:h-65 lg:w-50"/>
+      <img src={photosTwo.url} alt="" className="lg:h-65 lg:w-50 h-44 w-70"/>
      </div>
      <div>
-      <img src={photosThree.url} alt="" className="lg:h-65 lg:w-50"/>
+      <img src={photosThree.url} alt="" className="lg:h-65 lg:w-50 h-44 w-70"/>
      </div>
   
         </div>
