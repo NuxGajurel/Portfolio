@@ -23,14 +23,9 @@ const Navbar = () => {
 
   return (
     <header className="mx-auto max-w-6xl px-0 py-5 sticky top-0 z-50 bg-white">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between justify-items-center">
         {/* Logo */}
-        <Link
-          href="/"
-          className="text-lg text-blue-500 font-stretch-ultra-expanded ml-2"
-        >
-          Nuxcodes
-        </Link>
+       
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-6">
