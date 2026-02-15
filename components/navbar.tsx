@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { CiMenuBurger } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
+import { IoBulbOutline } from "react-icons/io5";
+
 
 type NavItem = {
   name: string;
@@ -25,7 +27,6 @@ const Navbar = () => {
     <header className="mx-auto max-w-6xl px-0 py-5 sticky top-0 z-50 bg-white">
       <div className="flex items-center justify-between justify-items-center">
         {/* Logo */}
-       
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-6">
@@ -35,7 +36,12 @@ const Navbar = () => {
             </Link>
           ))}
         </nav>
-
+<div className="flex flex-col items-center gap-0">
+  <div className="w-8 h-9 flex items-center justify-center rounded-full bg-white transition-all">
+    <IoBulbOutline size={22} className="text-gray-700" />
+  </div>
+  
+</div>
         {/* Mobile Menu Button */}
         <i
           className="md:hidden"
@@ -45,6 +51,8 @@ const Navbar = () => {
           {open ? <RxCross2 size={20} /> : <CiMenuBurger size={20} />}
         </i>
       </div>
+  
+      
       <hr className="mt-4 m-0 p-0 text-gray-300"></hr>
       {/* Mobile Menu */}
       {open && (
