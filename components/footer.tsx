@@ -1,15 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { FcAbout } from "react-icons/fc";
-import { FiTool, FiFolder, FiCamera } from "react-icons/fi";
+
+import { FiTool, FiFolder, FiCamera, FiUser } from "react-icons/fi";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { SiDailydotdev } from "react-icons/si";
 
 
 const footer = () => {
   const nav = [
-  { name:"About", path: "/about" ,icons:<FcAbout/>},
+  { name:"About", path: "/about" ,icons:<FiUser />
+},
     { name: "Uses", path: "/uses" ,icons:<FiTool/>},
     { name: "Projects", path: "/projects", icons:<FiFolder/> },
     { name: "Photos", path: "/photos" ,icons:<FiCamera/> },
