@@ -14,53 +14,8 @@ const school = {
   logoUrl: "/school.png",
 };
 
-import {
-  SiNextdotjs,
-  SiReact,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiGit,
-  SiVercel,
-  SiTypescript,
-  SiPostgresql,
-  SiJavascript,
-  SiExpress,
-} from "react-icons/si";
-import { div } from "framer-motion/client";
-
-const TECH_STACK = [
-  { name: "Next.js", icon: SiNextdotjs, color: "text-black dark:text-white" },
-  { name: "React", icon: SiReact, color: "text-cyan-400" },
-  { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-sky-400" },
-  { name: "Node.js", icon: SiNodedotjs, color: "text-green-600" },
-
-  {
-    name: "Express.js",
-    icon: SiExpress,
-    color: "text-gray-800 dark:text-gray-200",
-  },
-  { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
-  { name: "Neon (PostgreSQL)", icon: SiPostgresql, color: "text-emerald-400" },
-
-  // Tools
-  { name: "Git", icon: SiGit, color: "text-orange-600" },
-  { name: "Vercel", icon: SiVercel, color: "text-black dark:text-white" },
-];
-
-const photosOne =  {id : 1 , url:"/main.jpg"}
-const photosTwo ={
-  id:2,
-  url:"/hamro.JPG"
-}
-const photosThree ={
-  id:2,
-  url:"/mero.jpg"
-}
- 
 
 
- 
 function Avatar({ src, alt, fallback }: any) {
   return (
     <motion.div
@@ -119,30 +74,6 @@ export default function Home() {
       </div>
       {/* Skills  */}
 
-      <div>
-        <section className="mt-16">
-          <h2 className="text-2xl sm:text-2xl mb-8">Tech Stack</h2>
-
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4">
-            {TECH_STACK.map((tech) => {
-              const Icon = tech.icon;
-              return (
-                <div
-                  key={tech.name}
-                  className="group flex flex-col items-center justify-center 
-                         gap-1 rounded-xl p-1
-                         transition-all duration-300 border border-gray-200 "
-                >
-                  <Icon
-                    className={`text-3xl ${tech.color} 
-                            group-hover:scale-110 transition`}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </section>
-      </div>
       {/* Education  */}
       <div>
         <h1 className="text-2xl sm:text-2xl mb-8 mt-9 ml-1">Education</h1>
@@ -163,44 +94,8 @@ export default function Home() {
         </div>
       </div>
       {/* Photos */}
-      <div>
-        <h1 className="text-2xl sm:text-2xl mb-8 mt-9 ml-1">Photos</h1>
+   
      
-        <div className="flex justify-baseline space-x-3 lg:ml-3">
-     <div>
-       <img src={photosOne.url} alt="ehh" className="lg:h-65 lg:w-50  h-44 w-70"/>
-     </div>
-     <div>
-      <img src={photosTwo.url} alt="" className="lg:h-65 lg:w-50 h-44 w-70"/>
-     </div>
-     <div>
-      <img src={photosThree.url} alt="" className="lg:h-65 lg:w-50 h-44 w-70"/>
-     </div>
-  
-        </div>
-        <div>
-         
-<button className="cursor-pointer transition-all bg-blue-500 text-white px-6 py-2 rounded-lg
-border-blue-600
-border-b-4px hover:brightness-110 hover:-translate-y-1px hover:border-b-[6px]
-active:border-b-2px active:brightness-90 active:translate-y-2px w-full mt-5">
- See All 
-</button>
-
-        </div>
-      <div className="mt-1 text-right">
-  <p className="text-xs text-gray-400">
-    Photos page is inspired by{" "}
-    <a
-      href="https://manishtamang.com/photos"
-      className="text-blue-400 hover:underline"
-    >
-      golecodes
-    </a>
-  </p>
-</div>
-
-      </div>
     </main>
   );
 }
