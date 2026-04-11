@@ -26,7 +26,7 @@ const footer = () => {
  ];
   return (
     <div>
-      <footer className="mx-auto max-w-6xl px-0 py-5 mt-10 lg:ml-6">
+      <footer className="min-h-screen px-0 sm:px-0 lg:px-6 lg:py-16 py-10">
         <div className="flex justify-baseline lg:gap-15 gap-5">
           <div className="flex flex-col col-end-4 space-y-1">
             {nav.map((item) => (
