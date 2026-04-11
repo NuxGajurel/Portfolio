@@ -12,6 +12,7 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
+  { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Uses", path: "/uses" },
   { name: "Projects", path: "/projects" },
@@ -35,7 +36,7 @@ const Navbar = () => {
             </Link>
           ))}
         </nav>
-        
+
         {/* Mobile Menu Button */}
         <i
           className="md:hidden"
@@ -63,12 +64,9 @@ const Navbar = () => {
             >
               {item.name}
             </Link>
-            
           ))}
         </nav>
-        
       )}
-      
     </header>
   );
 };
