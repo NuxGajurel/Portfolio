@@ -62,7 +62,8 @@ export default function Home() {
             <Avatar
               src={Nux.avatarUrl}
               alt={Nux.name}
-              fallback={Nux.initials} className="m-2"
+              fallback={Nux.initials}
+              className="m-2"
             />
           </div>
           <div className="flex-1 mt-7 lg:mt-0 lg:ml-6">
@@ -87,36 +88,27 @@ export default function Home() {
         </div>
       </div>
       {/* work experience  */}
-      <div>
-        <div>
-          <h1 className="text-2xl sm:text-2xl mb-8 mt-9 ml-1">
-            Work Experience
-          </h1>
-          <div className="flex justify-baseline gap-0">
-            <div className="rounded h-2 w-24 hover:scale-105 ">{/*  */}</div>
-          </div>
-        </div>
 
-        {/* Education  */}
-        <div>
-          <h1 className="text-2xl sm:text-2xl mb-8 mt-9 ml-1">Education</h1>
-          <div className="flex justify-baseline gap-0">
-            <div className="rounded h-24 w-24 hover:scale-105 ">
-              <img src={school.logoUrl} alt="ksks" className="object-cover" />
-            </div>
-            <div>
-              <h1 className="hover:text-blue-500">{school.name}</h1>
-              <p className="items-center text-gray-400">2013-2026</p>
-              <p>High School (10th Grade)</p>
-            </div>
-            <div className="ml-60 hidden md:block">
-              <a href="https://www.facebook.com/p/The-Rising-English-Secondary-Boarding-school-Biratchowk-100063526275005/">
-                <FaArrowUpRightFromSquare className="text-gray-700 hover:text-blue-500" />
-              </a>
-            </div>
+      {/* Education  */}
+      <div>
+        <h1 className="text-2xl sm:text-2xl mb-8 mt-9">Education</h1>
+        <div className="flex justify-baseline gap-0">
+          <div className="rounded h-24 w-24 hover:scale-105 ">
+            <img src={school.logoUrl} alt="ksks" className="object-cover" />
+          </div>
+          <div>
+            <h1 className="hover:text-blue-500">{school.name}</h1>
+            <p className="items-center text-gray-400">2013-2026</p>
+            <p>High School (10th Grade)</p>
+          </div>
+          <div className="ml-60 hidden md:block">
+            <a href="https://www.facebook.com/p/The-Rising-English-Secondary-Boarding-school-Biratchowk-100063526275005/">
+              <FaArrowUpRightFromSquare className="text-gray-700 hover:text-blue-500" />
+            </a>
           </div>
         </div>
       </div>
+
       {/* Photos */}
     </main>
   );
