@@ -21,13 +21,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <div className="">
+      <body className={`${geistSans.variable} ${geistMono.variable} relative`}>
+        <div className="fixed inset-0 -z-10 bg-white">
+          <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] bg-[size:24px_24px] opacity-40 animate-[moveDots_30s_linear_infinite]" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-3xl bg-white px-4 sm:px-6 lg:px-8 min-h-screen">
           <Navbar />
           {children}
           <Footer />
