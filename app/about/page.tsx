@@ -94,7 +94,7 @@ const page = () => {
             <div className="">
               <h1 className="hover:text-blue-500 lg:text-2xl">{school.name}</h1>
               <p className="items-center text-gray-400">2013-2026</p>
-              <p>High School (10th Grade)</p>
+              <p>High School (SEE batch 2082)</p>
             </div>
             <div className="hidden md:block">
               <a href="https://www.facebook.com/p/The-Rising-English-Secondary-Boarding-school-Biratchowk-100063526275005/"></a>
