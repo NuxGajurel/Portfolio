@@ -46,7 +46,7 @@ const page = () => {
   };
   const mero ={
     name: "Mero Job",
-    logoUrl: "/iiii.png",
+    logoUrl: "/v.png",
   }
   return (
     <div>

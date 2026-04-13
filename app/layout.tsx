@@ -26,12 +26,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8"
-      >
-        <Navbar />
-        {children}
-        <Footer />
+      <body className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <div className="">
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
