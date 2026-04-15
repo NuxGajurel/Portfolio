@@ -60,7 +60,7 @@ export default function ProjectsSection() {
 
   const filteredProjects = projects
     .filter((project) =>
-      project.name.toLowerCase().includes(search.toLowerCase())
+      project.name.toLowerCase().includes(search.toLowerCase()),
     )
     .sort((a, b) => {
       if (sort === "az") return a.name.localeCompare(b.name);
@@ -71,15 +71,11 @@ export default function ProjectsSection() {
   return (
     <section className="min-h-screen flex justify-center">
       <div className="max-w-2xl w-full px-5 sm:px-9 py-12 sm:py-16">
-        
-        {/* Title */}
         <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-8">
           Projects
         </h2>
 
-       
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-10">
-          
           <input
             type="text"
             placeholder="Search projects..."
@@ -88,7 +84,6 @@ export default function ProjectsSection() {
             onChange={(e) => setSearch(e.target.value)}
           />
 
-         
           <select
             className="w-40 sm:w-auto px-3 py-3 text-sm sm:text-base border rounded-xl bg-white"
             value={sort}
@@ -104,7 +99,6 @@ export default function ProjectsSection() {
           {filteredProjects.map((project) => {
             const content = (
               <div className="flex items-start gap-5 sm:gap-8 group cursor-pointer py-3 sm:py-4">
-                
                 {/* Image */}
                 <div className="w-14 h-14 sm:w-16 sm:h-16 relative rounded-xl overflow-hidden shadow-sm flex-shrink-0">
                   <Image
@@ -115,7 +109,6 @@ export default function ProjectsSection() {
                   />
                 </div>
 
-            
                 <div>
                   <h3 className="text-base sm:text-lg font-medium text-gray-900 group-hover:underline">
                     {project.name}
@@ -141,7 +134,6 @@ export default function ProjectsSection() {
             );
           })}
 
-          
           {filteredProjects.length === 0 && (
             <p className="text-gray-500 text-sm">No projects found.</p>
           )}
