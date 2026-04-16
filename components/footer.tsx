@@ -2,11 +2,7 @@
 import React from "react";
 import Link from "next/link";
 
-import {
-  FaGithub,
-  FaInstagram,
-  FaLinkedin,
-} from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { SiDailydotdev } from "react-icons/si";
 import {
   FiUser,
@@ -36,7 +32,10 @@ const Footer = () => {
 
   const socials = [
     { icon: <FaGithub />, path: "https://github.com/NuxGajurel" },
-    { icon: <FaLinkedin />, path: "https://www.linkedin.com/in/nux-gajurel-355962348/" },
+    {
+      icon: <FaLinkedin />,
+      path: "https://www.linkedin.com/in/nux-gajurel-355962348/",
+    },
     { icon: <FaInstagram />, path: "https://www.instagram.com/nuxgajurel/" },
     { icon: <SiDailydotdev />, path: "https://app.daily.dev/nuxgajurel" },
   ];
@@ -59,7 +58,11 @@ const Footer = () => {
     { name: "Analytics", path: "/analytics", icon: <FiBarChart2 /> },
 
     { name: "Instagram", path: "https://instagram.com", icon: <FaInstagram /> },
-    { name: "Daily.dev", path: "https://app.daily.dev", icon: <SiDailydotdev /> },
+    {
+      name: "Daily.dev",
+      path: "https://app.daily.dev",
+      icon: <SiDailydotdev />,
+    },
     { name: "GitHub", path: "https://github.com", icon: <FaGithub /> },
     { name: "LinkedIn", path: "https://linkedin.com", icon: <FaLinkedin /> },
   ];
@@ -67,12 +70,8 @@ const Footer = () => {
   return (
     <footer className="w-full px-5 py-12 text-gray-700">
       <div className="max-w-5xl mx-auto space-y-12">
-
-       
         <div className="md:hidden space-y-10">
-
           <div className="grid grid-cols-2 gap-8">
-
             <div>
               <h3 className="text-sm font-semibold mb-4">NAVIGATE</h3>
               <ul className="space-y-3">
@@ -121,7 +120,6 @@ const Footer = () => {
             </div>
           </div>
 
-         
           <div className="space-y-4">
             <h2 className="text-lg font-medium">Nux Gajurel</h2>
             <p className="text-sm text-gray-600">
@@ -136,15 +134,9 @@ const Footer = () => {
               ))}
             </div>
           </div>
-
         </div>
 
-       
         <div className="hidden md:block space-y-10">
-
-         
-
-        
           <div className="grid grid-cols-4 gap-x-10 gap-y-6 text-sm">
             {desktopLinks.map((item) => (
               <Link
@@ -153,24 +145,17 @@ const Footer = () => {
                 target={item.path.startsWith("http") ? "_blank" : "_self"}
                 className="flex items-center gap-3 hover:text-black transition"
               >
-                <span className="text-lg text-gray-500">
-                  {item.icon}
-                </span>
-                <span className="border-b border-dashed">
-                  {item.name}
-                </span>
+                <span className="text-lg text-gray-500">{item.icon}</span>
+                <span className="border-b border-dashed">{item.name}</span>
               </Link>
             ))}
           </div>
-
         </div>
 
-     
         <div className="flex justify-between items-center text-sm text-gray-500 border-t pt-4">
           <span>© {new Date().getFullYear()}</span>
           <span>{new Date().toLocaleTimeString()}</span>
         </div>
-
       </div>
     </footer>
   );
