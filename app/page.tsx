@@ -8,12 +8,10 @@ import Link from "next/link";
 import { Playwrite_IE, Caveat_Brush } from "next/font/google";
 
 const bokorFont = Playwrite_IE({
-  subsets: ["latin"],
   weight: "300",
 });
 
 const caveatFont = Caveat_Brush({
-  subsets: ["latin"],
   weight: "400",
 });
 
