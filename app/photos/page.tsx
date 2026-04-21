@@ -14,7 +14,7 @@ const images = [
 ];
 
 const Page = () => {
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState<typeof images[0] | null>(null);
 
   return (
     <div className="bg-white text-black min-h-screen px-4 md:px-6 py-8">
