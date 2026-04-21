@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { CiMenuBurger } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
-import { IoBulbOutline } from "react-icons/io5";
+import ThemeToggle from "./ThemeToggle";
 
 type NavItem = {
   name: string;
@@ -45,11 +45,7 @@ const Navbar = () => {
         >
           {open ? <RxCross2 size={20} /> : <CiMenuBurger size={20} />}
         </i>
-        <div className="flex flex-col items-center gap-0">
-          <div className="w-8 h-9 flex items-center justify-center rounded-full bg-white transition-all">
-            <IoBulbOutline size={22} className="text-gray-700" />
-          </div>
-        </div>
+        <ThemeToggle />
       </div>
 
       <hr className="mt-4 m-0 p-0 text-gray-300"></hr>
