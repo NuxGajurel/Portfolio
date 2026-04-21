@@ -41,7 +41,7 @@ const page = () => {
     logoUrl: "/school.png",
   };
   const work = {
-    name: "freelancer Web Developer",
+    name: "Freelancing Web Developer",
     logoUrl: "/work.webp",
   };
   const mero ={
