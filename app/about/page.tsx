@@ -130,15 +130,11 @@ const page = () => {
           <h1 className={`text-2xl ${caveatFont.className}`}>1. Learning  to play Instuments </h1>
       <h1 className={`text-2xl ${caveatFont.className}`}>2. Learn to Code  </h1>
         <h1 className={`text-2xl ${caveatFont.className}`}>3. Video Editing </h1>
-          <h1 className={`text-2xl ${caveatFont.className}`}>4. </h1>
+          
         </div>
       </div>
       <div>
-        <div>
-          <h1 className={`text-4xl ${dancingScript.className} mt-11 text-pink-300`}>
-            Jack of  </h1>
-          
-        </div>
+       
       </div>
     </div>
   );
