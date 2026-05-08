@@ -1,88 +1,133 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { IoCloseOutline } from "react-icons/io5";
 
 const images = [
-  { src: "/bhai.jpg", title: "", date: "" },
-  { src: "/1.jpg", title: "Random Shot", date: "" },
-  { src: "/6.jpg", title: "", date: "" },
-  { src: "/7.jpg", title: "", date: "" },
-  { src: "/2.jpg", title: "Last Day of School", date: "" },
-  { src: "/3.jpg", title: "Hackathon", date: "026" },
-  { src: "/4.jpg", title: "Last Day of SEE", date: "" },
-  { src: "/5.jpg", title: "Pokhara", date: "" },
+  { src: "/bhai.jpg", title: "Moments", date: "2024" },
+  { src: "/1.jpg", title: "Random Shot", date: "2023" },
+  { src: "/6.jpg", title: "Street Life", date: "2024" },
+  { src: "/7.jpg", title: "Nature", date: "2024" },
+  { src: "/2.jpg", title: "Last Day of School", date: "2023" },
+  { src: "/3.jpg", title: "Hackathon", date: "2026" },
+  { src: "/4.jpg", title: "Last Day of SEE", date: "2023" },
+  { src: "/5.jpg", title: "Pokhara", date: "2024" },
 ];
 
 const Page = () => {
-  const [selected, setSelected] = useState<typeof images[0] | null>(null);
+  const [selected, setSelected] = useState<(typeof images)[0] | null>(null);
 
   return (
-    <div className="bg-white text-black min-h-screen px-4 md:px-6 py-8">
-      <h1 className="text-2xl md:text-4xl font-bold mb-2">Photos</h1>
-      <p className="text-sm md:text-base text-gray-500 mb-6 md:mb-8">
-        A collection of random images from my gallery.
-      </p>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[220px] sm:auto-rows-[250px] md:auto-rows-[280px]">
-        {images.map((img, i) => (
-          <div
-            key={i}
-            onClick={() => setSelected(img)}
-            className={`relative cursor-pointer overflow-hidden rounded-xl group
-              ${i === 1 ? "sm:col-span-2 sm:row-span-2" : ""}
-            `}
+    <div className="min-h-screen py-10">
+      <div className="mx-auto">
+        <header className="mb-12">
+          <motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-3xl md:text-4xl font-bold tracking-tight mb-3"
           >
-            <Image
-              src={img.src}
-              alt={img.title}
-              fill
-              className="object-cover w-full h-full transition duration-300 group-hover:scale-105"
-            />
+            Photos
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-gray-500 max-w-lg leading-relaxed"
+          >
+            A curated collection of moments, travels, and random captures from
+            my lens.
+          </motion.p>
+        </header>
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300" />
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {images.map((img, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 0.05 }}
+              onClick={() => setSelected(img)}
+              className={`relative cursor-pointer overflow-hidden rounded-2xl group bg-gray-100 shadow-sm hover:shadow-xl transition-all duration-500
+                ${
+                  i === 0
+                    ? "col-span-2 row-span-2 aspect-square md:aspect-auto"
+                    : "aspect-square"
+                }
+                ${i === 5 ? "md:col-span-2" : ""}
+              `}
+            >
+              <Image
+                src={img.src}
+                alt={img.title}
+                fill
+                className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
+              />
 
-            <div className="absolute bottom-3 left-3 text-white opacity-0 group-hover:opacity-100 transition">
-              <h2 className="text-sm md:text-lg font-semibold">{img.title}</h2>
-              <p className="text-[10px] md:text-xs text-gray-300">{img.date}</p>
-            </div>
-          </div>
-        ))}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 md:p-6">
+                <h2 className="text-white text-sm md:text-lg font-semibold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  {img.title || "Untitled"}
+                </h2>
+                <p className="text-gray-300 text-[10px] md:text-xs translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                  {img.date}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       {/* Modal */}
-      {selected && (
-        <div
-          className="fixed inset-0 bg-white/95 flex items-center justify-center z-50"
-          onClick={() => setSelected(null)}
-        >
-          <button
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-white/90 backdrop-blur-md flex items-center justify-center z-50 p-4 md:p-10"
             onClick={() => setSelected(null)}
-            className="absolute top-4 right-4 md:top-6 md:right-6 text-black text-2xl md:text-3xl"
           >
-            ✕
-          </button>
+            <motion.button
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0 }}
+              onClick={() => setSelected(null)}
+              className="absolute top-6 right-6 text-black p-2 hover:bg-gray-100 rounded-full transition-colors z-[60]"
+            >
+              <IoCloseOutline size={32} />
+            </motion.button>
 
-          <div className="relative w-full h-full max-w-5xl max-h-[85vh] px-2">
-            <Image
-              src={selected.src}
-              alt={selected.title}
-              fill
-              className="object-contain"
-            />
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-5xl h-full flex flex-col items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-full h-[70vh] md:h-[80vh]">
+                <Image
+                  src={selected.src}
+                  alt={selected.title}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
 
-            <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 text-black">
-              <h2 className="text-lg md:text-2xl font-bold">
-                {selected.title}
-              </h2>
-              <p className="text-xs md:text-sm text-gray-600">
-                {selected.date}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
+              <div className="mt-6 text-center">
+                <h2 className="text-xl md:text-2xl font-bold text-black">
+                  {selected.title || "Untitled"}
+                </h2>
+                <p className="text-gray-500 text-sm mt-1">{selected.date}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
 export default Page;
+
