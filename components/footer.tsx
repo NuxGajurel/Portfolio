@@ -68,18 +68,18 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full px-5 py-12 text-gray-700">
+    <footer className="w-full px-5 py-12 text-gray-700 dark:text-gray-400">
       <div className="max-w-5xl mx-auto space-y-12">
         <div className="md:hidden space-y-10">
           <div className="grid grid-cols-2 gap-8">
             <div>
-              <h3 className="text-sm font-semibold mb-4">NAVIGATE</h3>
+              <h3 className="text-sm font-semibold mb-4 text-gray-900 dark:text-white">NAVIGATE</h3>
               <ul className="space-y-3">
                 {navigate.map((item) => (
                   <li key={item.name} className="flex gap-2">
                     <span className="text-gray-400">•</span>
                     <Link href={item.path}>
-                      <span className="border-b border-dashed">
+                    <span className="border-b border-dashed border-gray-300 dark:border-gray-700">
                         {item.name}
                       </span>
                     </Link>
@@ -87,19 +87,19 @@ const Footer = () => {
                 ))}
                 <li className="flex gap-2">
                   <span className="text-pink-500">•</span>
-                  <span className="border-b border-dashed">Now</span>
+                  <span className="border-b border-dashed border-gray-300 dark:border-gray-700">Now</span>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h3 className="text-sm font-semibold mb-4">EXPLORE</h3>
+              <h3 className="text-sm font-semibold mb-4 text-gray-900 dark:text-white">EXPLORE</h3>
               <ul className="space-y-3">
                 {explore.map((item) => (
                   <li key={item.name} className="flex gap-2">
                     <span className="text-gray-400">•</span>
                     <Link href={item.path}>
-                      <span className="border-b border-dashed">
+                    <span className="border-b border-dashed border-gray-300 dark:border-gray-700">
                         {item.name}
                       </span>
                     </Link>
@@ -111,7 +111,7 @@ const Footer = () => {
                     onClick={() =>
                       window.scrollTo({ top: 0, behavior: "smooth" })
                     }
-                    className="border-b border-dashed"
+                    className="border-b border-dashed border-gray-300 dark:border-gray-700"
                   >
                     Scroll to Top
                   </button>
@@ -121,8 +121,8 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-lg font-medium">Nux Gajurel</h2>
-            <p className="text-sm text-gray-600">
+            <h2 className="text-lg font-medium text-gray-900 dark:text-white">Nux Gajurel</h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               Passionate and creative Full-stack Developer from Nepal
             </p>
 
@@ -143,16 +143,16 @@ const Footer = () => {
                 key={item.name}
                 href={item.path}
                 target={item.path.startsWith("http") ? "_blank" : "_self"}
-                className="flex items-center gap-3 hover:text-black transition"
+                className="flex items-center gap-3 hover:text-black dark:hover:text-white transition group"
               >
-                <span className="text-lg text-gray-500">{item.icon}</span>
-                <span className="border-b border-dashed">{item.name}</span>
+                <span className="text-lg text-gray-400 dark:text-gray-600 group-hover:text-black dark:group-hover:text-white transition-colors">{item.icon}</span>
+                <span className="border-b border-dashed border-gray-300 dark:border-gray-700">{item.name}</span>
               </Link>
             ))}
           </div>
         </div>
 
-        <div className="flex justify-between items-center text-sm text-gray-500 border-t pt-4">
+        <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-600 border-t border-gray-100 dark:border-gray-800 pt-4">
           <span>© {new Date().getFullYear()}</span>
           <span>{new Date().toLocaleTimeString()}</span>
         </div>

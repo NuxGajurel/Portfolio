@@ -1,10 +1,11 @@
 "use client";
-
 import Link from "next/link";
-import { useState } from "react";
-import { CiMenuBurger } from "react-icons/ci";
-import { RxCross2 } from "react-icons/rx";
-import { IoBulbOutline } from "react-icons/io5";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { IoBulbOutline, IoBulb } from "react-icons/io5";
+import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 type NavItem = {
   name: string;
@@ -22,51 +23,96 @@ const navItems: NavItem[] = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const { theme, setTheme, resolvedTheme } = useTheme();
+
+  // Close menu on navigation
+  useEffect(() => {
+    setOpen(false);
+    setMounted(true);
+  }, [pathname]);
+
+  if (!mounted) return null;
+
+  const isDark = resolvedTheme === "dark";
 
   return (
-    <header className="mx-auto max-w-6xl px-0 py-5 sticky top-0 z-50 bg-white">
-      <div className="flex items-center justify-between justify-items-center">
-        {/* Logo */}
+    <header className="sticky top-0 z-50 w-full bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-500">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          {/* Mobile Menu Button on Left */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setOpen(!open)}
+              className="p-2 -ml-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+              aria-label="Toggle menu"
+            >
+              {open ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
+            </button>
+          </div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-6">
-          {navItems.map((item) => (
-            <Link key={item.path} href={item.path}>
-              {item.name}
-            </Link>
-          ))}
-        </nav>
+          {/* Desktop Nav on Left */}
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                href={item.path}
+                className={`text-sm font-medium transition-colors hover:text-black dark:hover:text-white ${
+                  pathname === item.path
+                    ? "text-black dark:text-white underline underline-offset-4"
+                    : "text-gray-500 dark:text-gray-400"
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
 
-        {/* Mobile Menu Button */}
-        <i
-          className="md:hidden"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <RxCross2 size={20} /> : <CiMenuBurger size={20} />}
-        </i>
-        <div className="flex flex-col items-center gap-0">
-          <div className="w-8 h-9 flex items-center justify-center rounded-full bg-white transition-all">
-            <IoBulbOutline size={22} className="text-gray-700" />
+          {/* Bulb Icon on Right (Desktop & Mobile) */}
+          <div className="flex items-center">
+            <button
+              onClick={() => setTheme(isDark ? "light" : "dark")}
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer border border-gray-200 dark:border-gray-800"
+            >
+              {isDark ? (
+                <IoBulb size={18} className="text-white" />
+              ) : (
+                <IoBulbOutline size={18} className="text-gray-700" />
+              )}
+            </button>
           </div>
         </div>
       </div>
 
-      <hr className="mt-4 m-0 p-0 text-gray-300"></hr>
       {/* Mobile Menu */}
-      {open && (
-        <nav className="mt-4 flex flex-col gap-4 md:hidden bg-white">
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              href={item.path}
-              onClick={() => setOpen(false)}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden bg-white dark:bg-[#0a0a0a] border-b border-gray-100 dark:border-gray-800 overflow-hidden"
+          >
+            <div className="flex flex-col gap-1 px-4 py-4 sm:px-6">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  href={item.path}
+                  className={`px-3 py-3 rounded-xl text-base font-medium transition-all ${
+                    pathname === item.path
+                      ? "bg-gray-50 dark:bg-gray-900 text-black dark:text-white"
+                      : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-900 hover:text-black dark:hover:text-white"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

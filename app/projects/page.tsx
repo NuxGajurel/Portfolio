@@ -71,7 +71,7 @@ export default function ProjectsSection() {
   return (
     <section className="min-h-screen flex justify-center">
       <div className="max-w-2xl w-full px-5 sm:px-9 py-12 sm:py-16">
-        <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-8">
+        <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800 dark:text-white mb-8">
           Projects
         </h2>
 
@@ -79,13 +79,13 @@ export default function ProjectsSection() {
           <input
             type="text"
             placeholder="Search projects..."
-            className="w-full px-4 py-3 text-sm sm:text-base border rounded-xl outline-none focus:ring-2 focus:ring-gray-300"
+            className="w-full px-4 py-3 text-sm sm:text-base border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-xl outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-700"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
 
           <select
-            className="w-40 sm:w-auto px-3 py-3 text-sm sm:text-base border rounded-xl bg-white"
+            className="w-40 sm:w-auto px-3 py-3 text-sm sm:text-base border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-xl"
             value={sort}
             onChange={(e) => setSort(e.target.value)}
           >
@@ -110,10 +110,10 @@ export default function ProjectsSection() {
                 </div>
 
                 <div>
-                  <h3 className="text-base sm:text-lg font-medium text-gray-900 group-hover:underline">
+                  <h3 className="text-base sm:text-lg font-medium text-gray-900 dark:text-white group-hover:underline">
                     {project.name}
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 sm:mt-2 leading-relaxed">
                     {project.description}
                   </p>
                 </div>

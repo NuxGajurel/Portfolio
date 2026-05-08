@@ -86,18 +86,18 @@ export default function Home() {
 
           <div className="flex-1 mt-6 lg:mt-0 lg:ml-6">
             <h1
-              className={`text-2xl sm:text-4xl lg:text-3xl font-bold mb-2 ${bokorFont.className}`}
+              className={`text-2xl sm:text-4xl lg:text-3xl font-bold mb-2 text-gray-900 dark:text-white ${bokorFont.className}`}
             >
               Hi, I'm Nux Gajurel
             </h1>
 
-            <p className="mb-1">Web developer & Student</p>
+            <p className="mb-1 text-gray-600 dark:text-gray-400">Web developer & Student</p>
 
-            <div>
+            <div className="text-gray-600 dark:text-gray-400">
               I'm passionate{" "}
               <a
                 href="https://github.com/NuxGajurel"
-                className={`text-blue-600 underline ${caveatFont.className}`}
+                className={`text-blue-600 dark:text-blue-400 underline ${caveatFont.className}`}
               >
                 Aspiring full-stack developer
               </a>{" "}
@@ -130,7 +130,7 @@ export default function Home() {
 
         {/* Projects */}
         <div className="mt-12">
-          <h1 className="text-2xl mb-6">Projects</h1>
+          <h1 className="text-2xl mb-6 text-gray-900 dark:text-white font-semibold">Projects</h1>
 
           <div className="space-y-6 sm:space-y-8">
             {visibleProjects.map((project) => (
@@ -146,10 +146,10 @@ export default function Home() {
                   </div>
 
                   <div>
-                    <h3 className="text-base sm:text-lg font-medium text-gray-900 group-hover:underline">
+                    <h3 className="text-base sm:text-lg font-medium text-gray-900 dark:text-white group-hover:underline">
                       {project.name}
                     </h3>
-                    <p className="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 sm:mt-2 leading-relaxed">
                       {project.description}
                     </p>
                   </div>
@@ -161,7 +161,7 @@ export default function Home() {
           <div className="flex justify-end mt-8">
             <Link
               href="/projects"
-              className="text-gray-600 hover:text-black underline underline-offset-4"
+              className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white underline underline-offset-4"
             >
               View all →
             </Link>
@@ -170,7 +170,7 @@ export default function Home() {
 
         {/* Photos */}
         <div className="mt-16">
-          <h1 className="text-2xl mb-6">Photos</h1>
+          <h1 className="text-2xl mb-6 text-gray-900 dark:text-white font-semibold">Photos</h1>
 
           <div className="flex justify-center">
             <div className="relative w-full max-w-[500px] sm:max-w-[600px] aspect-[3/2] flex items-center justify-center">
@@ -178,7 +178,7 @@ export default function Home() {
               <div
                 onMouseEnter={() => setActive("left")}
                 onClick={() => setActive("left")}
-                className={`absolute left-2 sm:left-0 top-8 sm:top-10 p-2 bg-white rounded-xl shadow-xl cursor-pointer transition-all duration-500
+                className={`absolute left-2 sm:left-0 top-8 sm:top-10 p-2 bg-white dark:bg-gray-900 rounded-xl shadow-xl dark:shadow-none border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-500
                 ${
                   active === "left"
                     ? "z-30 scale-105"
@@ -193,14 +193,14 @@ export default function Home() {
                     className="object-cover"
                   />
                 </div>
-                <div className="text-center mt-2">Last day of School</div>
+                <div className="text-center mt-2 text-sm text-gray-800 dark:text-gray-200">Last day of School</div>
               </div>
 
               {/* RIGHT */}
               <div
                 onMouseEnter={() => setActive("right")}
                 onClick={() => setActive("right")}
-                className={`absolute right-2 sm:right-0 top-8 sm:top-10 p-2 bg-white rounded-xl shadow-xl cursor-pointer transition-all duration-500
+                className={`absolute right-2 sm:right-0 top-8 sm:top-10 p-2 bg-white dark:bg-gray-900 rounded-xl shadow-xl dark:shadow-none border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-500
                 ${
                   active === "right"
                     ? "z-30 scale-105"
@@ -215,14 +215,14 @@ export default function Home() {
                     className="object-cover"
                   />
                 </div>
-                <div className="text-center mt-2">📍 Pokhara</div>
+                <div className="text-center mt-2 text-sm text-gray-800 dark:text-gray-200">📍 Pokhara</div>
               </div>
 
               {/* CENTER */}
               <div
                 onMouseEnter={() => setActive("center")}
                 onClick={() => setActive("center")}
-                className={`relative p-2 bg-white rounded-xl shadow-2xl cursor-pointer transition-all duration-500
+                className={`relative p-2 bg-white dark:bg-gray-900 rounded-xl shadow-2xl dark:shadow-none border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-500
                 ${
                   active === "center"
                     ? "z-30 scale-105"
@@ -237,7 +237,7 @@ export default function Home() {
                     className="object-cover"
                   />
                 </div>
-                <div className="text-center mt-2">📍 Darjeeling</div>
+                <div className="text-center mt-2 text-sm text-gray-800 dark:text-gray-200">📍 Darjeeling</div>
               </div>
             </div>
           </div>
@@ -245,7 +245,7 @@ export default function Home() {
           <div className="flex justify-end mt-17">
             <Link
               href="/photos"
-              className="text-gray-600 hover:text-black underline underline-offset-4"
+              className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white underline underline-offset-4"
             >
               View all →
             </Link>

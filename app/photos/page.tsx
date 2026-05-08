@@ -25,7 +25,7 @@ const Page = () => {
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-4xl font-bold tracking-tight mb-3"
+            className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-gray-900 dark:text-white"
           >
             Photos
           </motion.h1>
@@ -33,7 +33,7 @@ const Page = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-gray-500 max-w-lg leading-relaxed"
+            className="text-gray-500 dark:text-gray-400 max-w-lg leading-relaxed"
           >
             A curated collection of moments, travels, and random captures from
             my lens.
@@ -48,7 +48,7 @@ const Page = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.05 }}
               onClick={() => setSelected(img)}
-              className={`relative cursor-pointer overflow-hidden rounded-2xl group bg-gray-100 shadow-sm hover:shadow-xl transition-all duration-500
+              className={`relative cursor-pointer overflow-hidden rounded-2xl group bg-gray-100 dark:bg-gray-800 shadow-sm hover:shadow-xl dark:hover:shadow-none border border-transparent dark:hover:border-gray-700 transition-all duration-500
                 ${
                   i === 0
                     ? "col-span-2 row-span-2 aspect-square md:aspect-auto"
@@ -84,7 +84,7 @@ const Page = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-white/90 backdrop-blur-md flex items-center justify-center z-50 p-4 md:p-10"
+            className="fixed inset-0 bg-white/90 dark:bg-black/90 backdrop-blur-md flex items-center justify-center z-50 p-4 md:p-10"
             onClick={() => setSelected(null)}
           >
             <motion.button
@@ -92,7 +92,7 @@ const Page = () => {
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
               onClick={() => setSelected(null)}
-              className="absolute top-6 right-6 text-black p-2 hover:bg-gray-100 rounded-full transition-colors z-[60]"
+              className="absolute top-6 right-6 text-black dark:text-white p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors z-[60]"
             >
               <IoCloseOutline size={32} />
             </motion.button>
@@ -116,10 +116,10 @@ const Page = () => {
               </div>
 
               <div className="mt-6 text-center">
-                <h2 className="text-xl md:text-2xl font-bold text-black">
+                <h2 className="text-xl md:text-2xl font-bold text-black dark:text-white">
                   {selected.title || "Untitled"}
                 </h2>
-                <p className="text-gray-500 text-sm mt-1">{selected.date}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">{selected.date}</p>
               </div>
             </motion.div>
           </motion.div>
