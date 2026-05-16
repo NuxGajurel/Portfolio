@@ -20,7 +20,6 @@ const Footer = () => {
     { name: "About", path: "/about" },
     { name: "Blog", path: "/blog" },
     { name: "Projects", path: "/projects" },
-    { name: "Uses", path: "/uses" },
   ];
 
   const explore = [
@@ -50,7 +49,6 @@ const Footer = () => {
     { name: "Guestbook", path: "/guestbook", icon: <FiBook /> },
     { name: "Contact", path: "/contact", icon: <FiMail /> },
     { name: "Blogs", path: "/blog", icon: <FiBook /> },
-    { name: "Uses", path: "/uses", icon: <FiBarChart2 /> },
 
     { name: "Projects", path: "/projects", icon: <FiFolder /> },
     { name: "Photos", path: "/photos", icon: <FiCamera /> },

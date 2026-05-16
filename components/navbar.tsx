@@ -16,7 +16,6 @@ type NavItem = {
 const navItems: NavItem[] = [
   { name: "Home", path: "/", icon: HiHome },
   { name: "About", path: "/about", icon: HiInformationCircle },
-  { name: "Uses", path: "/uses", icon: HiChip },
   { name: "Projects", path: "/projects", icon: HiCollection },
   { name: "Photos", path: "/photos", icon: HiPhotograph },
   { name: "Contact", path: "/contact", icon: HiPhone },
