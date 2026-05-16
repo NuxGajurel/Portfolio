@@ -1,127 +1,200 @@
 "use client";
-import React from "react";
+
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { AiOutlineGithub } from "react-icons/ai";
 import { FaLinkedin } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { MdOutlineMail } from "react-icons/md";
+import { sendEmail } from "../actions/send-email";
+
+const socialLinks = [
+  { icon: AiOutlineGithub, href: "https://github.com/NuxGajurel", label: "GitHub" },
+  { icon: FaLinkedin, href: "https://www.linkedin.com/in/nux-gajurel-355962348/", label: "LinkedIn" },
+  { icon: FaInstagram, href: "https://www.instagram.com/nuxgajurel/", label: "Instagram" },
+  { icon: MdOutlineMail, href: "mailto:nuxgajurel46@gmail.com", label: "Email" },
+];
 
 const Page = () => {
+  const [isPending, setIsPending] = useState(false);
+  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsPending(true);
+    setMessage(null);
 
     const formData = new FormData(e.currentTarget);
+    
+    try {
+      const result = await sendEmail(formData);
+      
+      if (result.error) {
+        setMessage({ type: "error", text: result.error });
+      } else {
+        setMessage({ type: "success", text: result.success as string });
+        (e.target as HTMLFormElement).reset();
+      }
+    } catch (error) {
+      setMessage({ type: "error", text: "Something went wrong. Please try again." });
+    } finally {
+      setIsPending(false);
+    }
+  };
 
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      subject: formData.get("subject"),
-      message: formData.get("message"),
-    };
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
-    console.log(data);
-
-
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-4 py-16 bg-white">
-      <div className="w-full max-w-2xl space-y-10">
+    <main className="min-h-screen py-16 px-4 transition-colors duration-500">
+      <motion.div 
+        className="max-w-2xl mx-auto space-y-12"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
         
         {/* Header */}
-        <section className="space-y-4">
-          <h1 className="text-3xl font-semibold">Contact</h1>
-
-          <p className="text-gray-500">
+        <motion.section variants={itemVariants} className="space-y-4">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Contact</h1>
+          <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
             It's currently{" "}
-            {new Date().toLocaleTimeString("en-US", {
-              timeZone: "Asia/Kathmandu",
-              hour: "2-digit",
-              minute: "2-digit",
-            })}{" "}
-            here in Biratchowk, Nepal  .
+            <span className="font-medium text-black dark:text-white">
+              {new Date().toLocaleTimeString("en-US", {
+                timeZone: "Asia/Kathmandu",
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </span>{" "}
+            here in Biratchowk, Nepal.
             Feel free to reach out but please don't just say hello. I will get
             back to you as soon as possible.
           </p>
-
-  
-         
-        </section>
+        </motion.section>
 
         {/* Social Links */}
-        <section className="space-y-3">
-          <h2 className="text-xl font-medium">Connect</h2>
-          <div className="flex flex-wrap gap-4 text-gray-600">
-            <a href="https://github.com/NuxGajurel" className="hover:underline">
-              <AiOutlineGithub size={35}/>
-            </a>
-            <a href="https://www.linkedin.com/in/nux-gajurel-355962348/" className="hover:underline">
-              <FaLinkedin size={35} />
-            </a>
-            <a href="https://www.instagram.com/nuxgajurel/" className="hover:underline">
-              <FaInstagram size={35} />
-            </a>
-            <a href="mailto:nuxgajurel46@gmail.com" className="hover:underline">
-              <MdOutlineMail size={35} />
-            </a>
+        <motion.section variants={itemVariants} className="space-y-6">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Connect</h2>
+          <div className="flex flex-wrap gap-6">
+            {socialLinks.map((link, index) => (
+              <motion.a
+                key={index}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <link.icon size={28} className="group-hover:rotate-6 transition-transform" />
+                <span className="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  {link.label}
+                </span>
+              </motion.a>
+            ))}
           </div>
-        </section>
+        </motion.section>
 
-   
-        <section className="space-y-6">
-          <h2 className="text-xl font-medium">Send me a message</h2>
+        {/* Contact Form */}
+        <motion.section variants={itemVariants} className="space-y-8 bg-gray-50/50 dark:bg-gray-900/30 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 backdrop-blur-sm">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Send me a message</h2>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input
-                name="name"
-                type="text"
-                placeholder="Joan Doe"
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Name</label>
+                <input
+                  name="name"
+                  type="text"
+                  placeholder="Joan Doe"
+                  required
+                  className="w-full bg-white dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Email</label>
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="joan.doe@example.com"
+                  required
+                  className="w-full bg-white dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Subject</label>
+              <select
+                name="subject"
                 required
-                className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
-              />
+                className="w-full bg-white dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 px-4 py-3 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-all"
+              >
+                <option value="">Please choose one...</option>
+                <option>General Inquiry</option>
+                <option>Work Opportunity</option>
+                <option>Collaboration</option>
+              </select>
+            </div>
 
-              <input
-                name="email"
-                type="email"
-                placeholder="joan.doe@example.com"
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Message</label>
+              <textarea
+                name="message"
+                rows={5}
+                placeholder="Hello! Let's build something amazing together."
                 required
-                className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                className="w-full bg-white dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 resize-none"
               />
             </div>
 
-            
-            <select
-              name="subject"
-              required
-              className="w-full rounded-lg border px-4 py-2 text-gray-500 focus:outline-none focus:ring-2 focus:ring-black"
-            >
-              <option value="">Please choose one...</option>
-              <option>General Inquiry</option>
-              <option>Work Opportunity</option>
-              <option>Collaboration</option>
-            </select>
+            <div className="pt-2">
+              <motion.button
+                type="submit"
+                disabled={isPending}
+                className="w-full sm:w-auto rounded-xl bg-black dark:bg-white text-white dark:text-black px-8 py-3 font-semibold shadow-lg shadow-black/10 dark:shadow-white/5 hover:opacity-90 active:scale-95 transition-all disabled:bg-gray-400 dark:disabled:bg-gray-700 disabled:cursor-not-allowed"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {isPending ? "Sending..." : "Send Message"}
+              </motion.button>
 
-            <textarea
-              name="message"
-              rows={5}
-              placeholder="Hello!"
-              required
-              className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
-            />
-
-            <button
-              type="submit"
-              className="rounded-lg bg-black text-white px-6 py-2 hover:bg-gray-800 transition"
-            >
-              Send Message
-            </button>
+              {message && (
+                <motion.p 
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className={`text-sm mt-4 font-medium px-4 py-2 rounded-lg ${
+                    message.type === "success" 
+                      ? "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border border-green-100 dark:border-green-800" 
+                      : "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-100 dark:border-red-800"
+                  }`}
+                >
+                  {message.text}
+                </motion.p>
+              )}
+            </div>
           </form>
-        </section>
+        </motion.section>
 
-      </div>
+      </motion.div>
     </main>
   );
 };
 
 export default Page;
+

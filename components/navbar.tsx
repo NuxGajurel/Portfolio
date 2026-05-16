@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { HiMenuAlt3, HiX, HiHome, HiInformationCircle, HiChip, HiCollection, HiPhotograph, HiPhone } from "react-icons/hi";
 import { IoBulbOutline, IoBulb } from "react-icons/io5";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -10,15 +10,16 @@ import { useTheme } from "next-themes";
 type NavItem = {
   name: string;
   path: string;
+  icon: React.ElementType;
 };
 
 const navItems: NavItem[] = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Uses", path: "/uses" },
-  { name: "Projects", path: "/projects" },
-  { name: "Photos", path: "/photos" },
-  { name: "Contact", path: "/contact" },
+  { name: "Home", path: "/", icon: HiHome },
+  { name: "About", path: "/about", icon: HiInformationCircle },
+  { name: "Uses", path: "/uses", icon: HiChip },
+  { name: "Projects", path: "/projects", icon: HiCollection },
+  { name: "Photos", path: "/photos", icon: HiPhotograph },
+  { name: "Contact", path: "/contact", icon: HiPhone },
 ];
 
 const Navbar = () => {
@@ -95,20 +96,32 @@ const Navbar = () => {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="md:hidden bg-white dark:bg-[#0a0a0a] border-b border-gray-100 dark:border-gray-800 overflow-hidden"
           >
-            <div className="flex flex-col gap-1 px-4 py-4 sm:px-6">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  href={item.path}
-                  className={`px-3 py-3 rounded-xl text-base font-medium transition-all ${
-                    pathname === item.path
-                      ? "bg-gray-50 dark:bg-gray-900 text-black dark:text-white"
-                      : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-900 hover:text-black dark:hover:text-white"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
+            <div className="flex flex-col gap-2 px-4 py-6 sm:px-6">
+              {navItems.map((item) => {
+                const isActive = pathname === item.path;
+                return (
+                  <Link
+                    key={item.path}
+                    href={item.path}
+                    className={`flex items-center gap-4 px-3 py-2 rounded-xl transition-all duration-300 ${
+                      isActive
+                        ? "bg-gray-50 dark:bg-gray-900 text-black dark:text-white"
+                        : "text-gray-600 dark:text-gray-400 hover:bg-gray-50/50 dark:hover:bg-gray-900/50 hover:text-black dark:hover:text-white"
+                    }`}
+                  >
+                    <div className={`flex items-center justify-center w-10 h-10 rounded-xl transition-colors ${
+                      isActive 
+                        ? "bg-white dark:bg-black shadow-sm border border-gray-100 dark:border-gray-800" 
+                        : "bg-gray-100/50 dark:bg-gray-800/50"
+                    }`}>
+                      <item.icon size={20} className={isActive ? "text-black dark:text-white" : "text-gray-500 dark:text-gray-400"} />
+                    </div>
+                    <span className="text-lg font-medium">
+                      {item.name}
+                    </span>
+                  </Link>
+                );
+              })}
             </div>
           </motion.nav>
         )}
@@ -118,3 +131,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
