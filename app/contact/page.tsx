@@ -110,78 +110,81 @@ const Page = () => {
         </motion.section>
 
         {/* Contact Form */}
-        <motion.section variants={itemVariants} className="space-y-8 bg-gray-50/50 dark:bg-gray-900/30 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 backdrop-blur-sm">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Send me a message</h2>
+        <motion.section variants={itemVariants} className="space-y-10 sm:bg-gray-50/50 sm:dark:bg-gray-900/30 sm:p-10 sm:rounded-[3rem] sm:border sm:border-gray-100 sm:dark:border-gray-800 sm:backdrop-blur-sm">
+          <div className="space-y-2">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tighter uppercase italic">Send me a message</h2>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Usually responds within 24 hours.</p>
+          </div>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Name</label>
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="space-y-2 group">
+                <label className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1 transition-colors group-focus-within:text-black dark:group-focus-within:text-white">Name</label>
                 <input
                   name="name"
                   type="text"
-                  placeholder="Joan Doe"
+                  placeholder="Your Name"
                   required
-                  className="w-full bg-white dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                  className="w-full bg-transparent border-b-2 border-gray-100 dark:border-gray-800 px-1 py-3 focus:outline-none focus:border-black dark:focus:border-white transition-all text-xl text-gray-900 dark:text-white placeholder:text-gray-300 dark:placeholder:text-gray-700"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Email</label>
+              <div className="space-y-2 group">
+                <label className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1 transition-colors group-focus-within:text-black dark:group-focus-within:text-white">Email</label>
                 <input
                   name="email"
                   type="email"
-                  placeholder="joan.doe@example.com"
+                  placeholder="Your Email"
                   required
-                  className="w-full bg-white dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                  className="w-full bg-transparent border-b-2 border-gray-100 dark:border-gray-800 px-1 py-3 focus:outline-none focus:border-black dark:focus:border-white transition-all text-xl text-gray-900 dark:text-white placeholder:text-gray-300 dark:placeholder:text-gray-700"
                 />
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Subject</label>
+            <div className="space-y-2 group">
+              <label className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1 transition-colors group-focus-within:text-black dark:group-focus-within:text-white">Subject</label>
               <select
                 name="subject"
                 required
-                className="w-full bg-white dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 px-4 py-3 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-all"
+                className="w-full bg-transparent border-b-2 border-gray-100 dark:border-gray-800 px-1 py-3 text-xl text-gray-900 dark:text-white focus:outline-none focus:border-black dark:focus:border-white transition-all appearance-none cursor-pointer"
               >
-                <option value="">Please choose one...</option>
-                <option>General Inquiry</option>
-                <option>Work Opportunity</option>
-                <option>Collaboration</option>
+                <option value="" className="dark:bg-black">Select an option...</option>
+                <option className="dark:bg-black">General Inquiry</option>
+                <option className="dark:bg-black">Work Opportunity</option>
+                <option className="dark:bg-black">Collaboration</option>
               </select>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Message</label>
+            <div className="space-y-2 group">
+              <label className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1 transition-colors group-focus-within:text-black dark:group-focus-within:text-white">Message</label>
               <textarea
                 name="message"
-                rows={5}
-                placeholder="Hello! Let's build something amazing together."
+                rows={4}
+                placeholder="Write your thoughts..."
                 required
-                className="w-full bg-white dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 resize-none"
+                className="w-full bg-transparent border-b-2 border-gray-100 dark:border-gray-800 px-1 py-3 focus:outline-none focus:border-black dark:focus:border-white transition-all text-xl text-gray-900 dark:text-white placeholder:text-gray-300 dark:placeholder:text-gray-700 resize-none"
               />
             </div>
 
-            <div className="pt-2">
+            <div className="pt-6">
               <motion.button
                 type="submit"
                 disabled={isPending}
-                className="w-full sm:w-auto rounded-xl bg-black dark:bg-white text-white dark:text-black px-8 py-3 font-semibold shadow-lg shadow-black/10 dark:shadow-white/5 hover:opacity-90 active:scale-95 transition-all disabled:bg-gray-400 dark:disabled:bg-gray-700 disabled:cursor-not-allowed"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="w-full sm:w-auto rounded-full bg-black dark:bg-white text-white dark:text-black px-12 py-4 font-bold shadow-2xl hover:scale-[1.02] active:scale-95 transition-all disabled:bg-gray-400 dark:disabled:bg-gray-700 disabled:cursor-not-allowed uppercase tracking-widest text-sm"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {isPending ? "Sending..." : "Send Message"}
+                {isPending ? "Sending..." : "Send Request"}
               </motion.button>
 
               {message && (
                 <motion.p 
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className={`text-sm mt-4 font-medium px-4 py-2 rounded-lg ${
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`text-sm mt-8 font-bold px-6 py-3 rounded-2xl border ${
                     message.type === "success" 
-                      ? "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border border-green-100 dark:border-green-800" 
-                      : "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-100 dark:border-red-800"
+                      ? "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border-green-100 dark:border-green-800" 
+                      : "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border-red-100 dark:border-red-800"
                   }`}
                 >
                   {message.text}
