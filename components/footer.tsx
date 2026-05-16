@@ -55,14 +55,14 @@ const Footer = () => {
     { name: "Feedback", path: "/feedback", icon: <FiUser /> },
     { name: "Analytics", path: "/analytics", icon: <FiBarChart2 /> },
 
-    { name: "Instagram", path: "https://instagram.com", icon: <FaInstagram /> },
+    { name: "Instagram", path: "https://www.instagram.com/nuxgajurel/", icon: <FaInstagram /> },
     {
       name: "Daily.dev",
-      path: "https://app.daily.dev",
+      path: "https://app.daily.dev/nuxgajurel",
       icon: <SiDailydotdev />,
     },
-    { name: "GitHub", path: "https://github.com", icon: <FaGithub /> },
-    { name: "LinkedIn", path: "https://linkedin.com", icon: <FaLinkedin /> },
+    { name: "GitHub", path: "https://github.com/NuxGajurel", icon: <FaGithub /> },
+    { name: "LinkedIn", path: "https://www.linkedin.com/in/nux-gajurel-355962348/", icon: <FaLinkedin /> },
   ];
 
   return (
@@ -160,3 +160,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
