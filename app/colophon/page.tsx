@@ -18,22 +18,34 @@ export default function Colophon() {
 
         <div className="space-y-8 text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed tracking-tight">
           <p>
-            After completing my SEE in 2026, I finished the first version of this site. 
+            After completing my SEE in 2026, I finished the first version of this site.
             This project represents my early growth, learning, and passion for web development.
           </p>
-          
+
           <p>
             The design and inspiration for this website are influenced by{" "}
-            <a 
-              href="https://manishtamang.com/" 
+            <a
+              href="https://manishtamang.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-black dark:text-white underline decoration-gray-300 dark:decoration-gray-700 underline-offset-4 hover:decoration-black dark:hover:decoration-white transition-all font-medium"
             >
               Manish Tamang
+            </a>{" "}
+
+            , talented developers from Itahari, Nepal and beyond
+            and{" "}
+            <a
+              href="https://jahir.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black dark:text-white underline decoration-gray-300 dark:decoration-gray-700 underline-offset-4 hover:decoration-black dark:hover:decoration-white transition-all font-medium"
+            >
+              jahir.dev
             </a>
-            , a talented developer from Itahari, Nepal.
+            a Passionate and creative software engineer from Colombia .
           </p>
+
         </div>
 
         <footer className="pt-16">

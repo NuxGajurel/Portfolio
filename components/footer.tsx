@@ -83,10 +83,6 @@ const Footer = () => {
                     </Link>
                   </li>
                 ))}
-                <li className="flex gap-2">
-                  <span className="text-pink-500">•</span>
-                  <span className="border-b border-dashed border-gray-300 dark:border-gray-700">Now</span>
-                </li>
               </ul>
             </div>
 
