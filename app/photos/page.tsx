@@ -64,14 +64,7 @@ const Page = () => {
                 className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 md:p-6">
-                <h2 className="text-white text-sm md:text-lg font-semibold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  {img.title || "Untitled"}
-                </h2>
-                <p className="text-gray-300 text-[10px] md:text-xs translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-                  {img.date}
-                </p>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.div>
           ))}
         </div>
@@ -105,21 +98,14 @@ const Page = () => {
               className="relative w-full max-w-5xl h-full flex flex-col items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative w-full h-[70vh] md:h-[80vh]">
+              <div className="relative w-full h-[80vh] md:h-[90vh]">
                 <Image
                   src={selected.src}
-                  alt={selected.title}
+                  alt="Full view"
                   fill
                   className="object-contain"
                   priority
                 />
-              </div>
-
-              <div className="mt-6 text-center">
-                <h2 className="text-xl md:text-2xl font-bold text-black dark:text-white">
-                  {selected.title || "Untitled"}
-                </h2>
-                <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">{selected.date}</p>
               </div>
             </motion.div>
           </motion.div>
