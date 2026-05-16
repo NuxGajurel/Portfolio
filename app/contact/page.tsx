@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { AiOutlineGithub } from "react-icons/ai";
-import { FaLinkedin } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa6";
+import { FaLinkedin, FaInstagram } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
+import { FiMail } from "react-icons/fi";
 import { sendEmail } from "../actions/send-email";
 
 const socialLinks = [
@@ -110,87 +110,87 @@ const Page = () => {
         </motion.section>
 
         {/* Contact Form */}
-        <motion.section variants={itemVariants} className="space-y-10 sm:bg-gray-50/50 sm:dark:bg-gray-900/30 sm:p-10 sm:rounded-[3rem] sm:border sm:border-gray-100 sm:dark:border-gray-800 sm:backdrop-blur-sm">
+        <motion.section variants={itemVariants} className="space-y-8">
           <div className="space-y-2">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tighter uppercase italic">Send me a message</h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Usually responds within 24 hours.</p>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Send me a message</h2>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div className="space-y-2 group">
-                <label className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1 transition-colors group-focus-within:text-black dark:group-focus-within:text-white">Name</label>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
                 <input
                   name="name"
                   type="text"
-                  placeholder="Your Name"
+                  placeholder="Joan Doe"
                   required
-                  className="w-full bg-transparent border-b-2 border-gray-100 dark:border-gray-800 px-1 py-3 focus:outline-none focus:border-black dark:focus:border-white transition-all text-xl text-gray-900 dark:text-white placeholder:text-gray-300 dark:placeholder:text-gray-700"
+                  className="w-full bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-800 px-4 py-3 focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600"
                 />
               </div>
 
-              <div className="space-y-2 group">
-                <label className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1 transition-colors group-focus-within:text-black dark:group-focus-within:text-white">Email</label>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
                 <input
                   name="email"
                   type="email"
-                  placeholder="Your Email"
+                  placeholder="joan.doe@example.com"
                   required
-                  className="w-full bg-transparent border-b-2 border-gray-100 dark:border-gray-800 px-1 py-3 focus:outline-none focus:border-black dark:focus:border-white transition-all text-xl text-gray-900 dark:text-white placeholder:text-gray-300 dark:placeholder:text-gray-700"
+                  className="w-full bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-800 px-4 py-3 focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Subject</label>
+                <select
+                  name="subject"
+                  required
+                  className="w-full bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-800 px-4 py-3 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white transition-all appearance-none cursor-pointer"
+                >
+                  <option value="">Please choose one...</option>
+                  <option>General Inquiry</option>
+                  <option>Work Opportunity</option>
+                  <option>Collaboration</option>
+                </select>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+                <textarea
+                  name="message"
+                  rows={6}
+                  placeholder="Hello!"
+                  required
+                  className="w-full bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-800 px-4 py-3 focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white transition-all text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 resize-none"
                 />
               </div>
             </div>
 
-            <div className="space-y-2 group">
-              <label className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1 transition-colors group-focus-within:text-black dark:group-focus-within:text-white">Subject</label>
-              <select
-                name="subject"
-                required
-                className="w-full bg-transparent border-b-2 border-gray-100 dark:border-gray-800 px-1 py-3 text-xl text-gray-900 dark:text-white focus:outline-none focus:border-black dark:focus:border-white transition-all appearance-none cursor-pointer"
-              >
-                <option value="" className="dark:bg-black">Select an option...</option>
-                <option className="dark:bg-black">General Inquiry</option>
-                <option className="dark:bg-black">Work Opportunity</option>
-                <option className="dark:bg-black">Collaboration</option>
-              </select>
-            </div>
-
-            <div className="space-y-2 group">
-              <label className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1 transition-colors group-focus-within:text-black dark:group-focus-within:text-white">Message</label>
-              <textarea
-                name="message"
-                rows={4}
-                placeholder="Write your thoughts..."
-                required
-                className="w-full bg-transparent border-b-2 border-gray-100 dark:border-gray-800 px-1 py-3 focus:outline-none focus:border-black dark:focus:border-white transition-all text-xl text-gray-900 dark:text-white placeholder:text-gray-300 dark:placeholder:text-gray-700 resize-none"
-              />
-            </div>
-
-            <div className="pt-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-end gap-4 pt-4">
+              
               <motion.button
                 type="submit"
                 disabled={isPending}
-                className="w-full sm:w-auto rounded-full bg-black dark:bg-white text-white dark:text-black px-12 py-4 font-bold shadow-2xl hover:scale-[1.02] active:scale-95 transition-all disabled:bg-gray-400 dark:disabled:bg-gray-700 disabled:cursor-not-allowed uppercase tracking-widest text-sm"
-                whileHover={{ scale: 1.05 }}
+                className="rounded-full bg-gray-100 dark:bg-gray-900 text-gray-400 dark:text-gray-500 px-8 py-3 font-semibold border border-gray-200 dark:border-gray-800 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all disabled:opacity-50 flex items-center justify-center gap-2"
                 whileTap={{ scale: 0.95 }}
               >
-                {isPending ? "Sending..." : "Send Request"}
+                <FiMail size={18} />
+                {isPending ? "Sending..." : "Send"}
               </motion.button>
-
-              {message && (
-                <motion.p 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`text-sm mt-8 font-bold px-6 py-3 rounded-2xl border ${
-                    message.type === "success" 
-                      ? "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border-green-100 dark:border-green-800" 
-                      : "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border-red-100 dark:border-red-800"
-                  }`}
-                >
-                  {message.text}
-                </motion.p>
-              )}
             </div>
+
+            {message && (
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`text-sm mt-4 font-medium px-4 py-2 rounded-lg border ${
+                  message.type === "success" 
+                    ? "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border-green-100 dark:border-green-800" 
+                    : "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border-red-100 dark:border-red-800"
+                }`}
+              >
+                {message.text}
+              </motion.p>
+            )}
           </form>
         </motion.section>
 
