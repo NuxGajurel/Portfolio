@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Instrument_Serif } from "next/font/google";
-import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { SiDailydotdev } from "react-icons/si";
+import { PolaroidStack } from "@/components/polaroid-stack";
 
 const instrumentSerif = Instrument_Serif({ 
   subsets: ["latin"],
@@ -15,6 +16,8 @@ const instrumentSerif = Instrument_Serif({
 
 const page = () => {
   const [isBusRunning, setIsBusRunning] = useState(false);
+
+
   const links = [
     {
       name: "GitHub",
@@ -75,18 +78,12 @@ const page = () => {
           ))}
         </div>
       </div>
-      {/*  */}
-      <div className="mt-12 w-full transition-all duration-700">
-        <img
-          src={Photo.avatarUrl}
-          alt={Photo.name}
-          className="w-full h-[300px] object-cover rounded-2xl shadow-xl"
-        />
-      </div>
-      <p className="flex justify-end mt-4 text-gray-400 dark:text-gray-500 italic text-sm">
-        {" "}
-        - Last Day of SEE (4/9/2026 Thursday)
-      </p>
+
+      {/* Polaroid Stack */}
+      <PolaroidStack />
+
+
+
       {/* education */}
       <div className="mt-20">
         <h1 className="text-3xl font-normal text-gray-900 dark:text-white tracking-tighter italic border-b border-gray-100 dark:border-gray-800 pb-2 mb-10">Education</h1>
@@ -229,35 +226,7 @@ const page = () => {
         </div>
       </div>
 
-      {/* Things I am Learning section */}
-      <div className="mt-32 pb-20">
-        <div>
-          <h1 className="text-4xl font-normal text-gray-900 dark:text-white tracking-tighter italic mb-12">Things I am Learning At 16</h1>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div className="space-y-4 group">
-            <span className="text-6xl text-gray-100 dark:text-gray-800 font-bold block group-hover:text-black dark:group-hover:text-white transition-colors duration-500">01</span>
-            <div>
-              <h3 className="text-2xl font-normal text-gray-900 dark:text-white italic">Music</h3>
-              <p className="text-lg text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">Learning to play instruments and exploring the world of sound.</p>
-            </div>
-          </div>
-          <div className="space-y-4 group">
-            <span className="text-6xl text-gray-100 dark:text-gray-800 font-bold block group-hover:text-black dark:group-hover:text-white transition-colors duration-500">02</span>
-            <div>
-              <h3 className="text-2xl font-normal text-gray-900 dark:text-white italic">Code</h3>
-              <p className="text-lg text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">Mastering Full-stack development step by step.</p>
-            </div>
-          </div>
-          <div className="space-y-4 group">
-            <span className="text-6xl text-gray-100 dark:text-gray-800 font-bold block group-hover:text-black dark:group-hover:text-white transition-colors duration-500">03</span>
-            <div>
-              <h3 className="text-2xl font-normal text-gray-900 dark:text-white italic">Video</h3>
-              <p className="text-lg text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">Creating stories through visuals and motion.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
   );
 };
