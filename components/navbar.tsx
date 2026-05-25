@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenuAlt3, HiX, HiHome, HiInformationCircle, HiChip, HiCollection, HiPhotograph, HiPhone } from "react-icons/hi";
-import { IoBulbOutline, IoBulb } from "react-icons/io5";
+import { IoSunny, IoMoon } from "react-icons/io5";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 
@@ -76,9 +76,9 @@ const Navbar = () => {
               className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer border border-gray-200 dark:border-gray-800"
             >
               {isDark ? (
-                <IoBulb size={18} className="text-white" />
+                <IoSunny size={18} className="text-white" />
               ) : (
-                <IoBulbOutline size={18} className="text-gray-700" />
+                <IoMoon size={18} className="text-gray-700" />
               )}
             </button>
           </div>
