@@ -18,6 +18,7 @@ const navItems: NavItem[] = [
   { name: "About", path: "/about", icon: HiInformationCircle },
   { name: "Projects", path: "/projects", icon: HiCollection },
   { name: "Photos", path: "/photos", icon: HiPhotograph },
+  { name: "Uses", path: "/uses", icon: HiChip },
   { name: "Contact", path: "/contact", icon: HiPhone },
 ];
 
@@ -58,11 +59,10 @@ const Navbar = () => {
               <Link
                 key={item.path}
                 href={item.path}
-                className={`text-sm font-medium transition-colors hover:text-black dark:hover:text-white ${
-                  pathname === item.path
+                className={`text-sm font-medium transition-colors hover:text-black dark:hover:text-white ${pathname === item.path
                     ? "text-black dark:text-white underline underline-offset-4"
                     : "text-gray-500 dark:text-gray-400"
-                }`}
+                  }`}
               >
                 {item.name}
               </Link>
@@ -102,17 +102,15 @@ const Navbar = () => {
                   <Link
                     key={item.path}
                     href={item.path}
-                    className={`flex items-center gap-4 px-3 py-2 rounded-xl transition-all duration-300 ${
-                      isActive
+                    className={`flex items-center gap-4 px-3 py-2 rounded-xl transition-all duration-300 ${isActive
                         ? "bg-gray-50 dark:bg-gray-900 text-black dark:text-white"
                         : "text-gray-600 dark:text-gray-400 hover:bg-gray-50/50 dark:hover:bg-gray-900/50 hover:text-black dark:hover:text-white"
-                    }`}
+                      }`}
                   >
-                    <div className={`flex items-center justify-center w-10 h-10 rounded-xl transition-colors ${
-                      isActive 
-                        ? "bg-white dark:bg-black shadow-sm border border-gray-100 dark:border-gray-800" 
+                    <div className={`flex items-center justify-center w-10 h-10 rounded-xl transition-colors ${isActive
+                        ? "bg-white dark:bg-black shadow-sm border border-gray-100 dark:border-gray-800"
                         : "bg-gray-100/50 dark:bg-gray-800/50"
-                    }`}>
+                      }`}>
                       <item.icon size={20} className={isActive ? "text-black dark:text-white" : "text-gray-500 dark:text-gray-400"} />
                     </div>
                     <span className="text-lg font-medium">
