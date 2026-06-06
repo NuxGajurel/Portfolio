@@ -25,10 +25,10 @@ const Page = () => {
     setMessage(null);
 
     const formData = new FormData(e.currentTarget);
-    
+
     try {
       const result = await sendEmail(formData);
-      
+
       if (result.error) {
         setMessage({ type: "error", text: result.error });
       } else {
@@ -61,13 +61,13 @@ const Page = () => {
 
   return (
     <main className="min-h-screen py-16 px-4 transition-colors duration-500">
-      <motion.div 
+      <motion.div
         className="max-w-2xl mx-auto space-y-12"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
-        
+
         {/* Header */}
         <motion.section variants={itemVariants} className="space-y-4">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Contact</h1>
@@ -166,11 +166,11 @@ const Page = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-end gap-4 pt-4">
-              
+
               <motion.button
                 type="submit"
                 disabled={isPending}
-                className="rounded-full bg-gray-100 dark:bg-gray-900 text-gray-400 dark:text-gray-500 px-8 py-3 font-semibold border border-gray-200 dark:border-gray-800 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                className="rounded-full bg-black dark:bg-gray-900 text-gray-400 dark:text-gray-500 px-8 py-3 font-semibold border border-gray-200 dark:border-gray-800 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all disabled:opacity-50 flex items-center justify-center gap-2"
                 whileTap={{ scale: 0.95 }}
               >
                 <FiMail size={18} />
@@ -179,14 +179,13 @@ const Page = () => {
             </div>
 
             {message && (
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className={`text-sm mt-4 font-medium px-4 py-2 rounded-lg border ${
-                  message.type === "success" 
-                    ? "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border-green-100 dark:border-green-800" 
-                    : "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border-red-100 dark:border-red-800"
-                }`}
+                className={`text-sm mt-4 font-medium px-4 py-2 rounded-lg border ${message.type === "success"
+                  ? "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border-green-100 dark:border-green-800"
+                  : "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border-red-100 dark:border-red-800"
+                  }`}
               >
                 {message.text}
               </motion.p>
@@ -200,4 +199,4 @@ const Page = () => {
 };
 
 export default Page;
-
+
