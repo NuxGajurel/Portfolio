@@ -8,7 +8,7 @@ import { FaGithub, FaInstagram, FaLinkedin, FaChevronLeft, FaChevronRight } from
 import { SiDailydotdev } from "react-icons/si";
 import { PolaroidStack } from "@/components/polaroid-stack";
 
-const instrumentSerif = Instrument_Serif({ 
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
   style: ["normal", "italic"]
@@ -52,7 +52,7 @@ const page = () => {
     name: "Freelancing Web Developer",
     logoUrl: "/work.webp",
   };
-  
+
   return (
     <div className={`${instrumentSerif.className} antialiased tracking-tight`}>
       <div className="">
@@ -95,7 +95,7 @@ const page = () => {
             <div className="space-y-1">
               <h1 className="hover:text-blue-500 dark:hover:text-blue-400 text-2xl font-normal text-gray-900 dark:text-white leading-none">{school.name}</h1>
               <p className="text-lg text-gray-500 dark:text-gray-400">2013-2026</p>
-              <p className="text-xl text-gray-600 dark:text-gray-400 italic">High School (SEE batch 2082)</p>
+              <p className="text-xl text-gray-600 dark:text-gray-400 italic">Secondary Education (SEE batch 2082)</p>
             </div>
           </div>
         </div>
@@ -106,9 +106,9 @@ const page = () => {
         <div className="space-y-12">
           {/* New Entry */}
           <div className="flex justify-baseline gap-6">
-            <a 
-              href="https://avyantatech.com/np" 
-              target="_blank" 
+            <a
+              href="https://avyantatech.com/np"
+              target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl h-16 w-16 hover:scale-105 transition-transform overflow-hidden border border-gray-100 dark:border-gray-800"
             >
