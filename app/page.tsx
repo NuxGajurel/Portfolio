@@ -34,12 +34,12 @@ const photos = [
 
 const projects = [
   {
-    name: "BloomHaven",
-    description:
-      "E-commerce platform for selling bouquets of flowers and plants",
-    icon: "/store1.png",
-    url: "https://bloomhaven.vercel.app/",
+    name: "Mahalaxmi Traders",
+    description: "Client project for a trusted hardware and construction materials business, proudly associated with Kajaria, one of India's leading tile brands.",
+    icon: "/maha.png",
+    url: "https://mahalaxmitraders.com/",
   },
+
   {
     name: "Web Nepal",
     description: "Platform for learners to learn web development",
@@ -127,6 +127,8 @@ export default function Home() {
             </div>
           </div>
         </div> */}
+        {/* Recent client project */}
+
 
         {/* Projects */}
         <div className="mt-12">
@@ -179,11 +181,10 @@ export default function Home() {
                 onMouseEnter={() => setActive("left")}
                 onClick={() => setActive("left")}
                 className={`absolute left-2 sm:left-0 top-8 sm:top-10 p-2 bg-white dark:bg-gray-900 rounded-xl shadow-xl dark:shadow-none border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-500
-                ${
-                  active === "left"
+                ${active === "left"
                     ? "z-30 scale-105"
                     : "z-10 grayscale brightness-75 contrast-75 opacity-60 blur-[1px]"
-                }`}
+                  }`}
               >
                 <div className="relative w-[140px] h-[180px] sm:w-[220px] sm:h-[280px] rounded-lg overflow-hidden">
                   <Image
@@ -201,11 +202,10 @@ export default function Home() {
                 onMouseEnter={() => setActive("right")}
                 onClick={() => setActive("right")}
                 className={`absolute right-2 sm:right-0 top-8 sm:top-10 p-2 bg-white dark:bg-gray-900 rounded-xl shadow-xl dark:shadow-none border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-500
-                ${
-                  active === "right"
+                ${active === "right"
                     ? "z-30 scale-105"
                     : "z-10 grayscale brightness-75 contrast-75 opacity-60 blur-[1px]"
-                }`}
+                  }`}
               >
                 <div className="relative w-[140px] h-[180px] sm:w-[220px] sm:h-[280px] rounded-lg overflow-hidden">
                   <Image
@@ -223,11 +223,10 @@ export default function Home() {
                 onMouseEnter={() => setActive("center")}
                 onClick={() => setActive("center")}
                 className={`relative p-2 bg-white dark:bg-gray-900 rounded-xl shadow-2xl dark:shadow-none border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-500
-                ${
-                  active === "center"
+                ${active === "center"
                     ? "z-30 scale-105"
                     : "z-10 grayscale brightness-75 contrast-75 opacity-60 blur-[1px]"
-                }`}
+                  }`}
               >
                 <div className="relative w-[160px] h-[200px] sm:w-[260px] sm:h-[320px] rounded-lg overflow-hidden">
                   <Image
