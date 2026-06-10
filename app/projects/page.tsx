@@ -13,6 +13,12 @@ type Project = {
 
 const projects: Project[] = [
   {
+    name: "Mahalaxmi Traders",
+    description: "Client project for a trusted hardware and construction materials business, proudly associated with Kajaria, one of India's leading tile brands.",
+    icon: "/maha.png",
+    url: "https://mahalaxmitraders.com/",
+  },
+  {
     name: "BloomHaven",
     description:
       "E-commerce platform for selling bouquets of flowers and plants",

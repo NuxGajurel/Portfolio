@@ -39,7 +39,6 @@ const projects = [
     icon: "/maha.png",
     url: "https://mahalaxmitraders.com/",
   },
-
   {
     name: "Web Nepal",
     description: "Platform for learners to learn web development",
@@ -48,12 +47,13 @@ const projects = [
   },
   {
     name: "Saral-Sewa",
-    description:
-      "AI-powered healthcare management system for rural areas of Nepal",
+    description: "AI-powered healthcare management system for rural areas of Nepal",
     icon: "/sewa.png",
     url: "https://saralseewa.vercel.app/",
   },
 ];
+
+
 
 function Avatar({ src, alt, fallback }: any) {
   return (
@@ -101,34 +101,10 @@ export default function Home() {
               >
                 Aspiring full-stack developer
               </a>{" "}
-              from Nepal who creates cool projects and learns new things
-              everyday.
+              from Nepal who creates cool projects and learns new things everyday.
             </div>
           </div>
         </div>
-
-        {/* Education */}
-        {/* <div className="mt-10">
-          <h1 className="text-2xl mb-6">Education</h1>
-
-          <div className="flex items-center gap-4">
-            <div className="h-20 w-20 hover:scale-105 transition">
-              <img src={school.logoUrl} alt="school" />
-            </div>
-
-            <div>
-              <h1 className="hover:text-blue-500">{school.name}</h1>
-              <p className="text-gray-400">2013-2026</p>
-              <p>High School (10th Grade)</p>
-            </div>
-
-            <div className="ml-auto hidden md:block">
-              <FaArrowUpRightFromSquare className="text-gray-700 hover:text-blue-500" />
-            </div>
-          </div>
-        </div> */}
-        {/* Recent client project */}
-
 
         {/* Projects */}
         <div className="mt-12">
@@ -170,6 +146,8 @@ export default function Home() {
           </div>
         </div>
 
+
+
         {/* Photos */}
         <div className="mt-16">
           <h1 className="text-2xl mb-6 text-gray-900 dark:text-white font-semibold">Photos</h1>
@@ -181,7 +159,7 @@ export default function Home() {
                 onMouseEnter={() => setActive("left")}
                 onClick={() => setActive("left")}
                 className={`absolute left-2 sm:left-0 top-8 sm:top-10 p-2 bg-white dark:bg-gray-900 rounded-xl shadow-xl dark:shadow-none border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-500
-                ${active === "left"
+                  ${active === "left"
                     ? "z-30 scale-105"
                     : "z-10 grayscale brightness-75 contrast-75 opacity-60 blur-[1px]"
                   }`}
@@ -202,7 +180,7 @@ export default function Home() {
                 onMouseEnter={() => setActive("right")}
                 onClick={() => setActive("right")}
                 className={`absolute right-2 sm:right-0 top-8 sm:top-10 p-2 bg-white dark:bg-gray-900 rounded-xl shadow-xl dark:shadow-none border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-500
-                ${active === "right"
+                  ${active === "right"
                     ? "z-30 scale-105"
                     : "z-10 grayscale brightness-75 contrast-75 opacity-60 blur-[1px]"
                   }`}
@@ -223,7 +201,7 @@ export default function Home() {
                 onMouseEnter={() => setActive("center")}
                 onClick={() => setActive("center")}
                 className={`relative p-2 bg-white dark:bg-gray-900 rounded-xl shadow-2xl dark:shadow-none border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-500
-                ${active === "center"
+                  ${active === "center"
                     ? "z-30 scale-105"
                     : "z-10 grayscale brightness-75 contrast-75 opacity-60 blur-[1px]"
                   }`}
@@ -250,6 +228,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
+
       </div>
     </main>
   );
