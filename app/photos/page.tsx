@@ -6,13 +6,10 @@ import { IoCloseOutline } from "react-icons/io5";
 
 const images = [
   { src: "/bhai.jpg", title: "Moments", date: "2024" },
-  { src: "/1.jpg", title: "Random Shot", date: "2023" },
   { src: "/6.jpg", title: "Street Life", date: "2024" },
   { src: "/7.jpg", title: "Nature", date: "2024" },
-  { src: "/2.jpg", title: "Last Day of School", date: "2023" },
   { src: "/3.jpg", title: "Hackathon", date: "2026" },
-  { src: "/4.jpg", title: "Last Day of SEE", date: "2023" },
-  { src: "/5.jpg", title: "Pokhara", date: "2024" },
+
 ];
 
 const Page = () => {
@@ -49,10 +46,9 @@ const Page = () => {
               transition={{ delay: i * 0.05 }}
               onClick={() => setSelected(img)}
               className={`relative cursor-pointer overflow-hidden rounded-2xl group bg-gray-100 dark:bg-gray-800 shadow-sm hover:shadow-xl dark:hover:shadow-none border border-transparent dark:hover:border-gray-700 transition-all duration-500
-                ${
-                  i === 0
-                    ? "col-span-2 row-span-2 aspect-square md:aspect-auto"
-                    : "aspect-square"
+                ${i === 0
+                  ? "col-span-2 row-span-2 aspect-square md:aspect-auto"
+                  : "aspect-square"
                 }
                 ${i === 5 ? "md:col-span-2" : ""}
               `}
