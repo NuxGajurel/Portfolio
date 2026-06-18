@@ -16,7 +16,7 @@ const cards = [
   },
   {
     id: 1,
-    src: "/IMG_20250129_051755.jpg",
+    src: "/99.jpg",
     location: "",
     rotation: -2,
     xOffset: "0%",
@@ -40,7 +40,7 @@ export const PolaroidStack = () => {
       {cards.map((card, index) => {
         const isActive = activeCard === index;
         const isHoveredAny = activeCard !== null;
-        
+
         return (
           <motion.div
             key={card.id}
@@ -73,7 +73,7 @@ export const PolaroidStack = () => {
                 className="object-cover"
               />
             </div>
-            
+
             {card.location && (
               <motion.div
                 initial={{ opacity: 0 }}
