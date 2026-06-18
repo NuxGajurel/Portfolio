@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import Link from "next/link";
 import { Playwrite_IE, Caveat_Brush } from "next/font/google";
+import { TechMarquee } from "@/components/tech-marquee";
 
 const bokorFont = Playwrite_IE({
   weight: "300",
@@ -106,9 +107,15 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Tech Stack Marquee */}
+        <div className="mt-12">
+          <h1 className="text-2xl mb-6 text-gray-900 dark:text-white">Tech Stacks</h1>
+        </div>
+        <TechMarquee />
+
         {/* Projects */}
         <div className="mt-12">
-          <h1 className="text-2xl mb-6 text-gray-900 dark:text-white font-semibold">Projects</h1>
+          <h1 className="text-2xl mb-6 text-gray-900 dark:text-white">Projects</h1>
 
           <div className="space-y-6 sm:space-y-8">
             {visibleProjects.map((project) => (
@@ -150,7 +157,7 @@ export default function Home() {
 
         {/* Photos */}
         <div className="mt-16">
-          <h1 className="text-2xl mb-6 text-gray-900 dark:text-white font-semibold">Photos</h1>
+          <h1 className="text-2xl mb-6 text-gray-900 dark:text-white">Photos</h1>
 
           <div className="flex justify-center">
             <div className="relative w-full max-w-[500px] sm:max-w-[600px] aspect-[3/2] flex items-center justify-center">
