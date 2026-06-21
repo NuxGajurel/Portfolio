@@ -1,36 +1,153 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nux Gajurel — Portfolio
 
-## Getting Started
+A modern, minimal personal portfolio built with Next.js and TypeScript. Showcasing projects, a photo gallery, a journey timeline, and a contact form powered by EmailJS.
 
-First, run the development server:
+---
+
+## 📸 Screenshots
+
+### Home Page
+![Home Page](./public/Screenshot%202026-06-21%20151322.png)
+
+### Projects Page
+![Projects Page](./public/Screenshot%202026-06-21%20151338.png)
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| [Next.js 16](https://nextjs.org/) | React framework with App Router & Server Actions |
+| [TypeScript](https://www.typescriptlang.org/) | Type-safe JavaScript |
+| [Tailwind CSS v4](https://tailwindcss.com/) | Utility-first CSS styling |
+| [Framer Motion](https://www.framer.com/motion/) | Animations & transitions |
+| [EmailJS](https://www.emailjs.com/) | Contact form email sending (no backend required) |
+| [React Icons](https://react-icons.github.io/react-icons/) | Icon library |
+| [next-themes](https://github.com/pacocoursey/next-themes) | Dark / light mode support |
+| [Google Fonts](https://fonts.google.com/) | Instrument Serif, Playwrite IE, Caveat Brush |
+
+---
+
+## ✨ Features
+
+- **Home** — Intro, animated avatar, tech stack marquee, featured projects, photo gallery, and journey timeline
+- **Projects** — Searchable and sortable project showcase with detail views
+- **About** — Personal background and story
+- **Photos** — Gallery of personal moments
+- **Uses** — Gear and software setup
+- **Contact** — Email form connected to EmailJS with success/error feedback
+- **Dark Mode** — Full dark/light theme support
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js `>= 18.x`
+- npm or yarn
+
+### Installation
+
+```bash
+# Install dependencies
+npm install
+```
+
+### Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📧 EmailJS Setup (Contact Form)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The contact form sends emails via the [EmailJS REST API](https://www.emailjs.com/docs/rest-api/send/). No backend or SMTP server is required.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 1. Create an EmailJS account
 
-## Deploy on Vercel
+Go to [https://www.emailjs.com/](https://www.emailjs.com/) and sign up for a free account.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 2. Set up a Service
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+In your EmailJS dashboard → **Email Services** → Add a new service (e.g., Gmail, Outlook).  
+Copy the **Service ID**.
+
+### 3. Create an Email Template
+
+Go to **Email Templates** → Create a template.  
+Use these template variables in your template body:
+
+```
+From: {{from_name}} <{{from_email}}>
+Subject: {{subject}}
+
+{{message}}
+```
+
+Copy the **Template ID**.
+
+### 4. Get your Public Key
+
+Go to **Account** → **API Keys** → copy your **Public Key**.  
+Optionally, copy your **Private Key** too (required if you enable EmailJS security restrictions).
+
+### 5. Configure Environment Variables
+
+Create or update `.env.local` at the root of the project:
+
+```env
+EMAILJS_SERVICE_ID=your_emailjs_service_id
+EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+EMAILJS_PRIVATE_KEY=your_emailjs_private_key   # optional
+```
+
+> **Note:** Restart the dev server after updating `.env.local`.
+
+---
+
+## 📁 Project Structure
+
+```
+portfolio/
+├── app/
+│   ├── about/          # About page
+│   ├── actions/        # Server actions (send-email.ts)
+│   ├── api/            # API routes
+│   ├── blogs/          # Blog section
+│   ├── contact/        # Contact page
+│   ├── photos/         # Photo gallery
+│   ├── projects/       # Projects showcase
+│   ├── uses/           # Uses / gear page
+│   ├── globals.css     # Global styles
+│   ├── layout.tsx      # Root layout
+│   └── page.tsx        # Home page
+├── components/
+│   ├── footer.tsx
+│   ├── journey.tsx     # Timeline journey section
+│   ├── navbar.tsx
+│   ├── tech-marquee.tsx
+│   └── theme-provider.tsx
+├── public/             # Static assets
+├── .env.local          # Environment variables (not committed)
+└── package.json
+```
+
+---
+
+## 📄 License
+
+MIT — feel free to use as inspiration for your own portfolio.
