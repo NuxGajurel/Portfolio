@@ -10,10 +10,10 @@ A modern, minimal personal portfolio built with Next.js and TypeScript. Showcasi
 ![Home Page](./public/home.png)
 
 ### About Page
-![About Page](./public/homepage.png)
+![About Page](./public/about.png)
 
-### Gallery
-![Gallery](./public/project.png)
+### Projects Page
+![Projects Page](./public/project.png)
 
 ---
 
