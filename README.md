@@ -7,10 +7,13 @@ A modern, minimal personal portfolio built with Next.js and TypeScript. Showcasi
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page](./public/Screenshot%202026-06-21%20151322.png)
+![Home Page](./public/home.png)
 
-### Projects Page
-![Projects Page](./public/Screenshot%202026-06-21%20151338.png)
+### About Page
+![About Page](./public/homepage.png)
+
+### Gallery
+![Gallery](./public/project.png)
 
 ---
 

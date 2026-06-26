@@ -1,9 +1,5 @@
 "use server";
 
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function sendEmail(formData: FormData) {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
@@ -14,24 +10,39 @@ export async function sendEmail(formData: FormData) {
     return { error: "All fields are required." };
   }
 
+  const serviceId = process.env.EMAILJS_SERVICE_ID;
+  const templateId = process.env.EMAILJS_TEMPLATE_ID;
+  const publicKey = process.env.EMAILJS_PUBLIC_KEY;
+  const privateKey = process.env.EMAILJS_PRIVATE_KEY;
+
+  if (!serviceId || !templateId || !publicKey) {
+    console.error("EmailJS environment variables are missing.");
+    return { error: "Email service is currently misconfigured. Please try again later." };
+  }
+
   try {
-    const { data, error } = await resend.emails.send({
-      from: "Portfolio <onboarding@resend.dev>",
-      to: "nuxgajurel46@gmail.com",
-      subject: `New Message from ${name}: ${subject}`,
-      replyTo: email,
-      html: `
-        <h2>New Message from Contact Form</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
-      `,
+    const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        service_id: serviceId,
+        template_id: templateId,
+        user_id: publicKey,
+        template_params: {
+          from_name: name,
+          from_email: email,
+          subject: subject,
+          message: message,
+        },
+        ...(privateKey ? { accessToken: privateKey } : {}),
+      }),
     });
 
-    if (error) {
-      console.error("Resend Error:", error);
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("EmailJS Error Response:", errorText);
       return { error: "Failed to send message. Please try again later." };
     }
 
