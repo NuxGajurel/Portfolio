@@ -11,7 +11,7 @@ const images = [
   { src: "/3.jpg", title: "Hackathon", date: "2026" },
 
 ];
-
+// photoss
 const Page = () => {
   const [selected, setSelected] = useState<(typeof images)[0] | null>(null);
 
