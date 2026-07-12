@@ -15,6 +15,12 @@ import {
 } from "react-icons/fi";
 
 const Footer = () => {
+  const [time, setTime] = React.useState<string>("");
+
+  React.useEffect(() => {
+    setTime(new Date().toLocaleTimeString());
+  }, []);
+
   // MOBILE DATA
   const navigate = [
     { name: "About", path: "/about" },
@@ -148,7 +154,7 @@ const Footer = () => {
 
         <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-600 border-t border-gray-100 dark:border-gray-800 pt-4">
           <span>© {new Date().getFullYear()}</span>
-          <span>{new Date().toLocaleTimeString()}</span>
+          <span>{time}</span>
         </div>
       </div>
     </footer>

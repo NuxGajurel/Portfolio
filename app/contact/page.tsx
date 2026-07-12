@@ -18,6 +18,17 @@ const socialLinks = [
 const Page = () => {
   const [isPending, setIsPending] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [time, setTime] = useState<string>("");
+
+  React.useEffect(() => {
+    setTime(
+      new Date().toLocaleTimeString("en-US", {
+        timeZone: "Asia/Kathmandu",
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+    );
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -74,11 +85,7 @@ const Page = () => {
           <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
             It's currently{" "}
             <span className="font-medium text-black dark:text-white">
-              {new Date().toLocaleTimeString("en-US", {
-                timeZone: "Asia/Kathmandu",
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
+              {time || "--:--"}
             </span>{" "}
             here in Biratchowk, Nepal.
             Feel free to reach out but please don't just say hello. I will get
