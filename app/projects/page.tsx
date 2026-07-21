@@ -317,7 +317,24 @@ export default function ProjectsPage() {
             )}
           </>
         )}
+
+        {/* Design Inspiration Credit */}
+        {!selected && (
+          <p className="text-xs text-gray-400 dark:text-gray-600 text-right mt-10 pb-2">
+            Page design inspired by{" "}
+            <Link
+              href="https://manishtamang.com/projects"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
+            >
+              goleCodes
+            </Link>
+          </p>
+        )}
       </div>
+
+
 
       <style jsx global>{`
         @keyframes fadeIn {
