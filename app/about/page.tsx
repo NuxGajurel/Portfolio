@@ -55,7 +55,7 @@ const page = () => {
       <div className="">
         <div>
           <h1 className="text-4xl font-normal text-gray-900 dark:text-white tracking-tighter italic">About</h1>
-          <p className="text-3xl mt-6 text-gray-800 dark:text-gray-200 leading-tight">
+          <p className="text-xl sm:text-2xl mt-6 text-gray-700 dark:text-gray-200 leading-relaxed font-sans antialiased tracking-normal">
             Hi, I&apos;m Nawaraj Gajurel (aka Nux), a passionate aspiring Full-Stack
             Developer from Nepal. This is the space where I showcase my work and
             the things I love to create.
@@ -79,22 +79,69 @@ const page = () => {
       {/* Polaroid Stack */}
       <PolaroidStack />
 
+      {/* About paragraphs */}
+      <div className="mt-8 sm:mt-10 space-y-4 sm:space-y-5 font-sans antialiased tracking-normal">
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+          My primary focus is on creating responsive, clean, and scalable web applications using technologies like{" "}
+          <strong className="text-gray-900 dark:text-white">React.js, Next.js, JavaScript, TypeScript, Tailwind CSS, Node.js, Express.js, MySQL,</strong>{" "}
+          and{" "}
+          <strong className="text-gray-900 dark:text-white">Git</strong>. I enjoy designing intuitive user interfaces just as much as solving backend challenges, and I believe great software is built by combining functionality with an excellent user experience.
+        </p>
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+          I love taking on new challenges because every project teaches me something valuable. Whether it&apos;s developing AI-powered tools, building business management systems, creating beautiful portfolio websites, or contributing to team projects, I always strive to write clean, maintainable code and deliver meaningful solutions.
+        </p>
+
+        {/* Social links after paragraphs */}
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
+          {links.map((item) => (
+            <a
+              key={item.name}
+              href={item.path}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-800 text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:border-gray-400 dark:hover:border-gray-600 transition-all duration-200 group"
+            >
+              <span className="text-base group-hover:scale-110 transition-transform">{item.icons}</span>
+              <span className="font-medium">{item.name}</span>
+            </a>
+          ))}
+        </div>
+      </div>
 
 
       {/* education */}
       <div className="mt-20">
         <h1 className="text-3xl font-normal text-gray-900 dark:text-white tracking-tighter italic border-b border-gray-100 dark:border-gray-800 pb-2 mb-10">Education</h1>
-        <div className="mt-8">
-          <div className="flex justify-baseline gap-6">
-            <div className="rounded-xl h-16 w-16 hover:scale-105 transition-transform overflow-hidden border border-gray-100 dark:border-gray-800">
+        <div className="space-y-8">
+
+          {/* Siddhartha Secondary School */}
+          <div className="flex items-start gap-6">
+            <div className="rounded-xl h-16 w-16 flex-shrink-0 hover:scale-105 transition-transform overflow-hidden border border-gray-100 dark:border-gray-800">
+              <img src="/unnamed.png" alt="Siddhartha Secondary School" className="object-cover w-full h-full p-1" />
+            </div>
+            <div className="space-y-1">
+              <h2 className="hover:text-blue-500 dark:hover:text-blue-400 text-2xl font-normal text-gray-900 dark:text-white leading-tight tracking-tight">
+                Siddhartha Secondary School
+              </h2>
+              <p className="text-base text-gray-500 dark:text-gray-400 tracking-tight">2026–Present</p>
+              <p className="text-lg italic text-gray-600 dark:text-gray-400 tracking-tight">Computer Science · Class 11</p>
+            </div>
+          </div>
+
+          {/* The Rising English Boarding School */}
+          <div className="flex items-start gap-6">
+            <div className="rounded-xl h-16 w-16 flex-shrink-0 hover:scale-105 transition-transform overflow-hidden border border-gray-100 dark:border-gray-800">
               <img src={school.logoUrl} alt="school" className="object-cover w-full h-full p-1" />
             </div>
             <div className="space-y-1">
-              <h1 className="hover:text-blue-500 dark:hover:text-blue-400 text-2xl font-normal text-gray-900 dark:text-white leading-none">{school.name}</h1>
-              <p className="text-lg text-gray-500 dark:text-gray-400">2013-2026</p>
-              <p className="text-xl text-gray-600 dark:text-gray-400 italic">Secondary Education (SEE batch 2082)</p>
+              <h2 className="hover:text-blue-500 dark:hover:text-blue-400 text-2xl font-normal text-gray-900 dark:text-white leading-tight tracking-tight">
+                {school.name}
+              </h2>
+              <p className="text-base text-gray-500 dark:text-gray-400 tracking-tight">2013–2026</p>
+              <p className="text-lg italic text-gray-600 dark:text-gray-400 tracking-tight">Secondary Education (SEE batch 2082)</p>
             </div>
           </div>
+
         </div>
       </div>
       {/*  */}
