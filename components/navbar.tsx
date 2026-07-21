@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HiMenuAlt3, HiX, HiHome, HiInformationCircle, HiChip, HiCollection, HiPhotograph, HiPhone } from "react-icons/hi";
+import { HiMenuAlt3, HiX, HiHome, HiInformationCircle, HiChip, HiCollection, HiPhone } from "react-icons/hi";
 import { IoSunny, IoMoon } from "react-icons/io5";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -17,7 +17,6 @@ const navItems: NavItem[] = [
   { name: "Home", path: "/", icon: HiHome },
   { name: "About", path: "/about", icon: HiInformationCircle },
   { name: "Projects", path: "/projects", icon: HiCollection },
-  { name: "Photos", path: "/photos", icon: HiPhotograph },
   { name: "Contact", path: "/contact", icon: HiPhone },
 ];
 
