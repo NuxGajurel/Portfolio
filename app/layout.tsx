@@ -34,11 +34,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="fixed inset-0 -z-10 bg-white dark:bg-[#0a0a0a] transition-colors duration-500">
-            <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] bg-[size:24px_24px] opacity-40 animate-[moveDots_30s_linear_infinite]" />
-          </div>
+          {/* Full-site background */}
+          <div className="fixed inset-0 -z-20 bg-white dark:bg-[#0a0a0a] transition-colors duration-500" />
 
-          <div className="relative z-10 mx-auto max-w-3xl bg-white dark:bg-[#0a0a0a] px-4 sm:px-6 lg:px-8 min-h-screen transition-colors duration-500">
+          {/* Dot pattern — full site background */}
+          <div className="dot-bg" />
+
+          <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors duration-500">
             <Navbar />
             <main>{children}</main>
             <Footer />
