@@ -37,6 +37,9 @@ export default function RootLayout({
           {/* Full-site background */}
           <div className="fixed inset-0 -z-20 bg-white dark:bg-[#0a0a0a] transition-colors duration-500" />
 
+          {/* Full-site background */}
+          <div className="fixed inset-0 -z-20 bg-white dark:bg-[#0a0a0a] transition-colors duration-500" />
+
           {/* Dot pattern — full site background */}
           <div className="dot-bg" />
 

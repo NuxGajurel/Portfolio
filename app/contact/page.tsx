@@ -94,23 +94,21 @@ const Page = () => {
         </motion.section>
 
         {/* Social Links */}
-        <motion.section variants={itemVariants} className="space-y-6">
+        <motion.section variants={itemVariants} className="space-y-4">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Connect</h2>
-          <div className="flex flex-wrap gap-6">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3">
             {socialLinks.map((link, index) => (
               <motion.a
                 key={index}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:border-gray-400 dark:hover:border-gray-600 bg-gray-50/50 dark:bg-gray-900/40 transition-all duration-200"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <link.icon size={28} className="group-hover:rotate-6 transition-transform" />
-                <span className="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                  {link.label}
-                </span>
+                <link.icon size={20} className="text-gray-600 dark:text-gray-400 flex-shrink-0" />
+                <span className="text-sm font-medium">{link.label}</span>
               </motion.a>
             ))}
           </div>

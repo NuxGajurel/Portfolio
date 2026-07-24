@@ -66,7 +66,7 @@ const projects = [
 function Avatar({ src, alt, fallback }: any) {
   return (
     <motion.div
-      className="relative w-24 h-24 sm:w-36 sm:h-36 rounded-full overflow-hidden"
+      className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full overflow-hidden flex-shrink-0"
       animate={{ y: [0, -10, 0, 10, 0], x: [0, 8, 0, -8, 0] }}
       transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
     >
