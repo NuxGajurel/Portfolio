@@ -114,20 +114,6 @@ const page = () => {
         <h1 className="text-3xl font-normal text-gray-900 dark:text-white tracking-tighter italic border-b border-gray-100 dark:border-gray-800 pb-2 mb-10">Education</h1>
         <div className="space-y-8">
 
-          {/* Siddhartha Secondary School */}
-          <div className="flex items-start gap-6">
-            <div className="rounded-xl h-16 w-16 flex-shrink-0 hover:scale-105 transition-transform overflow-hidden border border-gray-100 dark:border-gray-800">
-              <img src="/unnamed.png" alt="Siddhartha Secondary School" className="object-cover w-full h-full p-1" />
-            </div>
-            <div className="space-y-1">
-              <h2 className="hover:text-blue-500 dark:hover:text-blue-400 text-2xl font-normal text-gray-900 dark:text-white leading-tight tracking-tight">
-                Siddhartha Secondary School
-              </h2>
-              <p className="text-base text-gray-500 dark:text-gray-400 tracking-tight">2026–Present</p>
-              <p className="text-lg italic text-gray-600 dark:text-gray-400 tracking-tight">Computer Science · Class 11</p>
-            </div>
-          </div>
-
           {/* The Rising English Boarding School */}
           <div className="flex items-start gap-6">
             <div className="rounded-xl h-16 w-16 flex-shrink-0 hover:scale-105 transition-transform overflow-hidden border border-gray-100 dark:border-gray-800">
