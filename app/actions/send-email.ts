@@ -22,7 +22,8 @@ export async function sendEmail(formData: FormData) {
   try {
     const { error } = await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
-      to: ["nuxgajurel46@gmail.com"],
+      to: ["nepizmanish@gmail.com"],
+      replyTo: email,
       subject: `New Message from ${name}: ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; font-size: 14px; color: #111;">
