@@ -35,18 +35,17 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {/* Full-site background */}
-          <div className="fixed inset-0 -z-20 bg-white dark:bg-[#0a0a0a] transition-colors duration-500" />
-
-          {/* Full-site background */}
-          <div className="fixed inset-0 -z-20 bg-white dark:bg-[#0a0a0a] transition-colors duration-500" />
+          <div className="fixed inset-0 -z-20 bg-[#fafafa] dark:bg-[#0a0a0a] transition-colors duration-500" />
 
           {/* Dot pattern — full site background */}
           <div className="dot-bg" />
 
-          <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors duration-500">
+          <div className="relative z-10 min-h-screen transition-colors duration-500">
             <Navbar />
-            <main>{children}</main>
-            <Footer />
+            <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+              <main>{children}</main>
+              <Footer />
+            </div>
           </div>
         </ThemeProvider>
       </body>
