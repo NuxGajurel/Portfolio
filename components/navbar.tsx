@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HiMenuAlt3, HiX, HiHome, HiInformationCircle, HiCollection, HiPhone } from "react-icons/hi";
+import { HiMenuAlt3, HiX, HiHome, HiInformationCircle, HiChip, HiCollection, HiPhone } from "react-icons/hi";
 import { IoSunny, IoMoon } from "react-icons/io5";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -23,19 +23,13 @@ const navItems: NavItem[] = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const { theme, setTheme, resolvedTheme } = useTheme();
 
+  // Close menu on navigation
   useEffect(() => {
     setOpen(false);
     setMounted(true);
-
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
   if (!mounted) return null;
@@ -43,15 +37,9 @@ const Navbar = () => {
   const isDark = resolvedTheme === "dark";
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? "bg-[#fafafa]/70 dark:bg-[#0a0a0a]/70 backdrop-blur-md py-2"
-          : "bg-transparent py-4"
-      }`}
-    >
+    <header className="sticky top-0 z-50 w-full bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-500">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex h-16 items-center justify-between">
           {/* Mobile Menu Button on Left */}
           <div className="md:hidden">
             <button
@@ -63,35 +51,30 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1 sm:gap-2">
-            {navItems.map((item) => {
-              const isActive = pathname === item.path;
-              return (
-                <Link
-                  key={item.path}
-                  href={item.path}
-                  className={`relative px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
-                    isActive
-                      ? "text-gray-900 dark:text-white bg-gray-200/60 dark:bg-gray-800/60"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-gray-800/30"
+          {/* Desktop Nav on Left */}
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                href={item.path}
+                className={`text-sm font-medium transition-colors hover:text-black dark:hover:text-white ${pathname === item.path
+                  ? "text-black dark:text-white underline underline-offset-4"
+                  : "text-gray-500 dark:text-gray-400"
                   }`}
-                >
-                  {item.name}
-                </Link>
-              );
-            })}
+              >
+                {item.name}
+              </Link>
+            ))}
           </nav>
 
-          {/* Theme Toggle Button */}
+          {/* Bulb Icon on Right (Desktop & Mobile) */}
           <div className="flex items-center">
             <button
               onClick={() => setTheme(isDark ? "light" : "dark")}
-              className="w-8 h-8 flex items-center justify-center rounded-full text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-200/50 dark:hover:bg-gray-800/50 transition-colors cursor-pointer"
-              aria-label="Toggle theme"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer border border-gray-200 dark:border-gray-800"
             >
               {isDark ? (
-                <IoSunny size={18} className="text-amber-400" />
+                <IoSunny size={18} className="text-white" />
               ) : (
                 <IoMoon size={18} className="text-gray-700" />
               )}
@@ -107,24 +90,30 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="md:hidden bg-[#fafafa]/90 dark:bg-[#0a0a0a]/90 backdrop-blur-md overflow-hidden"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden bg-white dark:bg-[#0a0a0a] border-b border-gray-100 dark:border-gray-800 overflow-hidden"
           >
-            <div className="flex flex-col gap-1 px-4 py-4 sm:px-6">
+            <div className="flex flex-col gap-2 px-4 py-6 sm:px-6">
               {navItems.map((item) => {
                 const isActive = pathname === item.path;
                 return (
                   <Link
                     key={item.path}
                     href={item.path}
-                    className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 ${
-                      isActive
-                        ? "bg-gray-200/70 dark:bg-gray-800/70 text-black dark:text-white font-semibold"
-                        : "text-gray-600 dark:text-gray-400 hover:bg-gray-100/60 dark:hover:bg-gray-800/40 hover:text-black dark:hover:text-white"
-                    }`}
+                    className={`flex items-center gap-4 px-3 py-2 rounded-xl transition-all duration-300 ${isActive
+                      ? "bg-gray-50 dark:bg-gray-900 text-black dark:text-white"
+                      : "text-gray-600 dark:text-gray-400 hover:bg-gray-50/50 dark:hover:bg-gray-900/50 hover:text-black dark:hover:text-white"
+                      }`}
                   >
-                    <item.icon size={18} />
-                    <span className="text-sm font-medium">{item.name}</span>
+                    <div className={`flex items-center justify-center w-10 h-10 rounded-xl transition-colors ${isActive
+                      ? "bg-white dark:bg-black shadow-sm border border-gray-100 dark:border-gray-800"
+                      : "bg-gray-100/50 dark:bg-gray-800/50"
+                      }`}>
+                      <item.icon size={20} className={isActive ? "text-black dark:text-white" : "text-gray-500 dark:text-gray-400"} />
+                    </div>
+                    <span className="text-lg font-medium">
+                      {item.name}
+                    </span>
                   </Link>
                 );
               })}

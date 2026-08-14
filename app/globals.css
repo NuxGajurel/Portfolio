@@ -8,7 +8,7 @@
     transform: translate(0, 0);
   }
   100% {
-    transform: translate(-24px, -24px);
+    transform: translate(-30px, -30px);
   }
 }
 
@@ -24,16 +24,16 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, #3b82f6 1.2px, transparent 1.2px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(circle, #94a3b8 1px, transparent 1px);
+  background-size: 32px 32px;
   animation: moveDots 25s linear infinite;
-  opacity: 0.35;
+  opacity: 0.3;
 }
 
 /* Dark mode dots */
 .dark .dot-bg::before {
-  background-image: radial-gradient(circle, #60a5fa 1.2px, transparent 1.2px);
-  opacity: 0.25;
+  background-image: radial-gradient(circle, #475569 1px, transparent 1px);
+  opacity: 0.35;
 }
 
 /* Marquee Scrolling Animations */

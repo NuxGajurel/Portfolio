@@ -35,7 +35,7 @@ const gearItems = [
 
 export default function Page() {
   return (
-    <main className="min-h-screen transition-colors">
+    <main className="min-h-screen bg-white dark:bg-black transition-colors">
       <div className="max-w-5xl mx-auto px-5 py-12">
         {/* Header */}
         <div className="mb-14">
