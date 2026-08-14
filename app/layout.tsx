@@ -40,12 +40,10 @@ export default function RootLayout({
           {/* Dot pattern — full site background */}
           <div className="dot-bg" />
 
-          <div className="relative z-10 min-h-screen transition-colors duration-500">
+          <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 min-h-screen bg-transparent transition-colors duration-500">
             <Navbar />
-            <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-              <main>{children}</main>
-              <Footer />
-            </div>
+            <main>{children}</main>
+            <Footer />
           </div>
         </ThemeProvider>
       </body>
