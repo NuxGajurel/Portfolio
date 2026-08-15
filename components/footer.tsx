@@ -12,6 +12,7 @@ import {
   FiCamera,
   FiBarChart2,
   FiStar,
+  FiLayers,
 } from "react-icons/fi";
 
 const Footer = () => {
@@ -24,13 +25,14 @@ const Footer = () => {
   // MOBILE DATA
   const navigate = [
     { name: "About", path: "/about" },
-    { name: "Blog", path: "/blog" },
+    { name: "Blogs", path: "/blogs" },
     { name: "Projects", path: "/projects" },
   ];
 
   const explore = [
     { name: "Contact", path: "/contact" },
     { name: "Colophon", path: "/colophon" },
+    { name: "Uses", path: "/uses" },
     { name: "Features", path: "/features" },
     { name: "Manifest", path: "/manifest" },
   ];
@@ -54,7 +56,8 @@ const Footer = () => {
 
     { name: "Guestbook", path: "/guestbook", icon: <FiBook /> },
     { name: "Contact", path: "/contact", icon: <FiMail /> },
-    { name: "Blogs", path: "/blog", icon: <FiBook /> },
+    { name: "Blogs", path: "/blogs", icon: <FiBook /> },
+    { name: "Uses", path: "/uses", icon: <FiLayers /> },
 
     { name: "Projects", path: "/projects", icon: <FiFolder /> },
     { name: "Photos", path: "/photos", icon: <FiCamera /> },

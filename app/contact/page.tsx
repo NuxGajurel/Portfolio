@@ -32,10 +32,11 @@ const Page = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formElement = e.currentTarget;
     setIsPending(true);
     setMessage(null);
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(formElement);
 
     try {
       const result = await sendEmail(formData);
@@ -44,10 +45,10 @@ const Page = () => {
         setMessage({ type: "error", text: result.error });
       } else {
         setMessage({ type: "success", text: result.success as string });
-        (e.target as HTMLFormElement).reset();
+        formElement.reset();
       }
-    } catch (error) {
-      setMessage({ type: "error", text: "Something went wrong. Please try again." });
+    } catch (error: any) {
+      setMessage({ type: "error", text: error?.message || "Something went wrong. Please try again." });
     } finally {
       setIsPending(false);
     }
@@ -175,11 +176,11 @@ const Page = () => {
               <motion.button
                 type="submit"
                 disabled={isPending}
-                className="rounded-full bg-black dark:bg-gray-900 text-gray-400 dark:text-gray-500 px-8 py-3 font-semibold border border-gray-200 dark:border-gray-800 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                className="rounded-full bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 px-8 py-3 font-semibold border border-transparent transition-all disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
                 whileTap={{ scale: 0.95 }}
               >
                 <FiMail size={18} />
-                {isPending ? "Sending..." : "Send"}
+                {isPending ? "Sending..." : "Send Message"}
               </motion.button>
             </div>
 
