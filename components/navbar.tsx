@@ -24,27 +24,36 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
   const pathname = usePathname();
   const { theme, setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
     setOpen(false);
+    setVisible(true);
     setMounted(true);
 
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const currentScrollPos = window.scrollY;
+      const isAtTop = currentScrollPos <= 20;
+      setScrolled(!isAtTop);
+      setVisible(isAtTop);
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
   if (!mounted) return null;
 
   const isDark = resolvedTheme === "dark";
+  const showNavbar = visible || open;
 
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        showNavbar ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
+      } ${
         scrolled
           ? "bg-[#fafafa]/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md py-2"
           : "bg-transparent py-4"
