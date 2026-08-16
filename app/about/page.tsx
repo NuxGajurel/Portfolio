@@ -51,43 +51,46 @@ const page = () => {
   };
 
   return (
-    <div className={`${instrumentSerif.className} antialiased tracking-tight`}>
-      <div className="">
-        <div>
-          <h1 className="text-4xl font-normal text-gray-900 dark:text-white tracking-tighter italic">About</h1>
-          <p className="text-xl sm:text-2xl mt-6 text-gray-700 dark:text-gray-200 leading-relaxed font-sans antialiased tracking-normal">
-            Hi, I&apos;m Nawaraj Gajurel (aka Nux), a passionate aspiring Full-Stack
-            Developer from Nepal. This is the space where I showcase my work and
-            the things I love to create.
-          </p>
-        </div>
-        <div className="flex items-center gap-6 mt-8">
-          {links.map((item) => (
-            <a
-              key={item.name}
-              href={item.path}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl cursor-pointer text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
-            >
-              {item.icons}
-            </a>
-          ))}
-        </div>
+    <div className="font-sans antialiased">
+      <div>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+          About
+        </h1>
+        <p className="text-base sm:text-lg mt-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+          👋 Hey there! I&apos;m Nawaraj Gajurel (aka Nux), a passionate aspiring Full-Stack
+          Developer from Nepal. This is the space where I showcase my work and
+          the things I love to create.
+        </p>
+        <p className="text-base sm:text-lg mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+          I focus on building clean, accessible, and high-performance software products that look great and are easy to maintain.
+        </p>
+      </div>
+      <div className="flex items-center gap-5 mt-6">
+        {links.map((item) => (
+          <a
+            key={item.name}
+            href={item.path}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xl cursor-pointer text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+          >
+            {item.icons}
+          </a>
+        ))}
       </div>
 
       {/* Polaroid Stack */}
       <PolaroidStack />
 
       {/* About paragraphs */}
-      <div className="mt-8 sm:mt-10 space-y-4 sm:space-y-5 font-sans antialiased tracking-normal">
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+      <div className="mt-8 sm:mt-10 space-y-4 sm:space-y-5 text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p>
           My primary focus is on creating responsive, clean, and scalable web applications using technologies like{" "}
           <strong className="text-gray-900 dark:text-white">React.js, Next.js, JavaScript, TypeScript, Tailwind CSS, Node.js, Express.js, MySQL,</strong>{" "}
           and{" "}
           <strong className="text-gray-900 dark:text-white">Git</strong>. I enjoy designing intuitive user interfaces just as much as solving backend challenges, and I believe great software is built by combining functionality with an excellent user experience.
         </p>
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p>
           I love taking on new challenges because every project teaches me something valuable. Whether it&apos;s developing AI-powered tools, building business management systems, creating beautiful portfolio websites, or contributing to team projects, I always strive to write clean, maintainable code and deliver meaningful solutions.
         </p>
 
@@ -107,111 +110,109 @@ const page = () => {
           ))}
         </div>
       </div>
-
-
-      {/* education */}
-      <div className="mt-20">
-        <h1 className="text-3xl font-normal text-gray-900 dark:text-white tracking-tighter italic border-b border-gray-100 dark:border-gray-800 pb-2 mb-10">Education</h1>
-        <div className="space-y-8">
-
-          {/* The Rising English Boarding School */}
-          <div className="flex items-start gap-6">
-            <div className="rounded-xl h-16 w-16 flex-shrink-0 hover:scale-105 transition-transform overflow-hidden border border-gray-100 dark:border-gray-800">
-              <img src={school.logoUrl} alt="school" className="object-cover w-full h-full p-1" />
-            </div>
-            <div className="space-y-1">
-              <h2 className="hover:text-blue-500 dark:hover:text-blue-400 text-2xl font-normal text-gray-900 dark:text-white leading-tight tracking-tight">
-                {school.name}
-              </h2>
-              <p className="text-base text-gray-500 dark:text-gray-400 tracking-tight">2013–2026</p>
-              <p className="text-lg italic text-gray-600 dark:text-gray-400 tracking-tight">Secondary Education (SEE batch 2082)</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      {/*  */}
       {/* Work */}
-      <div className="mt-20">
-        <h1 className="text-3xl font-normal text-gray-900 dark:text-white tracking-tighter italic border-b border-gray-100 dark:border-gray-800 pb-2 mb-10">
+      <div className="mt-16 sm:mt-20">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight mb-6 sm:mb-8">
           Work
-        </h1>
-        
-        <div className="space-y-8 font-sans antialiased tracking-normal">
-          {/* Avyanta Tech */}
-          <a
-            href="https://avyantatech.com/np"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-start gap-5 sm:gap-6 group cursor-pointer py-2 animate-fade-in"
-          >
-            <div className="w-12 h-12 sm:w-14 h-14 relative rounded-xl overflow-hidden shadow-sm flex-shrink-0 border border-gray-100 dark:border-gray-800/80 transition-transform duration-300 group-hover:scale-105 mt-1 bg-white dark:bg-black">
-              <Image
-                src="/avyanta.png"
-                alt="Avyanta Tech Logo"
-                fill
-                className="object-cover p-1"
-              />
-            </div>
+        </h2>
+        <div className="space-y-5 font-sans antialiased">
+          {[
+            {
+              name: "Avyanta Tech",
+              role: "Full Stack Developer",
+              period: "Apr 2026 - Present",
+              logoUrl: "/avyanta.png",
+              url: "https://avyantatech.com/np",
+            },
+            {
+              name: "Freelancer",
+              role: "Freelancing Web Developer",
+              period: "Jan 2026 - Present",
+              logoUrl: "/work.webp",
+            },
+          ].map((item, idx) => {
+            const rowContent = (
+              <div className="flex items-center justify-between gap-4 py-1 group cursor-pointer">
+                <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 relative rounded-full overflow-hidden border border-gray-200/80 dark:border-gray-800 flex-shrink-0 bg-white dark:bg-black p-0.5 transition-transform duration-300 group-hover:scale-105">
+                    <Image
+                      src={item.logoUrl}
+                      alt={item.name}
+                      fill
+                      className="object-cover rounded-full"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-sm sm:text-base font-medium text-gray-900 dark:text-white truncate group-hover:underline">
+                      {item.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 truncate">
+                      {item.role}
+                    </p>
+                  </div>
+                </div>
 
-            <div className="space-y-1">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white group-hover:underline">
-                Full Stack Developer
-              </h3>
-              <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Avyanta Tech
-              </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                Apr 2026 – Present • Haraicha, Koshi Province, Nepal
-              </p>
-              <div className="flex flex-wrap gap-1.5 pt-1.5">
-                {["React", "Next.js", "Express", "Node.js"].map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-[10px] sm:text-xs bg-gray-50 dark:bg-gray-900/80 text-gray-600 dark:text-gray-400 px-2 py-0.5 rounded-md border border-gray-100 dark:border-gray-800/60"
-                  >
-                    {tech}
-                  </span>
-                ))}
+                <span className="px-3.5 py-1 text-xs font-normal text-gray-500 dark:text-gray-400 bg-gray-100/80 dark:bg-gray-800/60 rounded-full whitespace-nowrap flex-shrink-0">
+                  {item.period}
+                </span>
               </div>
-            </div>
-          </a>
+            );
 
-          {/* Freelance */}
-          <div className="flex items-start gap-5 sm:gap-6 py-2">
-            <div className="w-12 h-12 sm:w-14 h-14 relative rounded-xl overflow-hidden shadow-sm flex-shrink-0 border border-gray-100 dark:border-gray-800/80 mt-1 bg-white dark:bg-black">
-              <Image
-                src="/work.webp"
-                alt="Freelance Work Logo"
-                fill
-                className="object-cover p-1"
-              />
-            </div>
-
-            <div className="space-y-1">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
-                Freelancing Web Developer
-              </h3>
-              <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Freelancer
-              </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                Jan 2026 – Present • Remote
-              </p>
-              <div className="flex flex-wrap gap-1.5 pt-1.5">
-                {["Next.js", "Node.js", "TypeScript", "Tailwind CSS"].map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-[10px] sm:text-xs bg-gray-50 dark:bg-gray-900/80 text-gray-600 dark:text-gray-400 px-2 py-0.5 rounded-md border border-gray-100 dark:border-gray-800/60"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+            return item.url ? (
+              <a key={idx} href={item.url} target="_blank" rel="noopener noreferrer" className="block">
+                {rowContent}
+              </a>
+            ) : (
+              <div key={idx}>{rowContent}</div>
+            );
+          })}
         </div>
       </div>
+
+      {/* Education */}
+      <div className="mt-16 sm:mt-20">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight mb-6 sm:mb-8">
+          Education
+        </h2>
+        <div className="space-y-5 font-sans antialiased">
+          {[
+            {
+              name: "The Rising English Boarding School",
+              degree: "Secondary Education (SEE Batch 2082)",
+              period: "2013 - 2026",
+              logoUrl: "/school.png",
+            },
+
+          ].map((item, idx) => (
+            <div key={idx} className="flex items-center justify-between gap-4 py-1">
+              <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 relative rounded-full overflow-hidden border border-gray-200/80 dark:border-gray-800 flex-shrink-0 bg-white dark:bg-black p-0.5">
+                  <Image
+                    src={item.logoUrl}
+                    alt={item.name}
+                    fill
+                    className="object-cover rounded-full"
+                  />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-sm sm:text-base font-medium text-gray-900 dark:text-white truncate">
+                    {item.name}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 truncate">
+                    {item.degree}
+                  </p>
+                </div>
+              </div>
+
+              <span className="px-3.5 py-1 text-xs font-normal text-gray-500 dark:text-gray-400 bg-gray-100/80 dark:bg-gray-800/60 rounded-full whitespace-nowrap flex-shrink-0">
+                {item.period}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+
 
 
 
