@@ -199,6 +199,44 @@ const Page = () => {
           </form>
         </motion.section>
 
+        {/* Calendly Booking Section */}
+        <motion.section variants={itemVariants} className="space-y-4">
+          <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50/60 dark:bg-gray-900/40 p-8 text-center space-y-4">
+            <div className="space-y-1">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Georgia, serif" }}>
+                Schedule a Call
+              </h2>
+            </div>
+            <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-sm mx-auto">
+              The most efficient way to start the conversation is to book a complimentary 30-minute consultation.
+            </p>
+            <motion.a
+              href="https://calendly.com/nuxgajurel46/web-development-consultation-for-30-min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-700 dark:hover:bg-gray-200 px-7 py-3 rounded-full font-semibold text-sm transition-all duration-200 cursor-pointer"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Book a 30-Min Consultation
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </motion.a>
+          </div>
+        </motion.section>
+
       </motion.div>
     </main>
   );
