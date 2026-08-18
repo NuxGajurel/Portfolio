@@ -57,7 +57,7 @@ export function TechMarquee() {
   };
 
   return (
-    <div className="relative w-full py-6 my-4 overflow-hidden select-none">
+    <div className="relative w-full py-1 overflow-hidden select-none">
       {/* Left/Right Subtle Gradient Fades */}
       <div className="absolute top-0 bottom-0 left-0 w-6 sm:w-10 bg-gradient-to-r from-[#fafafa] to-transparent dark:from-[#0a0a0a] pointer-events-none z-10 opacity-70" />
       <div className="absolute top-0 bottom-0 right-0 w-6 sm:w-10 bg-gradient-to-l from-[#fafafa] to-transparent dark:from-[#0a0a0a] pointer-events-none z-10 opacity-70" />

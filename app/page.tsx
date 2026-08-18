@@ -1,18 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Playwrite_IE, Caveat_Brush, Instrument_Serif } from "next/font/google";
+import {
+  Playwrite_IE,
+  Caveat_Brush,
+  Instrument_Serif,
+} from "next/font/google";
 import { TechMarquee } from "@/components/tech-marquee";
-
+import { projects } from "@/data/projects";
 
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
-  style: ["normal", "italic"]
+  style: ["normal", "italic"],
 });
 
 const bokorFont = Playwrite_IE({
@@ -34,212 +37,266 @@ const Nux = {
   initials: "NG",
 };
 
-const photos = [
-  { id: "left", url: "/school.jpg" },
-  { id: "center", url: "/bhai.jpg" },
-  { id: "right", url: "/mero.webp" },
+
+const techStack = [
+  {
+    name: "TypeScript",
+    description: "Typed JavaScript",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    bg: "#3178C6",
+  },
+  {
+    name: "JavaScript",
+    description: "Web Language",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    bg: "#F7DF1E",
+  },
+  {
+    name: "Next.js",
+    description: "React Framework",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    bg: "#888888",
+  },
+  {
+    name: "Tailwind CSS",
+    description: "Utility-first CSS",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+    bg: "#06B6D4",
+  },
+  {
+    name: "React",
+    description: "UI Library",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    bg: "#61DAFB",
+  },
+  {
+    name: "Node.js",
+    description: "JS Runtime",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    bg: "#339933",
+  },
+  {
+    name: "Git",
+    description: "Version Control",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+    bg: "#F05032",
+  },
+  {
+    name: "MongoDB",
+    description: "NoSQL Database",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    bg: "#47A248",
+  },
 ];
 
-const projects = [
-  {
-    name: "Mahalaxmi Traders",
-    description: "Client project for a trusted hardware and construction materials business, proudly associated with Kajaria, one of India's leading tile brands.",
-    icon: "/maha.png",
-    url: "https://mahalaxmitraders.com/",
-  },
-  {
-    name: "Web Nepal",
-    description: "Platform for learners to learn web development",
-    icon: "/web.png",
-    url: "https://hackathon-webnepal.netlify.app/",
-  },
-  {
-    name: "Saral-Sewa",
-    description: "AI-powered healthcare management system for rural areas of Nepal",
-    icon: "/sewa.png",
-    url: "https://saralseewa.vercel.app/",
-  },
-];
 
 
-
-function Avatar({ src, alt, fallback }: any) {
-  return (
-    <motion.div
-      className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden"
-      animate={{ y: [0, -10, 0, 10, 0], x: [0, 8, 0, -8, 0] }}
-      transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-    >
-      {src ? (
-        <Image src={src} alt={alt} fill className="object-cover" />
-      ) : (
-        <div className="flex items-center justify-center w-full h-full bg-gray-300 text-white font-bold">
-          {fallback}
-        </div>
-      )}
-    </motion.div>
-  );
-}
+const alternatingNames = ["Nux", "Nawaraj"];
 
 export default function Home() {
-  const [active, setActive] = useState("center");
+  const [nameIndex, setNameIndex] = useState(0);
   const visibleProjects = projects.slice(0, 3);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNameIndex((prev) => (prev + 1) % alternatingNames.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <main className="min-h-screen px-4 py-10 lg:py-16">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="lg:flex items-center gap-4">
-          <Avatar src={Nux.avatarUrl} alt={Nux.name} fallback={Nux.initials} />
 
-          <div className="flex-1 mt-6 lg:mt-0 lg:ml-6">
+        {/* ================= HERO HEADER ================= */}
+        <div className="flex flex-col-reverse sm:flex-row items-start gap-6 mb-6 sm:mb-8">
+
+          {/* Text Content (left on desktop, bottom on mobile) */}
+          <div className="flex-1">
             <h1
-              className={`text-2xl sm:text-4xl lg:text-3xl font-bold mb-2 text-gray-900 dark:text-white ${bokorFont.className}`}
+              className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 leading-tight text-gray-900 dark:text-white"
             >
-              Hi, I'm Nux Gajurel
+              Hi, I&apos;m{" "}
+              <span className="inline-block relative overflow-hidden text-[#8B5CF6] align-bottom">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={alternatingNames[nameIndex]}
+                    initial={{ y: 22, opacity: 0, filter: "blur(2px)" }}
+                    animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+                    exit={{ y: -22, opacity: 0, filter: "blur(2px)" }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                    className="inline-block"
+                  >
+                    {alternatingNames[nameIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>{" "}
+              Gajurel
             </h1>
 
-            <p className="mb-1 text-gray-600 dark:text-gray-400">Web developer & Student</p>
+            <p className="text-sm font-semibold mb-4" style={{ color: "#374151" }}>
+              Web developer &amp; Student
+            </p>
 
-            <div className="text-gray-600 dark:text-gray-400">
-              I'm passionate{" "}
-              <a
-                href="https://github.com/NuxGajurel"
-                className={`text-blue-600 dark:text-blue-400 underline ${caveatFont.className}`}
-              >
-                Aspiring full-stack developer
-              </a>{" "}
-              from Nepal who creates cool projects and learns new things everyday.
-            </div>
+            <p className="text-sm sm:text-base leading-relaxed" style={{ color: "#64748B" }}>
+              I&apos;m a passionate full-stack developer from Nepal, turning ideas into creative digital experiences. I love building cool projects, exploring new technologies, solving real-world problems, and pushing myself to learn something new every day.
+            </p>
           </div>
+
+          {/* Avatar (right on desktop, top-left on mobile) */}
+          <div className="flex-shrink-0 w-32 sm:w-40 md:w-44 self-start">
+            <motion.div
+              className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full overflow-hidden"
+              animate={{ y: [0, -8, 0, 8, 0] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Image
+                src={Nux.avatarUrl}
+                alt={Nux.name}
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+          </div>
+
         </div>
 
-        {/* Tech Stack Marquee */}
-        <div className="mt-12">
+        {/* ================= TECH STACK GRID ================= */}
+        <section className="mt-4 sm:mt-6">
           <TechMarquee />
-        </div>
+        </section>
 
-        <div className="mt-16">
-          <h2 className={`${instrumentSerif.className} text-3xl font-normal text-gray-900 dark:text-white italic tracking-tighter mb-6`}>Projects</h2>
 
-          <div className="space-y-6 sm:space-y-8">
+
+        {/* ================= PROJECTS ================= */}
+        <section className="mt-8 sm:mt-10">
+
+          {/* Section Heading */}
+          <div className="mb-2">
+            <h2 className="text-2xl font-black text-gray-900 dark:text-white">
+              Projects
+            </h2>
+
+          </div>
+
+          {/* Project List */}
+          <div className="mt-8 divide-y divide-gray-100 dark:divide-gray-800/60">
             {visibleProjects.map((project) => (
-              <Link key={project.name} href={project.url} target="_blank">
-                <div className="flex items-start gap-5 sm:gap-8 group cursor-pointer py-3 sm:py-4">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 relative rounded-xl overflow-hidden shadow-sm flex-shrink-0">
-                    <Image
-                      src={project.icon}
-                      alt={project.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-
-                  <div>
-                    <h3 className="text-base sm:text-lg font-medium text-gray-900 dark:text-white group-hover:underline">
+              <Link
+                key={project.name}
+                href={`/projects/${project.slug}`}
+                className="flex items-start justify-between gap-4 py-5 group"
+              >
+                {/* Left: Info */}
+                <div className="flex-1 min-w-0">
+                  {/* Icon + Name */}
+                  <div className="flex items-center gap-2.5 mb-2">
+                    <div className="w-7 h-7 relative rounded-lg overflow-hidden flex-shrink-0 border border-gray-200 dark:border-gray-700">
+                      <Image
+                        src={project.icon}
+                        alt={project.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <h3
+                      className="text-lg font-bold group-hover:underline underline-offset-4 transition-all truncate text-gray-900 dark:text-white"
+                    >
                       {project.name}
                     </h3>
-                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 sm:mt-2 leading-relaxed">
-                      {project.description}
-                    </p>
                   </div>
+
+                  {/* Description */}
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
+                    {project.description}
+                  </p>
+
+                  {/* Meta: date */}
+                  <div className="flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wide font-medium">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{project.date}</span>
+                  </div>
+                </div>
+
+                {/* Right: Preview Image */}
+                <div className="flex-shrink-0 w-28 sm:w-36 relative rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 shadow-sm group-hover:shadow-md transition-shadow duration-200" style={{ aspectRatio: '16/9' }}>
+                  <Image
+                    src={project.preview}
+                    alt={`${project.name} preview`}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
                 </div>
               </Link>
             ))}
           </div>
 
-          <div className="flex justify-end mt-8">
+          <div className="mt-5 flex justify-end">
             <Link
               href="/projects"
-              className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white underline underline-offset-4"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
-              View all →
+              See all <span>›</span>
             </Link>
           </div>
-        </div>
 
-        {/* Photos */}
-        <div className="mt-16">
-          <h2 className={`${instrumentSerif.className} text-3xl font-normal text-gray-900 dark:text-white italic tracking-tighter mb-6`}>Photos</h2>
+        </section>
 
-          <div className="flex justify-center">
-            <div className="relative w-full max-w-[500px] sm:max-w-[600px] aspect-[3/2] flex items-center justify-center">
-              {/* LEFT */}
-              <div
-                onMouseEnter={() => setActive("left")}
-                onClick={() => setActive("left")}
-                className={`absolute left-2 sm:left-0 top-8 sm:top-10 p-2 bg-white dark:bg-gray-900 rounded-xl shadow-xl dark:shadow-none border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-500
-                  ${active === "left"
-                    ? "z-30 scale-105"
-                    : "z-10 grayscale brightness-75 contrast-75 opacity-60 blur-[1px]"
-                  }`}
-              >
-                <div className="relative w-[140px] h-[180px] sm:w-[220px] sm:h-[280px] rounded-lg overflow-hidden">
-                  <Image
-                    src={photos[0].url}
-                    alt=""
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="text-center mt-2 text-sm text-gray-800 dark:text-gray-200">Last day of School</div>
-              </div>
 
-              {/* RIGHT */}
-              <div
-                onMouseEnter={() => setActive("right")}
-                onClick={() => setActive("right")}
-                className={`absolute right-2 sm:right-0 top-8 sm:top-10 p-2 bg-white dark:bg-gray-900 rounded-xl shadow-xl dark:shadow-none border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-500
-                  ${active === "right"
-                    ? "z-30 scale-105"
-                    : "z-10 grayscale brightness-75 contrast-75 opacity-60 blur-[1px]"
-                  }`}
-              >
-                <div className="relative w-[140px] h-[180px] sm:w-[220px] sm:h-[280px] rounded-lg overflow-hidden">
-                  <Image
-                    src={photos[2].url}
-                    alt=""
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="text-center mt-2 text-sm text-gray-800 dark:text-gray-200">📍 Pokhara</div>
-              </div>
 
-              {/* CENTER */}
-              <div
-                onMouseEnter={() => setActive("center")}
-                onClick={() => setActive("center")}
-                className={`relative p-2 bg-white dark:bg-gray-900 rounded-xl shadow-2xl dark:shadow-none border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-500
-                  ${active === "center"
-                    ? "z-30 scale-105"
-                    : "z-10 grayscale brightness-75 contrast-75 opacity-60 blur-[1px]"
-                  }`}
-              >
-                <div className="relative w-[160px] h-[200px] sm:w-[260px] sm:h-[320px] rounded-lg overflow-hidden">
-                  <Image
-                    src={photos[1].url}
-                    alt=""
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="text-center mt-2 text-sm text-gray-800 dark:text-gray-200">📍 Darjeeling</div>
-              </div>
+        {/* ================= PHOTOS ================= */}
+        <section className="mt-14 sm:mt-20">
+
+          {/* Heading */}
+          <h2 className="text-2xl font-black text-gray-900 dark:text-white mb-5 flex items-center gap-2">
+            Photos
+          </h2>
+
+          {/* 3-column photo grid */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-4">
+
+            <div className="relative h-48 sm:h-auto sm:aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 group cursor-pointer">
+              <Image
+                src="/hamro.JPG"
+                alt="Photo 1"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
             </div>
+
+            <div className="relative h-48 sm:h-auto sm:aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 group cursor-pointer">
+              <Image
+                src="/3.jpg"
+                alt="Photo 2"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+
+            <div className="relative h-48 sm:h-auto sm:aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 group cursor-pointer">
+              <Image
+                src="/school.jpg"
+                alt="Photo 3"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+
           </div>
 
-          <div className="flex justify-end mt-17">
+          {/* See all button */}
+          <div className="mt-6 flex justify-end">
             <Link
               href="/photos"
-              className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white underline underline-offset-4"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
-              View all →
+              See all <span>›</span>
             </Link>
           </div>
-        </div>
 
-
+        </section>
 
       </div>
     </main>
