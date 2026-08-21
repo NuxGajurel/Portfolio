@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { IoSunny, IoMoon } from "react-icons/io5";
@@ -19,16 +19,31 @@ const navLinks = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
   const { setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
     setOpen(false);
     setMounted(true);
+    setVisible(true);
+    lastScrollY.current = window.scrollY;
 
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 10) {
+        setVisible(true);
+      } else if (currentScrollY > lastScrollY.current && currentScrollY > 70) {
+        // Scrolling down -> hide navbar
+        setVisible(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        // Scrolling up -> show navbar
+        setVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -41,7 +56,9 @@ const Navbar = () => {
 
   return (
     <header
-      className="sticky top-0 z-50 w-full transition-all duration-300 bg-[#fafafa]/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md"
+      className={`sticky top-0 z-50 w-full transition-transform duration-300 ease-in-out bg-[#fafafa]/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md ${
+        visible || open ? "translate-y-0" : "-translate-y-full"
+      }`}
     >
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 border-b border-gray-200/80 dark:border-gray-800/80">
