@@ -200,7 +200,7 @@ export default function Home() {
                       />
                     </div>
                     <h3
-                      className="text-lg font-bold group-hover:underline underline-offset-4 transition-all truncate text-gray-900 dark:text-white"
+                      className="text-lg font-bold truncate text-gray-900 dark:text-white"
                     >
                       {project.name}
                     </h3>
