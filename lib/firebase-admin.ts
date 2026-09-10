@@ -28,9 +28,19 @@ function getAdminApp(): App {
     Buffer.from(serviceAccountBase64, "base64").toString("utf-8")
   );
 
+  const cleanProjectId = (
+    serviceAccount.project_id ||
+    process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ||
+    "portfolio-d3f4c"
+  ).trim();
+
+  if (serviceAccount.project_id) {
+    serviceAccount.project_id = serviceAccount.project_id.trim();
+  }
+
   return initializeApp({
     credential: cert(serviceAccount),
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    projectId: cleanProjectId,
   });
 }
 
