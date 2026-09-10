@@ -1,6 +1,14 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
 
-export default clerkMiddleware();
+export default function middleware(req: any, ev: any) {
+  // If Clerk keys are missing, bypass middleware instead of crashing the entire site
+  if (!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY) {
+    console.warn("NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY is missing in environment variables.");
+    return NextResponse.next();
+  }
+  return clerkMiddleware()(req, ev);
+}
 
 export const config = {
   matcher: [
