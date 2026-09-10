@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 
@@ -26,29 +28,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} relative antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {/* Full-site background */}
-          <div className="fixed inset-0 -z-20 bg-[#fafafa] dark:bg-[#0a0a0a] transition-colors duration-500" />
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body className={`${geistSans.variable} ${geistMono.variable} relative antialiased`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {/* Full-site background */}
+            <div className="fixed inset-0 -z-20 bg-[#fafafa] dark:bg-[#0a0a0a] transition-colors duration-500" />
 
-          {/* Dot pattern — full site background */}
-          <div className="dot-bg" />
+            {/* Dot pattern — full site background */}
+            <div className="dot-bg" />
 
-          <div className="relative z-10 min-h-screen flex flex-col bg-transparent transition-colors duration-500">
-            <Navbar />
-            <main className="flex-1 mx-auto max-w-3xl w-full px-4 sm:px-6 lg:px-8">{children}</main>
-            <div className="mx-auto max-w-3xl w-full px-4 sm:px-6 lg:px-8">
-              <Footer />
+            <div className="relative z-10 min-h-screen flex flex-col bg-transparent transition-colors duration-500">
+              <Navbar />
+              <main className="flex-1 mx-auto max-w-3xl w-full px-4 sm:px-6 lg:px-8">{children}</main>
+              <div className="mx-auto max-w-3xl w-full px-4 sm:px-6 lg:px-8">
+                <Footer />
+              </div>
             </div>
-          </div>
-        </ThemeProvider>
-      </body>
-    </html>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
+

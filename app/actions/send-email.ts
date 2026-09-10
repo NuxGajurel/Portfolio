@@ -38,7 +38,7 @@ export async function sendEmail(formData: FormData) {
         </div>
       `,
     });
-
+ 
     if (error) {
       console.error("Resend Error:", error);
       return { error: error.message || "Failed to send message. Please try again later." };

@@ -110,6 +110,7 @@ const page = () => {
           ))}
         </div>
       </div>
+
       {/* Work */}
       <div className="mt-16 sm:mt-20">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight mb-6 sm:mb-8">
