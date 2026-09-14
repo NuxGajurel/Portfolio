@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FiSearch } from "react-icons/fi";
 import { projects } from "@/data/projects";
+import AllProjectsTable from "@/components/all-projects-table";
 
 const SORT_OPTIONS = [
   { value: "newest", label: "Newest first" },
@@ -18,6 +19,7 @@ function parseDate(dateStr: string): number {
 }
 
 export default function ProjectsPage() {
+  const [viewMode, setViewMode] = useState<"table" | "featured">("featured");
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("newest");
 
@@ -38,48 +40,82 @@ export default function ProjectsPage() {
   return (
     <section className="min-h-screen py-8 sm:py-12">
       {/* Section Heading */}
-      <div className="mb-6">
-        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 dark:text-white">
-          Projects
-        </h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-          A collection of projects and open source applications I&apos;ve built.
-        </p>
-      </div>
-
-      {/* Search + Sort + Count */}
-      <div className="flex flex-col sm:flex-row gap-3 mb-6 items-start sm:items-center">
-        {/* Search */}
-        <div className="relative flex-1 w-full">
-          <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none" />
-          <input
-            type="text"
-            placeholder="Search projects..."
-            className="w-full pl-9 pr-4 py-2 text-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg outline-none focus:ring-2 focus:ring-[#8B5CF6]/50 transition placeholder:text-gray-400"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
+      <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <h1 className="text-3xl sm:text-4xl font-normal text-gray-900 dark:text-white tracking-tight">
+            Projects
+          </h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            A collection of open source repositories and applications I&apos;ve built.
+          </p>
         </div>
 
-        {/* Sort + Count */}
-        <div className="flex items-center gap-3 flex-shrink-0 w-full sm:w-auto justify-between sm:justify-start">
-          <select
-            className="px-3 py-2 text-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-700 dark:text-white rounded-lg outline-none focus:ring-2 focus:ring-[#8B5CF6]/50 transition cursor-pointer"
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
+        {/* View switcher tabs */}
+        <div className="flex items-center gap-1 p-1 rounded-xl bg-gray-100 dark:bg-gray-800/70 w-fit shrink-0 text-xs font-medium">
+          <button
+            type="button"
+            onClick={() => setViewMode("featured")}
+            className={`px-3 py-1.5 rounded-lg transition-all ${
+              viewMode === "featured"
+                ? "bg-white dark:bg-gray-900 text-gray-900 dark:text-white shadow-sm font-semibold"
+                : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            }`}
           >
-            {SORT_OPTIONS.map((o) => (
-              <option key={o.value} value={o.value}>
-                {o.label}
-              </option>
-            ))}
-          </select>
-
-          <span className="text-xs text-gray-400 dark:text-gray-500 whitespace-nowrap font-medium tracking-wide uppercase">
-            {filtered.length} PROJECT{filtered.length !== 1 ? "S" : ""}
-          </span>
+            Featured Cards
+          </button>
+          <button
+            type="button"
+            onClick={() => setViewMode("table")}
+            className={`px-3 py-1.5 rounded-lg transition-all ${
+              viewMode === "table"
+                ? "bg-white dark:bg-gray-900 text-gray-900 dark:text-white shadow-sm font-semibold"
+                : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            }`}
+          >
+            All Repositories
+          </button>
         </div>
       </div>
+
+      {/* Mode 1: Table View (matching the screenshot) */}
+      {viewMode === "table" && <AllProjectsTable />}
+
+      {/* Mode 2: Featured Cards View */}
+      {viewMode === "featured" && (
+        <>
+          {/* Search + Sort + Count */}
+          <div className="flex flex-col sm:flex-row gap-3 mb-6 items-start sm:items-center">
+            {/* Search */}
+            <div className="relative flex-1 w-full">
+              <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none" />
+              <input
+                type="text"
+                placeholder="Search featured projects..."
+                className="w-full pl-9 pr-4 py-2 text-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg outline-none focus:ring-2 focus:ring-[#8B5CF6]/50 transition placeholder:text-gray-400"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
+
+            {/* Sort + Count */}
+            <div className="flex items-center gap-3 flex-shrink-0 w-full sm:w-auto justify-between sm:justify-start">
+              <select
+                className="px-3 py-2 text-sm border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-700 dark:text-white rounded-lg outline-none focus:ring-2 focus:ring-[#8B5CF6]/50 transition cursor-pointer"
+                value={sort}
+                onChange={(e) => setSort(e.target.value)}
+              >
+                {SORT_OPTIONS.map((o) => (
+                  <option key={o.value} value={o.value}>
+                    {o.label}
+                  </option>
+                ))}
+              </select>
+
+              <span className="text-xs text-gray-400 dark:text-gray-500 whitespace-nowrap font-medium tracking-wide uppercase">
+                {filtered.length} PROJECT{filtered.length !== 1 ? "S" : ""}
+              </span>
+            </div>
+          </div>
 
       {/* Project List matching Home Page */}
       {filtered.length > 0 ? (
@@ -150,6 +186,8 @@ export default function ProjectsPage() {
         <p className="text-gray-500 dark:text-gray-400 text-sm py-12 text-center">
           No projects found.
         </p>
+      )}
+        </>
       )}
     </section>
   );

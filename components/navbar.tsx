@@ -3,9 +3,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { IoSunny, IoMoon } from "react-icons/io5";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
 import { Caveat } from "next/font/google";
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["700"] });
@@ -13,6 +11,7 @@ const caveat = Caveat({ subsets: ["latin"], weight: ["700"] });
 const navLinks = [
   { name: "About", path: "/about" },
   { name: "Projects", path: "/projects" },
+  { name: "Dashboard", path: "/dashboard" },
   { name: "Photos", path: "/photos" },
   { name: "Guestbook", path: "/guestbook" },
 ];
@@ -23,7 +22,6 @@ const Navbar = () => {
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
-  const { setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
     setOpen(false);
@@ -53,8 +51,6 @@ const Navbar = () => {
 
   if (!mounted) return null;
 
-  const isDark = resolvedTheme === "dark";
-
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-transform duration-300 ease-in-out bg-[#fafafa]/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md ${
@@ -67,7 +63,7 @@ const Navbar = () => {
           {/* ── Logo ── */}
           <Link
             href="/"
-            className={`text-2xl font-bold text-[#8B5CF6] hover:opacity-80 transition-opacity ${caveat.className}`}
+            className={`text-2xl font-bold text-gray-900 dark:text-white hover:opacity-70 transition-opacity ${caveat.className}`}
           >
             Nux Codes
           </Link>
@@ -92,25 +88,12 @@ const Navbar = () => {
             })}
           </nav>
 
-          {/* ── Right: Contact Button + Theme Toggle ── */}
+          {/* ── Right: Contact Button + Mobile Hamburger ── */}
           <div className="flex items-center gap-2">
-            {/* Theme Toggle */}
-            <button
-              onClick={() => setTheme(isDark ? "light" : "dark")}
-              className="w-8 h-8 flex items-center justify-center rounded-full text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-200/50 dark:hover:bg-gray-800/50 transition-colors cursor-pointer"
-              aria-label="Toggle theme"
-            >
-              {isDark ? (
-                <IoSunny size={17} className="text-amber-400" />
-              ) : (
-                <IoMoon size={17} className="text-gray-600" />
-              )}
-            </button>
-
             {/* Contact Button */}
             <Link
               href="/contact"
-              className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-sm font-semibold transition-colors duration-200 shadow-sm"
+              className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-gray-900 dark:bg-white hover:bg-gray-700 dark:hover:bg-gray-200 text-white dark:text-gray-900 text-sm font-semibold transition-colors duration-200 shadow-sm"
             >
               Contact
             </Link>
@@ -159,7 +142,7 @@ const Navbar = () => {
               <Link
                 href="/contact"
                 onClick={() => setOpen(false)}
-                className="mt-2 flex items-center justify-center px-4 py-2.5 rounded-lg bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-sm font-semibold transition-colors"
+                className="mt-2 flex items-center justify-center px-4 py-2.5 rounded-lg bg-gray-900 dark:bg-white hover:bg-gray-700 dark:hover:bg-gray-200 text-white dark:text-gray-900 text-sm font-semibold transition-colors"
               >
                 Contact
               </Link>

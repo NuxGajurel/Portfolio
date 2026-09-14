@@ -4,7 +4,7 @@ import React from "react";
 import { Instrument_Serif } from "next/font/google";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { SiDailydotdev } from "react-icons/si";
-import { PolaroidStack } from "@/components/polaroid-stack";
+import { PolaroidSpread } from "@/components/polaroid-spread";
 
 import Image from "next/image";
 
@@ -79,8 +79,8 @@ const page = () => {
         ))}
       </div>
 
-      {/* Polaroid Stack */}
-      <PolaroidStack />
+      {/* Polaroid Spread with handwritten captions */}
+      <PolaroidSpread />
 
       {/* About paragraphs */}
       <div className="mt-8 sm:mt-10 space-y-4 sm:space-y-5 text-base text-gray-600 dark:text-gray-300 leading-relaxed">

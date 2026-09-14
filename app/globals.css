@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+@theme {
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+}
+
+.font-handwriting {
+  font-family: 'Patrick Hand', 'Caveat', cursive, sans-serif;
+}
+
+
+h1, h2, h3, .font-serif {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* animation */
@@ -16,25 +30,15 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: -1;
-}
-
-/* Light mode dots */
-.dot-bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+  z-index: 0;
   background-image: radial-gradient(circle, rgba(0, 0, 0, 0.08) 0.75px, transparent 0.75px);
   background-size: 24px 24px;
-  -webkit-mask-image: radial-gradient(circle at 50% 35%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 75%);
-  mask-image: radial-gradient(circle at 50% 35%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 75%);
 }
 
 /* Dark mode dots */
-.dark .dot-bg::before {
+.dark .dot-bg {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0.75px, transparent 0.75px);
-  -webkit-mask-image: radial-gradient(circle at 50% 35%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 75%);
-  mask-image: radial-gradient(circle at 50% 35%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 75%);
+  background-size: 24px 24px;
 }
 
 /* Marquee Scrolling Animations */

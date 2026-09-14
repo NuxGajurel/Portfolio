@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import Navbar from "@/components/navbar";
@@ -17,6 +17,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
   title: "Nux Gajurel | Portfolio",
   description: "Portfolio of Nux Gajurel, a passionate web developer from Nepal.",
@@ -30,7 +37,17 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={`${geistSans.variable} ${geistMono.variable} relative antialiased`}>
+        <head>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&display=swap"
+            rel="stylesheet"
+          />
+        </head>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} relative antialiased bg-[#fafafa] dark:bg-[#0a0a0a] text-gray-900 dark:text-white selection:bg-gray-200 dark:selection:bg-gray-800`}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="light"
@@ -38,10 +55,10 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {/* Full-site background */}
-            <div className="fixed inset-0 -z-20 bg-[#fafafa] dark:bg-[#0a0a0a] transition-colors duration-500" />
+            <div className="fixed inset-0 z-0 bg-[#fafafa] dark:bg-[#0a0a0a] transition-colors duration-500" />
 
-            {/* Dot pattern — full site background */}
-            <div className="dot-bg" />
+            {/* Dot pattern — full site background everywhere */}
+            <div className="dot-bg z-0" />
 
             <div className="relative z-10 min-h-screen flex flex-col bg-transparent transition-colors duration-500">
               <Navbar />

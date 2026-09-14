@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import { IoSunny, IoMoon } from "react-icons/io5";
 
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { SiDailydotdev } from "react-icons/si";
@@ -17,10 +19,15 @@ import {
 
 const Footer = () => {
   const [time, setTime] = React.useState<string>("");
+  const [mounted, setMounted] = React.useState(false);
+  const { setTheme, resolvedTheme } = useTheme();
 
   React.useEffect(() => {
     setTime(new Date().toLocaleTimeString());
+    setMounted(true);
   }, []);
+
+  const isDark = resolvedTheme === "dark";
 
   // MOBILE DATA
   const navigate = [
@@ -158,7 +165,23 @@ const Footer = () => {
 
         <div className="flex justify-between items-center text-xs text-gray-500 dark:text-gray-500 border-t border-gray-100 dark:border-gray-800/80 pt-4">
           <span>© {new Date().getFullYear()} Nux Gajurel</span>
-          <span>{time}</span>
+          <div className="flex items-center gap-3">
+            {mounted && (
+              <button
+                onClick={() => setTheme(isDark ? "light" : "dark")}
+                className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
+                aria-label="Toggle theme"
+              >
+                {isDark ? (
+                  <IoSunny size={14} className="text-amber-400" />
+                ) : (
+                  <IoMoon size={14} className="text-gray-500" />
+                )}
+                <span>{isDark ? "Light mode" : "Dark mode"}</span>
+              </button>
+            )}
+            <span>{time}</span>
+          </div>
         </div>
       </div>
     </footer>
