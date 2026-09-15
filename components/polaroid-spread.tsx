@@ -14,34 +14,34 @@ const caveat = Caveat({
 export const polaroidPhotos = [
   {
     src: "/hamro.JPG",
-    caption: "bali!!",
+    caption: "",
     alt: "bali!!",
-    tilt: "-rotate-[4deg] sm:-rotate-[5deg]",
-    translateY: "translate-y-1",
+    tilt: "-rotate-[2.5deg] sm:-rotate-[5deg]",
+    translateY: "sm:translate-y-1",
     zIndex: 10,
   },
   {
     src: "/school.jpg",
-    caption: "bookies",
+    caption: "",
     alt: "bookies",
-    tilt: "rotate-[2deg] sm:rotate-[2.5deg]",
-    translateY: "-translate-y-1.5",
+    tilt: "rotate-[2.5deg] sm:rotate-[2.5deg]",
+    translateY: "sm:-translate-y-1.5",
     zIndex: 20,
   },
   {
     src: "/3.jpg",
-    caption: "beach :3",
+    caption: "",
     alt: "beach :3",
-    tilt: "-rotate-[1deg] sm:-rotate-[1.5deg]",
-    translateY: "translate-y-0.5",
+    tilt: "-rotate-[2deg] sm:-rotate-[1.5deg]",
+    translateY: "sm:translate-y-0.5",
     zIndex: 15,
   },
   {
     src: "/bhai.jpg",
-    caption: "gang",
+    caption: "",
     alt: "gang",
-    tilt: "rotate-[3deg] sm:rotate-[4deg]",
-    translateY: "-translate-y-1",
+    tilt: "rotate-[2deg] sm:rotate-[4deg]",
+    translateY: "sm:-translate-y-1",
     zIndex: 10,
   },
 ];
@@ -51,18 +51,18 @@ export const PolaroidSpread = () => {
 
   return (
     <div className="relative my-8 sm:my-12">
-      <div className="relative py-4 sm:py-6 overflow-x-auto sm:overflow-visible no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
-        <div className="flex items-center justify-start sm:justify-center min-w-max sm:min-w-0 -space-x-3 sm:-space-x-5 md:-space-x-6 px-3 py-3">
+      <div className="relative py-2 sm:py-6 overflow-visible">
+        <div className="grid grid-cols-2 gap-3 sm:gap-0 max-w-[320px] sm:max-w-none mx-auto sm:flex sm:items-center sm:justify-center sm:-space-x-5 md:-space-x-6 px-1 sm:px-3 py-2 sm:py-3">
           {polaroidPhotos.map((photo, i) => (
             <motion.div
-              key={photo.caption}
+              key={photo.src}
               initial={{ opacity: 0, y: 15, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: i * 0.06 }}
               onClick={() => setSelectedPhoto(photo)}
               style={{ zIndex: photo.zIndex }}
-              className={`group relative flex-shrink-0 w-36 sm:w-44 md:w-48 bg-white p-2 sm:p-2.5 pb-5 sm:pb-6 rounded-[2px] shadow-[0_8px_20px_-4px_rgba(0,0,0,0.18),0_4px_8px_-2px_rgba(0,0,0,0.08)] dark:shadow-[0_10px_24px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.08)] cursor-pointer transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-2 hover:rotate-0 hover:!z-30 hover:shadow-2xl ${photo.tilt} ${photo.translateY}`}
+              className={`group relative justify-self-center w-full max-w-[150px] sm:max-w-none sm:w-44 md:w-48 sm:flex-shrink-0 bg-white p-2 sm:p-2.5 pb-4 sm:pb-6 rounded-[2px] shadow-[0_8px_20px_-4px_rgba(0,0,0,0.18),0_4px_8px_-2px_rgba(0,0,0,0.08)] dark:shadow-[0_10px_24px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.08)] cursor-pointer transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-2 hover:rotate-0 hover:!z-30 hover:shadow-2xl ${photo.tilt} ${photo.translateY}`}
             >
               <div className="relative aspect-square w-full overflow-hidden rounded-[1px] bg-neutral-100 border border-black/5">
                 <Image
@@ -70,17 +70,21 @@ export const PolaroidSpread = () => {
                   alt={photo.alt}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 640px) 144px, (max-width: 768px) 176px, 192px"
+                  sizes="(max-width: 640px) 150px, (max-width: 768px) 176px, 192px"
                 />
               </div>
 
-              <div className="pt-2 sm:pt-2.5 flex items-center justify-center">
-                <span
-                  className={`${caveat.className} text-base sm:text-lg md:text-xl text-zinc-800 font-semibold tracking-wide select-none text-center transform -rotate-1`}
-                >
-                  {photo.caption}
-                </span>
-              </div>
+              {photo.caption ? (
+                <div className="pt-2 sm:pt-2.5 flex items-center justify-center">
+                  <span
+                    className={`${caveat.className} text-base sm:text-lg md:text-xl text-zinc-800 font-semibold tracking-wide select-none text-center transform -rotate-1`}
+                  >
+                    {photo.caption}
+                  </span>
+                </div>
+              ) : (
+                <div className="h-2 sm:h-3" />
+              )}
             </motion.div>
           ))}
         </div>

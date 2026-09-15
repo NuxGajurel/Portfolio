@@ -51,9 +51,9 @@ const page = () => {
   };
 
   return (
-    <div className="font-sans antialiased">
+    <div className="py-8 sm:py-12 antialiased">
       <div>
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h1 className={`${instrumentSerif.className} text-3xl sm:text-4xl font-normal tracking-tight text-gray-900 dark:text-white`}>
           About
         </h1>
         <p className="text-base sm:text-lg mt-6 text-gray-700 dark:text-gray-300 leading-relaxed">
