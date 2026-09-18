@@ -2,6 +2,17 @@ import { NextResponse } from 'next/server';
 import { currentUser } from '@clerk/nextjs/server';
 import { getAdminDb } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
+import { isClerkUserAdmin } from '@/lib/admin';
+
+export interface GuestbookReply {
+  id: string;
+  created_at: string;
+  user_id: string;
+  user_name: string;
+  user_avatar?: string;
+  message: string;
+  is_admin?: boolean;
+}
 
 export interface GuestbookEntry {
   id: string;
@@ -10,7 +21,10 @@ export interface GuestbookEntry {
   user_name: string;
   user_avatar?: string;
   message: string;
+  is_admin?: boolean;
   has_owner_heart?: boolean;
+  owner_heart_avatar?: string;
+  replies?: GuestbookReply[];
 }
 
 export async function GET() {
@@ -22,10 +36,21 @@ export async function GET() {
       .orderBy('created_at', 'desc')
       .get();
 
-    const entries: GuestbookEntry[] = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...(doc.data() as Omit<GuestbookEntry, 'id'>),
-    }));
+    const entries: GuestbookEntry[] = snapshot.docs.map((doc) => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        created_at: data.created_at || new Date().toISOString(),
+        user_id: data.user_id || '',
+        user_name: data.user_name || 'Anonymous',
+        user_avatar: data.user_avatar || '',
+        message: data.message || '',
+        is_admin: Boolean(data.is_admin),
+        has_owner_heart: Boolean(data.has_owner_heart),
+        owner_heart_avatar: data.owner_heart_avatar || '',
+        replies: Array.isArray(data.replies) ? data.replies : [],
+      };
+    });
 
     return NextResponse.json({ entries });
   } catch (error) {
@@ -65,6 +90,8 @@ export async function POST(req: Request) {
       );
     }
 
+    const isAdmin = isClerkUserAdmin(clerkUser);
+
     const userName =
       clerkUser.fullName ||
       clerkUser.username ||
@@ -81,7 +108,9 @@ export async function POST(req: Request) {
       user_name: userName,
       user_avatar: userAvatar,
       message,
+      is_admin: isAdmin,
       has_owner_heart: false,
+      replies: [],
       server_timestamp: FieldValue.serverTimestamp(),
     };
 
@@ -94,7 +123,9 @@ export async function POST(req: Request) {
       user_name: newEntryData.user_name,
       user_avatar: newEntryData.user_avatar,
       message: newEntryData.message,
+      is_admin: isAdmin,
       has_owner_heart: false,
+      replies: [],
     };
 
     return NextResponse.json({ entry: newEntry, success: true });
