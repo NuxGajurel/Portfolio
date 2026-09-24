@@ -8,6 +8,7 @@ import { projects } from "@/data/projects";
 import AllProjectsTable from "@/components/all-projects-table";
 
 const SORT_OPTIONS = [
+  { value: "featured", label: "Featured" },
   { value: "newest", label: "Newest first" },
   { value: "oldest", label: "Oldest first" },
   { value: "az", label: "A–Z" },
@@ -21,7 +22,7 @@ function parseDate(dateStr: string): number {
 export default function ProjectsPage() {
   const [viewMode, setViewMode] = useState<"table" | "featured">("featured");
   const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("newest");
+  const [sort, setSort] = useState("featured");
 
   const filtered = projects
     .filter(
@@ -30,6 +31,7 @@ export default function ProjectsPage() {
         p.description.toLowerCase().includes(search.toLowerCase())
     )
     .sort((a, b) => {
+      if (sort === "featured") return 0;
       if (sort === "newest") return parseDate(b.date) - parseDate(a.date);
       if (sort === "oldest") return parseDate(a.date) - parseDate(b.date);
       if (sort === "az") return a.name.localeCompare(b.name);

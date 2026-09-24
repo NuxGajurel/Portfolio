@@ -24,18 +24,6 @@ export const projects: Project[] = [
     url: "https://mahalaxmitraders.com/",
   },
   {
-    slug: "bloomhaven",
-    name: "BloomHaven",
-    description: "E-commerce platform for selling bouquets of flowers and plants",
-    fullDescription:
-      "An elegant modern e-commerce platform designed for selling exquisite bouquets, plants, and floral gifts. Features dynamic shopping cart, product filtering, smooth checkout, and a visually appealing minimalist aesthetic.",
-    icon: "/store1.png",
-    preview: "/haven2.png",
-    color: "#ec4899",
-    date: "Mar. 2026",
-    url: "https://bloomhaven.vercel.app/",
-  },
-  {
     slug: "web-nepal",
     name: "Web Nepal",
     description: "Platform for learners to learn web development",
@@ -54,10 +42,46 @@ export const projects: Project[] = [
     fullDescription:
       "An AI-powered healthcare management platform created to make medical consultations, patient record tracking, and health assistance accessible and straightforward in rural communities across Nepal.",
     icon: "/logo (2).webp",
-    preview: "/logo (2).webp",
+    preview: "/image copy 2.png",
     color: "#22c55e",
     date: "Jun. 2025",
     url: "https://saralseewa.vercel.app/",
+  },
+  {
+    slug: "bloomhaven",
+    name: "BloomHaven",
+    description: "E-commerce platform for selling bouquets of flowers and plants",
+    fullDescription:
+      "An elegant modern e-commerce platform designed for selling exquisite bouquets, plants, and floral gifts. Features dynamic shopping cart, product filtering, smooth checkout, and a visually appealing minimalist aesthetic.",
+    icon: "/store1.png",
+    preview: "/haven2.png",
+    color: "#ec4899",
+    date: "Mar. 2026",
+    url: "https://bloomhaven.vercel.app/",
+  },
+  {
+    slug: "portfolio",
+    name: "Portfolio Website",
+    description: "Showcasing my skills and projects",
+    fullDescription:
+      "My personal portfolio website designed with modern aesthetics, dark mode support, smooth micro-animations, and responsive layouts to showcase my developer journey, featured projects, and tech stack.",
+    icon: "/nuux.jpg",
+    preview: "/port.png",
+    color: "#6366f1",
+    date: "Jan. 2026",
+    url: "https://nuxgajurel.vercel.app/",
+  },
+  {
+    slug: "hook-pilot",
+    name: "HookPilot",
+    description: "AI tool for faceless creators: script generator, voiceover, auto editor & viral hooks",
+    fullDescription:
+      "HookPilot helps faceless channel creators scale video production by providing AI script generation, AI voiceovers, automated video editing, shorts maker, and high-converting viral hooks.",
+    icon: "/Screenshot 2026-07-10 124044.png",
+    preview: "/Screenshot 2026-07-10 124044.png",
+    color: "#6366f1",
+    date: "Jul. 2026",
+    url: "https://github.com/NuxGajurel/HookPilot",
   },
   {
     slug: "manish-bhandari",
@@ -82,18 +106,6 @@ export const projects: Project[] = [
     color: "#8b5cf6",
     date: "Jan. 2026",
     url: "https://nuxblogs.vercel.app/",
-  },
-  {
-    slug: "portfolio",
-    name: "Portfolio Website",
-    description: "Showcasing my skills and projects",
-    fullDescription:
-      "My personal portfolio website designed with modern aesthetics, dark mode support, smooth micro-animations, and responsive layouts to showcase my developer journey, featured projects, and tech stack.",
-    icon: "/nuux.jpg",
-    preview: "/port.png",
-    color: "#6366f1",
-    date: "Jan. 2026",
-    url: "https://nuxgajurel.vercel.app/",
   },
   {
     slug: "book-store",
