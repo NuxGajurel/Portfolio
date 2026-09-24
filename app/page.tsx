@@ -42,8 +42,11 @@ const alternatingNames = ["Nawaraj", "Nux"];
 export default function Home() {
   const [nameIndex, setNameIndex] = useState(0);
 
-  /* Show only first 3 projects */
-  const visibleProjects = projects.slice(0, 3);
+  /* Featured projects on home page: Mahalaxmi, Web Nepal, and Saral-Sewa */
+  const homeProjectSlugs = ["mahalaxmi-traders", "web-nepal", "saral-sewa"];
+  const visibleProjects = homeProjectSlugs
+    .map((slug) => projects.find((p) => p.slug === slug))
+    .filter((p): p is (typeof projects)[number] => Boolean(p));
 
   /* =======================================================
      NAME ANIMATION

@@ -60,6 +60,18 @@ export const projects: Project[] = [
     url: "https://saralseewa.vercel.app/",
   },
   {
+    slug: "manish-bhandari",
+    name: "Manish Bhandari",
+    description: "Portfolio for my school mate showing his edit and design",
+    fullDescription:
+      "A portfolio website for my school mate Manish Bhandari showcasing his video editing and graphic design work. Features his creative edits, design projects, and visual portfolio.",
+    icon: "/image copy.png",
+    preview: "/image copy.png",
+    color: "#f27d26",
+    date: "Feb. 2026",
+    url: "https://manishbhandari.vercel.app/",
+  },
+  {
     slug: "personal-blog",
     name: "Personal Blog Site",
     description: "A personal blog site to share thoughts and experiences on web development",
