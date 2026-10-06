@@ -25,8 +25,78 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Nux Gajurel | Portfolio",
-  description: "Portfolio of Nux Gajurel, a passionate web developer from Nepal.",
+  metadataBase: new URL("https://nuxgajurel.com"),
+  title: {
+    default: "Nux Gajurel | Full-Stack Developer from Nepal",
+    template: "%s | Nux Gajurel",
+  },
+  description:
+    "Nawaraj Gajurel (Nux Gajurel) — Full-Stack Web Developer from Biratnagar, Morang, Nepal. Specializing in React, Next.js, Node.js & TypeScript. Available for freelance projects.",
+  keywords: [
+    "Nux Gajurel",
+    "Nawaraj Gajurel",
+    "Gajurel",
+    "nuxgajurel",
+    "web developer Nepal",
+    "full stack developer Nepal",
+    "developer in Nepal",
+    "Nepal developer",
+    "Biratnagar developer",
+    "developer in Biratnagar",
+    "Morang developer",
+    "developer in Morang",
+    "React developer Nepal",
+    "Next.js developer Nepal",
+    "freelance developer Nepal",
+    "portfolio Nepal",
+    "software developer Biratnagar",
+    "web developer Biratnagar",
+    "web developer Morang",
+    "Nawaraj Gajurel developer",
+    "Nux Gajurel portfolio",
+  ],
+  authors: [{ name: "Nawaraj Gajurel", url: "https://nuxgajurel.com" }],
+  creator: "Nawaraj Gajurel",
+  publisher: "Nawaraj Gajurel",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://nuxgajurel.com",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://nuxgajurel.com",
+    siteName: "Nux Gajurel",
+    title: "Nux Gajurel | Full-Stack Developer from Nepal",
+    description:
+      "Nawaraj Gajurel (Nux Gajurel) — Full-Stack Web Developer from Biratnagar, Morang, Nepal. React, Next.js, Node.js specialist. Available for freelance.",
+    images: [
+      {
+        url: "/Nuxgajurel.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Nux Gajurel — Full-Stack Developer from Nepal",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nux Gajurel | Full-Stack Developer from Nepal",
+    description:
+      "Nawaraj Gajurel (Nux Gajurel) — Full-Stack Web Developer from Biratnagar, Morang, Nepal.",
+    images: ["/Nuxgajurel.jpg"],
+    creator: "@nuxgajurel",
+  },
+  category: "technology",
 };
 
 export default function RootLayout({
@@ -38,6 +108,49 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <head>
+          {/* JSON-LD Person Schema — Google Rich Results */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: "Nawaraj Gajurel",
+                alternateName: ["Nux Gajurel", "nuxgajurel"],
+                url: "https://nuxgajurel.com",
+                image: "https://nuxgajurel.com/Nuxgajurel.jpg",
+                jobTitle: "Full-Stack Web Developer",
+                description:
+                  "Nawaraj Gajurel, also known as Nux Gajurel, is a Full-Stack Web Developer from Biratnagar, Morang, Nepal. Specializes in React.js, Next.js, Node.js, TypeScript, and modern web technologies.",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Biratnagar",
+                  addressRegion: "Morang",
+                  addressCountry: "NP",
+                },
+                sameAs: [
+                  "https://github.com/NuxGajurel",
+                  "https://www.instagram.com/nuxgajurel/",
+                  "https://www.linkedin.com/in/nux-gajurel-355962348/",
+                  "https://app.daily.dev/nuxgajurel",
+                ],
+                knowsAbout: [
+                  "React.js",
+                  "Next.js",
+                  "Node.js",
+                  "TypeScript",
+                  "JavaScript",
+                  "Tailwind CSS",
+                  "Full-Stack Web Development",
+                  "Freelance Web Development",
+                ],
+              }),
+            }}
+          />
+          <meta name="geo.region" content="NP-4" />
+          <meta name="geo.placename" content="Biratnagar, Morang, Nepal" />
+          <meta name="geo.position" content="26.4525;87.2718" />
+          <meta name="ICBM" content="26.4525, 87.2718" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link
