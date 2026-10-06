@@ -97,6 +97,9 @@ export const metadata: Metadata = {
     creator: "@nuxgajurel",
   },
   category: "technology",
+  verification: {
+    google: "mqw0MiXLjInXa6NbLVnSBP7XgIsrGZvnKI7mLNEc6Ao",
+  },
 };
 
 export default function RootLayout({
