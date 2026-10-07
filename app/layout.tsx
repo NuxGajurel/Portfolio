@@ -27,33 +27,71 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   metadataBase: new URL("https://nuxgajurel.com"),
   title: {
-    default: "Nux Gajurel | Full-Stack Developer from Nepal",
-    template: "%s | Nux Gajurel",
+    default: "Nux Gajurel | Best Developer & Freelancer from Biratchowk, Nepal",
+    template: "%s | Nux Gajurel — Developer from Biratchowk Nepal",
   },
   description:
-    "Nawaraj Gajurel (Nux Gajurel) — Full-Stack Web Developer from Biratnagar, Morang, Nepal. Specializing in React, Next.js, Node.js & TypeScript. Available for freelance projects.",
+    "Nawaraj Gajurel (Nux Gajurel) — Best Full-Stack Web Developer & Freelancer from Biratchowk, Morang, Nepal. Top-rated developer in Biratchowk. Specializing in React, Next.js, Node.js & TypeScript. Available for freelance projects worldwide.",
   keywords: [
+    // Name variations
     "Nux Gajurel",
     "Nawaraj Gajurel",
-    "Gajurel",
+    "Nawaraj Gajurel Biratchowk",
+    "Nux Gajurel Nepal",
     "nuxgajurel",
-    "web developer Nepal",
-    "full stack developer Nepal",
-    "developer in Nepal",
-    "Nepal developer",
+    "Gajurel developer",
+    "Nux Gajurel portfolio",
+    "Nawaraj Gajurel developer",
+    "Nux Gajurel freelancer",
+    // Location: Biratchowk (primary target)
+    "Biratchowk developer",
+    "developer from Biratchowk",
+    "best developer Biratchowk",
+    "best developer in Biratchowk Nepal",
+    "web developer Biratchowk",
+    "freelancer Biratchowk",
+    "software developer Biratchowk",
+    "Biratchowk Nepal developer",
+    "Biratchowk web developer",
+    "Biratchowk programmer",
+    "full stack developer Biratchowk",
+    // Location: Biratnagar / Morang
     "Biratnagar developer",
     "developer in Biratnagar",
     "Morang developer",
     "developer in Morang",
+    "software developer Biratnagar",
+    "web developer Biratnagar",
+    "web developer Morang",
+    // Nepal-wide
+    "best developer Nepal",
+    "best freelancer Nepal",
+    "best web developer Nepal",
+    "top developer Nepal",
+    "top freelancer Nepal",
+    "Nepal developer",
+    "web developer Nepal",
+    "full stack developer Nepal",
+    "developer in Nepal",
     "React developer Nepal",
     "Next.js developer Nepal",
     "freelance developer Nepal",
     "portfolio Nepal",
-    "software developer Biratnagar",
-    "web developer Biratnagar",
-    "web developer Morang",
-    "Nawaraj Gajurel developer",
-    "Nux Gajurel portfolio",
+    "Nepal freelancer",
+    "best Nepal developer",
+    "Nepal programmer",
+    // Tech stack
+    "React developer Nepal",
+    "Next.js developer Nepal",
+    "Node.js developer Nepal",
+    "TypeScript developer Nepal",
+    "JavaScript developer Nepal",
+    "Tailwind CSS developer Nepal",
+    "full stack developer Nepal",
+    // General
+    "nuxgajurel.com",
+    "Nux Gajurel website",
+    "Nawaraj Gajurel website",
   ],
   authors: [{ name: "Nawaraj Gajurel", url: "https://nuxgajurel.com" }],
   creator: "Nawaraj Gajurel",
@@ -66,35 +104,56 @@ export const metadata: Metadata = {
       follow: true,
       "max-image-preview": "large",
       "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
   alternates: {
     canonical: "https://nuxgajurel.com",
   },
   openGraph: {
-    type: "website",
+    type: "profile",
     locale: "en_US",
     url: "https://nuxgajurel.com",
-    siteName: "Nux Gajurel",
-    title: "Nux Gajurel | Full-Stack Developer from Nepal",
+    siteName: "Nux Gajurel — Developer from Biratchowk Nepal",
+    title: "Nux Gajurel | Best Developer & Freelancer from Biratchowk, Nepal",
     description:
-      "Nawaraj Gajurel (Nux Gajurel) — Full-Stack Web Developer from Biratnagar, Morang, Nepal. React, Next.js, Node.js specialist. Available for freelance.",
+      "Nawaraj Gajurel (Nux Gajurel) — Best Full-Stack Web Developer & Freelancer from Biratchowk, Morang, Nepal. React, Next.js, Node.js specialist. Available for freelance worldwide.",
     images: [
       {
         url: "/Nuxgajurel.jpg",
         width: 1200,
         height: 630,
-        alt: "Nux Gajurel — Full-Stack Developer from Nepal",
+        alt: "Nux Gajurel — Best Developer & Freelancer from Biratchowk, Nepal",
+        type: "image/jpeg",
+      },
+      {
+        url: "/nux.png",
+        width: 800,
+        height: 800,
+        alt: "Nawaraj Gajurel (Nux Gajurel) — Portfolio Photo",
+        type: "image/png",
+      },
+      {
+        url: "/about.png",
+        width: 1200,
+        height: 800,
+        alt: "Nux Gajurel Portfolio — About Page",
+        type: "image/png",
       },
     ],
+    firstName: "Nawaraj",
+    lastName: "Gajurel",
+    username: "nuxgajurel",
+    gender: "male",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nux Gajurel | Full-Stack Developer from Nepal",
+    title: "Nux Gajurel | Best Developer & Freelancer from Biratchowk Nepal",
     description:
-      "Nawaraj Gajurel (Nux Gajurel) — Full-Stack Web Developer from Biratnagar, Morang, Nepal.",
+      "Nawaraj Gajurel (Nux Gajurel) — Best Full-Stack Web Developer & Freelancer from Biratchowk, Morang, Nepal.",
     images: ["/Nuxgajurel.jpg"],
     creator: "@nuxgajurel",
+    site: "@nuxgajurel",
   },
   category: "technology",
   verification: {
@@ -111,31 +170,50 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <head>
-          {/* JSON-LD Person Schema — Google Rich Results */}
+          {/* JSON-LD #1: Person Schema — Google Knowledge Panel & Rich Results */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "Person",
+                "@id": "https://nuxgajurel.com/#person",
                 name: "Nawaraj Gajurel",
-                alternateName: ["Nux Gajurel", "nuxgajurel"],
+                alternateName: ["Nux Gajurel", "nuxgajurel", "Nawaraj Gajurel Biratchowk"],
                 url: "https://nuxgajurel.com",
-                image: "https://nuxgajurel.com/Nuxgajurel.jpg",
-                jobTitle: "Full-Stack Web Developer",
+                image: {
+                  "@type": "ImageObject",
+                  url: "https://nuxgajurel.com/Nuxgajurel.jpg",
+                  width: 1200,
+                  height: 630,
+                  caption: "Nawaraj Gajurel (Nux Gajurel) — Best Developer from Biratchowk Nepal",
+                },
+                jobTitle: "Full-Stack Web Developer & Freelancer",
                 description:
-                  "Nawaraj Gajurel, also known as Nux Gajurel, is a Full-Stack Web Developer from Biratnagar, Morang, Nepal. Specializes in React.js, Next.js, Node.js, TypeScript, and modern web technologies.",
+                  "Nawaraj Gajurel, also known as Nux Gajurel, is the best Full-Stack Web Developer and Freelancer from Biratchowk, Morang, Nepal. Specializes in React.js, Next.js, Node.js, TypeScript, and modern web technologies.",
                 address: {
                   "@type": "PostalAddress",
-                  addressLocality: "Biratnagar",
+                  streetAddress: "Biratchowk",
+                  addressLocality: "Biratchowk",
                   addressRegion: "Morang",
                   addressCountry: "NP",
+                  postalCode: "56700",
+                },
+                birthPlace: {
+                  "@type": "Place",
+                  name: "Biratchowk, Morang, Nepal",
+                },
+                nationality: {
+                  "@type": "Country",
+                  name: "Nepal",
                 },
                 sameAs: [
                   "https://github.com/NuxGajurel",
                   "https://www.instagram.com/nuxgajurel/",
                   "https://www.linkedin.com/in/nux-gajurel-355962348/",
                   "https://app.daily.dev/nuxgajurel",
+                  "https://nuxgajurel.com",
+                  "https://nuxgajurel.com/about",
                 ],
                 knowsAbout: [
                   "React.js",
@@ -146,14 +224,248 @@ export default function RootLayout({
                   "Tailwind CSS",
                   "Full-Stack Web Development",
                   "Freelance Web Development",
+                  "Express.js",
+                  "MySQL",
+                  "PostgreSQL",
+                  "Git",
+                  "REST API",
+                ],
+                hasOccupation: {
+                  "@type": "Occupation",
+                  name: "Full-Stack Web Developer",
+                  occupationLocation: {
+                    "@type": "City",
+                    name: "Biratchowk, Morang, Nepal",
+                  },
+                  description: "Best Full-Stack Web Developer and Freelancer from Biratchowk Nepal",
+                },
+                worksFor: {
+                  "@type": "Organization",
+                  name: "Avyanta Tech",
+                  url: "https://avyantatech.com/np",
+                },
+                mainEntityOfPage: {
+                  "@type": "ProfilePage",
+                  "@id": "https://nuxgajurel.com/about",
+                },
+              }),
+            }}
+          />
+
+          {/* JSON-LD #2: WebSite Schema — Enables Google Sitelinks + SearchBox */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "@id": "https://nuxgajurel.com/#website",
+                name: "Nux Gajurel — Best Developer from Biratchowk Nepal",
+                url: "https://nuxgajurel.com",
+                description:
+                  "Official portfolio website of Nawaraj Gajurel (Nux Gajurel), the best Full-Stack Developer and Freelancer from Biratchowk, Morang, Nepal.",
+                author: {
+                  "@type": "Person",
+                  "@id": "https://nuxgajurel.com/#person",
+                  name: "Nawaraj Gajurel",
+                },
+                potentialAction: {
+                  "@type": "SearchAction",
+                  target: {
+                    "@type": "EntryPoint",
+                    urlTemplate: "https://nuxgajurel.com/?q={search_term_string}",
+                  },
+                  "query-input": "required name=search_term_string",
+                },
+                about: {
+                  "@type": "Person",
+                  name: "Nawaraj Gajurel",
+                  alternateName: "Nux Gajurel",
+                },
+              }),
+            }}
+          />
+
+          {/* JSON-LD #3: ProfilePage Schema — Google Profile Overview Panel */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "ProfilePage",
+                "@id": "https://nuxgajurel.com/#profilepage",
+                url: "https://nuxgajurel.com",
+                name: "Nux Gajurel — Best Developer & Freelancer from Biratchowk Nepal",
+                dateCreated: "2025-01-01T00:00:00+05:45",
+                dateModified: new Date().toISOString(),
+                mainEntity: {
+                  "@type": "Person",
+                  "@id": "https://nuxgajurel.com/#person",
+                  name: "Nawaraj Gajurel",
+                  alternateName: ["Nux Gajurel", "nuxgajurel"],
+                  description:
+                    "Best Full-Stack Web Developer & Freelancer from Biratchowk, Morang, Nepal. Specializing in React, Next.js, Node.js.",
+                  image: "https://nuxgajurel.com/Nuxgajurel.jpg",
+                  url: "https://nuxgajurel.com",
+                  sameAs: [
+                    "https://github.com/NuxGajurel",
+                    "https://www.instagram.com/nuxgajurel/",
+                    "https://www.linkedin.com/in/nux-gajurel-355962348/",
+                  ],
+                },
+                breadcrumb: {
+                  "@type": "BreadcrumbList",
+                  itemListElement: [
+                    {
+                      "@type": "ListItem",
+                      position: 1,
+                      name: "Nux Gajurel",
+                      item: "https://nuxgajurel.com",
+                    },
+                    {
+                      "@type": "ListItem",
+                      position: 2,
+                      name: "About",
+                      item: "https://nuxgajurel.com/about",
+                    },
+                    {
+                      "@type": "ListItem",
+                      position: 3,
+                      name: "Projects",
+                      item: "https://nuxgajurel.com/projects",
+                    },
+                    {
+                      "@type": "ListItem",
+                      position: 4,
+                      name: "Blogs",
+                      item: "https://nuxgajurel.com/blogs",
+                    },
+                    {
+                      "@type": "ListItem",
+                      position: 5,
+                      name: "Photos",
+                      item: "https://nuxgajurel.com/photos",
+                    },
+                    {
+                      "@type": "ListItem",
+                      position: 6,
+                      name: "Contact",
+                      item: "https://nuxgajurel.com/contact",
+                    },
+                    {
+                      "@type": "ListItem",
+                      position: 7,
+                      name: "Dashboard",
+                      item: "https://nuxgajurel.com/dashboard",
+                    },
+                    {
+                      "@type": "ListItem",
+                      position: 8,
+                      name: "Guestbook",
+                      item: "https://nuxgajurel.com/guestbook",
+                    },
+                  ],
+                },
+              }),
+            }}
+          />
+
+          {/* JSON-LD #4: ImageObject Collection — Helps Photos show in Google Images */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                name: "Nux Gajurel — Portfolio Photos & Projects",
+                description: "Photos, portfolio, and project screenshots of Nawaraj Gajurel (Nux Gajurel), best developer from Biratchowk Nepal",
+                url: "https://nuxgajurel.com/photos",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    item: {
+                      "@type": "ImageObject",
+                      name: "Nawaraj Gajurel (Nux Gajurel) — Profile Photo",
+                      description: "Profile photo of Nawaraj Gajurel, best developer from Biratchowk Nepal",
+                      url: "https://nuxgajurel.com/Nuxgajurel.jpg",
+                      contentUrl: "https://nuxgajurel.com/Nuxgajurel.jpg",
+                      thumbnailUrl: "https://nuxgajurel.com/Nuxgajurel.jpg",
+                      width: 1200,
+                      height: 630,
+                      author: { "@type": "Person", name: "Nawaraj Gajurel" },
+                      representativeOfPage: true,
+                    },
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    item: {
+                      "@type": "ImageObject",
+                      name: "Nux Gajurel — Portfolio Homepage",
+                      description: "Portfolio homepage screenshot of Nux Gajurel, full-stack developer from Biratchowk Nepal",
+                      url: "https://nuxgajurel.com/homepage.png",
+                      contentUrl: "https://nuxgajurel.com/homepage.png",
+                      thumbnailUrl: "https://nuxgajurel.com/homepage.png",
+                      author: { "@type": "Person", name: "Nawaraj Gajurel" },
+                    },
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    item: {
+                      "@type": "ImageObject",
+                      name: "Nux Gajurel — About Page",
+                      description: "About page of Nux Gajurel (Nawaraj Gajurel), freelancer from Biratchowk Nepal",
+                      url: "https://nuxgajurel.com/about.png",
+                      contentUrl: "https://nuxgajurel.com/about.png",
+                      thumbnailUrl: "https://nuxgajurel.com/about.png",
+                      author: { "@type": "Person", name: "Nawaraj Gajurel" },
+                    },
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 4,
+                    item: {
+                      "@type": "ImageObject",
+                      name: "Nux Gajurel — Projects Portfolio",
+                      description: "Projects built by Nawaraj Gajurel (Nux Gajurel), top developer from Biratchowk Nepal",
+                      url: "https://nuxgajurel.com/project.png",
+                      contentUrl: "https://nuxgajurel.com/project.png",
+                      thumbnailUrl: "https://nuxgajurel.com/project.png",
+                      author: { "@type": "Person", name: "Nawaraj Gajurel" },
+                    },
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 5,
+                    item: {
+                      "@type": "ImageObject",
+                      name: "Nux Gajurel — Developer Photo Nepal",
+                      description: "Nawaraj Gajurel (Nux Gajurel) developer photo, Biratchowk Nepal",
+                      url: "https://nuxgajurel.com/nux.png",
+                      contentUrl: "https://nuxgajurel.com/nux.png",
+                      thumbnailUrl: "https://nuxgajurel.com/nux.png",
+                      author: { "@type": "Person", name: "Nawaraj Gajurel" },
+                    },
+                  },
                 ],
               }),
             }}
           />
+
+          {/* Geo meta tags — Biratchowk, Morang */}
           <meta name="geo.region" content="NP-4" />
-          <meta name="geo.placename" content="Biratnagar, Morang, Nepal" />
-          <meta name="geo.position" content="26.4525;87.2718" />
-          <meta name="ICBM" content="26.4525, 87.2718" />
+          <meta name="geo.placename" content="Biratchowk, Morang, Nepal" />
+          <meta name="geo.position" content="26.5000;87.3000" />
+          <meta name="ICBM" content="26.5000, 87.3000" />
+          <meta name="author" content="Nawaraj Gajurel (Nux Gajurel)" />
+          <meta name="subject" content="Full-Stack Web Developer & Freelancer from Biratchowk Nepal" />
+          <meta name="classification" content="Developer Portfolio" />
+          <meta name="rating" content="general" />
+          <meta name="revisit-after" content="3 days" />
+          <meta name="language" content="English" />
+          <meta name="copyright" content="Nawaraj Gajurel" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link

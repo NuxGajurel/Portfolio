@@ -6,7 +6,16 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/dashboard/", "/analytics/", "/feedback/"],
+        disallow: ["/api/", "/analytics/", "/feedback/"],
+      },
+      {
+        userAgent: "Googlebot",
+        allow: "/",
+        disallow: ["/api/", "/analytics/", "/feedback/"],
+      },
+      {
+        userAgent: "Googlebot-Image",
+        allow: "/",
       },
     ],
     sitemap: "https://nuxgajurel.com/sitemap.xml",
