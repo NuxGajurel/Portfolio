@@ -134,7 +134,7 @@ export default function Home() {
             </p>
 
             <p className="text-sm sm:text-base leading-relaxed text-gray-600 dark:text-gray-300 max-w-2xl">
-              I&apos;m a passionate full-stack developer from Nepal,
+              I&apos;m a passionate full-stack developer from Biratchowk , Nepal
               turning ideas into creative digital experiences. I love
               building cool projects, exploring new technologies,
               solving real-world problems, and pushing myself to learn
@@ -336,9 +336,9 @@ export default function Home() {
                   <div className="w-full">
 
 
-                      {/* PROJECT NAME */}
-                      <h3
-                        className={`
+                    {/* PROJECT NAME */}
+                    <h3
+                      className={`
                           ${instrumentSerif.className}
                           text-base
                           sm:text-[18px]
@@ -351,13 +351,13 @@ export default function Home() {
                           duration-300
                           group-hover:translate-x-0.5
                         `}
-                      >
-                        {project.name}
-                      </h3>
+                    >
+                      {project.name}
+                    </h3>
 
-                      {/* CATEGORY */}
-                      <p
-                        className="
+                    {/* CATEGORY */}
+                    <p
+                      className="
                           mt-1.5
                           text-xs
                           sm:text-sm
@@ -365,13 +365,13 @@ export default function Home() {
                           text-gray-500
                           dark:text-gray-400
                         "
-                      >
-                        {projectCategory}
-                      </p>
+                    >
+                      {projectCategory}
+                    </p>
 
-                      {/* DESCRIPTION */}
-                      <p
-                        className="
+                    {/* DESCRIPTION */}
+                    <p
+                      className="
                           mt-1.5
                           max-w-2xl
                           text-xs
@@ -381,16 +381,16 @@ export default function Home() {
                           dark:text-gray-400
                           line-clamp-2
                         "
-                      >
-                        {project.description}
-                      </p>
+                    >
+                      {project.description}
+                    </p>
 
-                      {/* WEBSITE */}
-                      <div className="mt-3 flex items-center gap-2">
+                    {/* WEBSITE */}
+                    <div className="mt-3 flex items-center gap-2">
 
-                        {/* PROJECT ICON */}
-                        <div
-                          className="
+                      {/* PROJECT ICON */}
+                      <div
+                        className="
                             relative
                             w-5
                             h-5
@@ -403,19 +403,19 @@ export default function Home() {
                             bg-gray-50
                             dark:bg-gray-800
                           "
-                        >
-                          <Image
-                            src={project.icon}
-                            alt=""
-                            fill
-                            sizes="20px"
-                            className="object-cover"
-                          />
-                        </div>
+                      >
+                        <Image
+                          src={project.icon}
+                          alt=""
+                          fill
+                          sizes="20px"
+                          className="object-cover"
+                        />
+                      </div>
 
-                        {/* WEBSITE */}
-                        <span
-                          className="
+                      {/* WEBSITE */}
+                      <span
+                        className="
                             text-sm
                             text-gray-500
                             dark:text-gray-400
@@ -424,17 +424,17 @@ export default function Home() {
                             transition-colors
                             truncate
                           "
-                        >
-                          {projectUrl
-                            ? projectUrl
-                              .replace(/^https?:\/\//, "")
-                              .replace(/\/$/, "")
-                            : "View project"}
-                        </span>
+                      >
+                        {projectUrl
+                          ? projectUrl
+                            .replace(/^https?:\/\//, "")
+                            .replace(/\/$/, "")
+                          : "View project"}
+                      </span>
 
-                        {/* ARROW */}
-                        <span
-                          className="
+                      {/* ARROW */}
+                      <span
+                        className="
                             text-sm
                             text-gray-400
                             dark:text-gray-500
@@ -442,13 +442,13 @@ export default function Home() {
                             duration-300
                             group-hover:translate-x-1
                           "
-                        >
-                          ↗
-                        </span>
-
-                      </div>
+                      >
+                        ↗
+                      </span>
 
                     </div>
+
+                  </div>
 
                 </Link>
               );
