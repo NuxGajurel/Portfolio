@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
@@ -511,6 +512,14 @@ export default function RootLayout({
           <link
             href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&display=swap"
             rel="stylesheet"
+          />
+
+          {/* Umami Cloud Analytics */}
+          <Script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id="3e1150a4-c414-4921-a275-7577a42cfb6a"
+            strategy="afterInteractive"
           />
         </head>
         <body
