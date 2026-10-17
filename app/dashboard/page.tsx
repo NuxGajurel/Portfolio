@@ -19,48 +19,87 @@ async function getGitHubStats(): Promise<GitHubStats> {
   const token = process.env.GITHUB_TOKEN;
   const username = process.env.GITHUB_USERNAME || "NuxGajurel";
 
-  if (!token) return { totalRepos: 24, totalStars: 20 };
-
-  try {
-    const res = await fetch("https://api.github.com/graphql", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-        "User-Agent": "nux-portfolio",
-      },
-      body: JSON.stringify({
-        query: `
-          query($username: String!) {
-            user(login: $username) {
-              repositories(first: 100, ownerAffiliations: OWNER) {
-                totalCount
-                nodes {
-                  stargazerCount
+  if (token && !token.startsWith("your_")) {
+    try {
+      const res = await fetch("https://api.github.com/graphql", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          "User-Agent": "nux-portfolio",
+        },
+        body: JSON.stringify({
+          query: `
+            query($username: String!) {
+              user(login: $username) {
+                repositories(first: 100, ownerAffiliations: OWNER) {
+                  totalCount
+                  nodes {
+                    stargazerCount
+                  }
                 }
               }
             }
-          }
-        `,
-        variables: { username },
-      }),
-      next: { revalidate: 3600 },
-    });
+          `,
+          variables: { username },
+        }),
+        next: { revalidate: 3600 },
+      });
 
-    if (!res.ok) return { totalRepos: 24, totalStars: 20 };
-    const json = await res.json();
-    const repos = json.data?.user?.repositories?.nodes || [];
-    const totalStars = repos.reduce(
-      (sum: number, repo: { stargazerCount?: number }) =>
-        sum + (repo.stargazerCount || 0),
-      0
-    );
-    const totalRepos = json.data?.user?.repositories?.totalCount ?? 24;
+      if (res.ok) {
+        const json = await res.json();
+        if (!json.errors || json.errors.length === 0) {
+          const repos = json.data?.user?.repositories?.nodes || [];
+          const totalStars = repos.reduce(
+            (sum: number, repo: { stargazerCount?: number }) =>
+              sum + (repo.stargazerCount || 0),
+            0
+          );
+          const totalRepos = json.data?.user?.repositories?.totalCount ?? 23;
+          return { totalRepos, totalStars };
+        }
+      }
+    } catch (err) {
+      console.warn("GraphQL stats fetch failed, trying public REST fallback:", err);
+    }
+  }
+
+  // Fallback to public GitHub API
+  try {
+    const [userRes, reposRes] = await Promise.all([
+      fetch(`https://api.github.com/users/${username}`, {
+        headers: { "User-Agent": "nux-portfolio" },
+        next: { revalidate: 3600 },
+      }),
+      fetch(`https://api.github.com/users/${username}/repos?per_page=100`, {
+        headers: { "User-Agent": "nux-portfolio" },
+        next: { revalidate: 3600 },
+      }),
+    ]);
+
+    let totalRepos = 23;
+    let totalStars = 10;
+
+    if (userRes.ok) {
+      const userData = await userRes.json();
+      totalRepos = userData.public_repos ?? 23;
+    }
+
+    if (reposRes.ok) {
+      const reposData = await reposRes.json();
+      if (Array.isArray(reposData)) {
+        totalStars = reposData.reduce(
+          (sum: number, r: { stargazers_count?: number }) =>
+            sum + (r.stargazers_count || 0),
+          0
+        );
+      }
+    }
 
     return { totalRepos, totalStars };
   } catch (err) {
-    console.error("Failed to fetch GitHub stats:", err);
-    return { totalRepos: 24, totalStars: 20 };
+    console.error("Failed to fetch public GitHub stats fallback:", err);
+    return { totalRepos: 23, totalStars: 10 };
   }
 }
 
