@@ -1,7 +1,29 @@
+@layer theme, base, clerk, components, utilities;
 @import "tailwindcss";
 
 @theme {
   --font-serif: var(--font-instrument-serif), Georgia, serif;
+}
+
+/* Clerk theme variables synced with light & dark mode */
+:root {
+  --clerk-color-primary: #171717;
+  --clerk-color-background: #ffffff;
+  --clerk-color-foreground: #171717;
+  --clerk-color-muted-foreground: #737373;
+  --clerk-color-input-background: #ffffff;
+  --clerk-color-border: #e5e5e5;
+  --clerk-color-input-text: #171717;
+}
+
+.dark {
+  --clerk-color-primary: #f5f5f5;
+  --clerk-color-background: #171717;
+  --clerk-color-foreground: #ededed;
+  --clerk-color-muted-foreground: #a3a3a3;
+  --clerk-color-input-background: #1f1f1f;
+  --clerk-color-border: #2e2e2e;
+  --clerk-color-input-text: #ededed;
 }
 
 .font-handwriting {

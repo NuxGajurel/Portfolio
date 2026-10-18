@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { useUser, useClerk, UserButton } from "@clerk/nextjs";
+import { useUser, useClerk, useSignIn, UserButton } from "@clerk/nextjs";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import {
@@ -85,6 +85,7 @@ function getAvatarBg(name: string): string {
 export default function GuestbookClient() {
   const { isLoaded, isSignedIn, user } = useUser();
   const clerk = useClerk();
+  const { signIn } = useSignIn();
 
   const isAdmin = Boolean(isLoaded && isSignedIn && isClerkUserAdmin(user));
 
@@ -123,18 +124,50 @@ export default function GuestbookClient() {
     fetchEntries();
   }, []);
 
-  const handleSignInWithGithub = () => {
-    clerk.openSignIn({
-      fallbackRedirectUrl: "/guestbook",
-      signUpFallbackRedirectUrl: "/guestbook",
-    });
+  const handleSignInWithGithub = async () => {
+    try {
+      if (signIn?.sso) {
+        await signIn.sso({
+          strategy: "oauth_github",
+          redirectUrl: "/guestbook",
+          redirectCallbackUrl: "/sso-callback",
+        });
+      } else {
+        clerk.openSignIn({
+          fallbackRedirectUrl: "/guestbook",
+          signUpFallbackRedirectUrl: "/guestbook",
+        });
+      }
+    } catch (err) {
+      console.error("Error initiating GitHub OAuth:", err);
+      clerk.openSignIn({
+        fallbackRedirectUrl: "/guestbook",
+        signUpFallbackRedirectUrl: "/guestbook",
+      });
+    }
   };
 
-  const handleSignInWithGoogle = () => {
-    clerk.openSignIn({
-      fallbackRedirectUrl: "/guestbook",
-      signUpFallbackRedirectUrl: "/guestbook",
-    });
+  const handleSignInWithGoogle = async () => {
+    try {
+      if (signIn?.sso) {
+        await signIn.sso({
+          strategy: "oauth_google",
+          redirectUrl: "/guestbook",
+          redirectCallbackUrl: "/sso-callback",
+        });
+      } else {
+        clerk.openSignIn({
+          fallbackRedirectUrl: "/guestbook",
+          signUpFallbackRedirectUrl: "/guestbook",
+        });
+      }
+    } catch (err) {
+      console.error("Error initiating Google OAuth:", err);
+      clerk.openSignIn({
+        fallbackRedirectUrl: "/guestbook",
+        signUpFallbackRedirectUrl: "/guestbook",
+      });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
