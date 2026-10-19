@@ -134,7 +134,7 @@ export default function Home() {
             </p>
 
             <p className="text-sm sm:text-base leading-relaxed text-gray-600 dark:text-gray-300 max-w-2xl">
-              I&apos;m a passionate full-stack developer from Biratchowk , Nepal
+              I&apos;m a passionate full-stack developer from Biratchowk, Nepal
               turning ideas into creative digital experiences. I love
               building cool projects, exploring new technologies,
               solving real-world problems, and pushing myself to learn

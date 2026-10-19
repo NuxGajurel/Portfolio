@@ -134,14 +134,18 @@ export default function GuestbookClient() {
         });
       } else {
         clerk.openSignIn({
+          forceRedirectUrl: "/guestbook",
           fallbackRedirectUrl: "/guestbook",
+          signUpForceRedirectUrl: "/guestbook",
           signUpFallbackRedirectUrl: "/guestbook",
         });
       }
     } catch (err) {
       console.error("Error initiating GitHub OAuth:", err);
       clerk.openSignIn({
+        forceRedirectUrl: "/guestbook",
         fallbackRedirectUrl: "/guestbook",
+        signUpForceRedirectUrl: "/guestbook",
         signUpFallbackRedirectUrl: "/guestbook",
       });
     }
@@ -157,14 +161,18 @@ export default function GuestbookClient() {
         });
       } else {
         clerk.openSignIn({
+          forceRedirectUrl: "/guestbook",
           fallbackRedirectUrl: "/guestbook",
+          signUpForceRedirectUrl: "/guestbook",
           signUpFallbackRedirectUrl: "/guestbook",
         });
       }
     } catch (err) {
       console.error("Error initiating Google OAuth:", err);
       clerk.openSignIn({
+        forceRedirectUrl: "/guestbook",
         fallbackRedirectUrl: "/guestbook",
+        signUpForceRedirectUrl: "/guestbook",
         signUpFallbackRedirectUrl: "/guestbook",
       });
     }
